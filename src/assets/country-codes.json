@@ -1,0 +1,12 @@
+[
+  { "label": "+1 (US)", "value": "1" },
+  { "label": "+44 (UK)", "value": "44" },
+  { "label": "+33 (FR)", "value": "33" },
+  { "label": "+49 (DE)", "value": "49" },
+  { "label": "+39 (IT)", "value": "39" },
+  { "label": "+61 (AU)", "value": "61" },
+  { "label": "+81 (JP)", "value": "81" },
+  { "label": "+86 (CN)", "value": "86" },
+  { "label": "+55 (BR)", "value": "55" },
+  { "label": "+27 (ZA)", "value": "27" }
+]

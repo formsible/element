@@ -1,0 +1,797 @@
+{
+  "components": [
+    {
+      "meta": {
+        "name": "ShortText",
+        "enabled": true,
+        "description": "Single-line text input field for short responses.",
+        "icon": "material-symbols:text-fields"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Short Text",
+            "component": "short_text",
+            "description": "Enter a short text response.",
+            "placeholder": "Type something here"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "LongText",
+        "enabled": true,
+        "description": "Multi-line text input field for longer responses.",
+        "icon": "material-symbols:notes"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Long Text",
+            "component": "long_text",
+            "description": "Enter a longer text response. Multi-line input is allowed.",
+            "placeholder": "Type your text here"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "MultipleChoice",
+        "enabled": true,
+        "description": "Radio buttons for selecting one option from multiple choices.",
+        "icon": "material-symbols:radio-button-checked"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Multiple Choice",
+            "component": "multiple_choice",
+            "description": "Select one option from the list.",
+            "placeholder": "Choose an option",
+            "choices": [
+              { "label": "Option 1", "value": "option1" },
+              { "label": "Option 2", "value": "option2" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Checkboxes",
+        "enabled": true,
+        "description": "Checkboxes for selecting multiple options.",
+        "icon": "material-symbols:check-box"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Checkboxes",
+            "component": "checkboxes",
+            "description": "Select one or more options.",
+            "placeholder": "Choose options",
+            "choices": [
+              { "label": "Option 1", "value": "option1" },
+              { "label": "Option 2", "value": "option2" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Dropdown",
+        "enabled": true,
+        "description": "Dropdown menu for selecting one option from a list.",
+        "icon": "material-symbols:arrow-drop-down"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Dropdown",
+            "component": "dropdown",
+            "description": "Select an option from the dropdown list.",
+            "placeholder": "Select an option",
+            "choices": [
+              { "label": "Option 1", "value": "option1" },
+              { "label": "Option 2", "value": "option2" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "FileUpload",
+        "enabled": true,
+        "description": "Field for uploading files.",
+        "icon": "material-symbols:upload"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "File Upload",
+            "component": "file_upload",
+            "description": "Browse or drag and drop files to upload.",
+            "placeholder": "Upload files here",
+            "validations": [{ "rule": "maxLength", "params": ["3"] }]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "DatePicker",
+        "enabled": true,
+        "description": "Date picker for selecting a date.",
+        "icon": "material-symbols:calendar-today"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Date Picker",
+            "component": "date_picker",
+            "description": "Select a date from the calendar.",
+            "placeholder": "Select a date"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "TimePicker",
+        "enabled": true,
+        "description": "Time picker for selecting a time.",
+        "icon": "material-symbols:nest-clock-farsight-analog-outline"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Time Picker",
+            "component": "time_picker",
+            "description": "Select a time.",
+            "placeholder": "Select a time"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "LikertScale",
+        "enabled": true,
+        "description": "Rating grid for multiple questions on a scale.",
+        "icon": "material-symbols:grid-on"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Likert Scale",
+            "component": "likert_scale",
+            "description": "Rate each question on a scale from 'Strongly Disagree' to 'Strongly Agree'.",
+            "placeholder": "Rate each question",
+            "choices": [
+              { "label": "Strongly Disagree", "value": "strongly_disagree" },
+              { "label": "Disagree", "value": "disagree" },
+              { "label": "Neutral", "value": "neutral" },
+              { "label": "Agree", "value": "agree" },
+              { "label": "Strongly Agree", "value": "strongly_agree" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "NetPromoterScore",
+        "enabled": true,
+        "description": "0-10 rating scale with a specific question.",
+        "icon": "material-symbols:readiness-score"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Net Promoter Score",
+            "component": "net_promoter_score",
+            "description": "Rate from 0 to 10 how likely you are to recommend us.",
+            "placeholder": "Rate from 0 to 10",
+            "scale": 10
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Signature",
+        "enabled": true,
+        "description": "Field for capturing a digital signature.",
+        "icon": "material-symbols:signature"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Signature",
+            "component": "signature",
+            "description": "Sign here using your mouse or touch device.",
+            "placeholder": "Sign here"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "PhoneNumber",
+        "enabled": true,
+        "description": "Input field for entering a formatted phone number.",
+        "icon": "material-symbols:phone-enabled"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Phone Number",
+            "component": "phone_number",
+            "description": "Enter your phone number in the specified format.",
+            "placeholder": "Enter phone number"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Address",
+        "enabled": true,
+        "description": "Input field for entering a formatted address.",
+        "icon": "material-symbols:location-on"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Address",
+            "component": "address",
+            "description": "Enter your address including street, city, and postal code.",
+            "placeholder": "Enter address"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Website",
+        "enabled": true,
+        "description": "Input field for entering a URL.",
+        "icon": "material-symbols:public"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Website",
+            "component": "website",
+            "description": "Enter a valid website URL.",
+            "placeholder": "Enter website URL"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Email",
+        "enabled": true,
+        "description": "Input field for entering an email address.",
+        "icon": "material-symbols:mail"
+      },
+      "init": {
+        "properties": {
+          "input": {
+            "label": "Email",
+            "component": "email",
+            "description": "Enter a valid email address.",
+            "placeholder": "Enter email address"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Number",
+        "enabled": true,
+        "description": "Input field for entering numerical values.",
+        "icon": "material-symbols:123"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Number",
+            "component": "number",
+            "description": "Enter a numerical value.",
+            "placeholder": "Enter number"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Slider",
+        "enabled": true,
+        "description": "Slider for selecting a value within a range.",
+        "icon": "material-symbols:tune"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Slider",
+            "component": "slider",
+            "description": "Select a value by sliding the control.",
+            "placeholder": "Adjust slider",
+            "min": 0,
+            "max": 100
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Ranking",
+        "enabled": true,
+        "description": "Field for ranking items by preference.",
+        "icon": "material-symbols:sort"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Ranking",
+            "component": "ranking",
+            "description": "Order the items by preference.",
+            "placeholder": "Rank the items",
+            "choices": [
+              { "label": "Item 1", "value": "item1" },
+              { "label": "Item 2", "value": "item2" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Ranking",
+        "enabled": true,
+        "description": "Field for ranking items by preference.",
+        "icon": "material-symbols:sort"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Ranking",
+            "component": "ranking",
+            "description": "Order the items by preference.",
+            "placeholder": "Rank the items",
+            "choices": [
+              { "label": "Item 1", "value": "item1" },
+              { "label": "Item 2", "value": "item2" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Captcha",
+        "enabled": false,
+        "description": "Verify human user",
+        "icon": "material-symbols:verified-user"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Complete the captcha",
+            "component": "captcha"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Password",
+        "enabled": true,
+        "description": "Field for entering a password. Input is masked for security.",
+        "icon": "material-symbols:lock"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Password",
+            "component": "password",
+            "description": "Enter your password. The input will be masked.",
+            "placeholder": "Password"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "EmbedDocument",
+        "enabled": true,
+        "description": "Display a document",
+        "icon": "material-symbols:description"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "embed_document",
+            "alt": "Embedded document",
+            "width": "100%",
+            "height": "600px",
+            "src": "https://docs.google.com/document/d/16d06Zg4UaJ5aqDBMd9IgA2DMcCr-kF6SvqmGSKoAMVM/edit?usp=sharing"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "EmbedSlides",
+        "enabled": true,
+        "description": "Display presentation slides",
+        "icon": "material-symbols:slideshow"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "embed_slides",
+            "alt": "Embedded slides",
+            "width": "100%",
+            "height": "600px",
+            "src": "https://example.com/slides.pptx"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "EmbedVideo",
+        "enabled": true,
+        "description": "Display a video",
+        "icon": "material-symbols:videocam"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "embed_video",
+            "alt": "Embedded video",
+            "width": "100%",
+            "height": "480px",
+            "src": "https://example.com/video.mp4"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Heading 1",
+        "enabled": true,
+        "description": "HTML <h1> tag",
+        "icon": "material-symbols:title"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "h1",
+            "content": "Heading 1"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Heading 2",
+        "enabled": true,
+        "description": "HTML <h2> tag",
+        "icon": "material-symbols:title"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "h2",
+            "content": "Heading 2"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Heading 3",
+        "enabled": true,
+        "description": "HTML <h3> tag",
+        "icon": "material-symbols:title"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "h3",
+            "content": "Heading 3"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Heading 4",
+        "enabled": true,
+        "description": "HTML <h4> tag",
+        "icon": "material-symbols:title"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "h4",
+            "content": "Heading 4"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Heading 5",
+        "enabled": true,
+        "description": "HTML <h5> tag",
+        "icon": "material-symbols:title"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "h5",
+            "content": "Heading 5"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Heading 6",
+        "enabled": true,
+        "description": "HTML <h6> tag",
+        "icon": "material-symbols:title"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "h6",
+            "content": "Heading 6"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Paragraph",
+        "enabled": true,
+        "description": "HTML <p> tag",
+        "icon": "material-symbols:text-paragraph"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "p",
+            "content": "This is a paragraph."
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Blockquote",
+        "enabled": true,
+        "description": "HTML <blockquote> tag",
+        "icon": "material-symbols:format-quote"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "blockquote",
+            "content": "This is a blockquote."
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Unordered List",
+        "enabled": true,
+        "description": "HTML <ul> tag",
+        "icon": "material-symbols:list"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "ul",
+            "items": ["First item", "Second item", "Third item"]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Ordered List",
+        "enabled": true,
+        "description": "HTML <ol> tag",
+        "icon": "material-symbols:format-list-numbered"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "ol",
+            "items": ["First item", "Second item", "Third item"]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Image",
+        "enabled": true,
+        "description": "HTML <img> tag",
+        "icon": "material-symbols:image"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "img",
+            "src": "https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "alt": "Nice picture"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Code",
+        "enabled": true,
+        "description": "HTML <code> tag",
+        "icon": "material-symbols:code"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "code",
+            "content": "This is a code snippet."
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Preformatted Text",
+        "enabled": true,
+        "description": "HTML <pre> tag",
+        "icon": "material-symbols:code"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "pre",
+            "content": "This is preformatted text."
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "Horizontal Rule",
+        "enabled": true,
+        "description": "HTML <hr> tag",
+        "icon": "material-symbols:horizontal-rule"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "component": "html_block",
+            "tag": "hr"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "IconDisplay",
+        "enabled": true,
+        "description": "Display an icon",
+        "icon": "material-symbols:emoji-symbols"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "label": "Icon",
+            "component": "icon_display",
+            "icon": "pi pi-check-circle",
+            "alt": "Icon display",
+            "color": "text-blue-500"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "LocaleSelector",
+        "enabled": true,
+        "description": "Select a locale",
+        "icon": "material-symbols:language-chinese-array"
+      },
+      "init": {
+        "type": "display",
+        "properties": {
+          "display": {
+            "label": "Select Locale",
+            "component": "locale_selector",
+            "icon": "language",
+            "alt": "Locale selector",
+            "size": "w-6 h-6",
+            "color": "text-gray-700",
+            "placeholder": "Select a Locale",
+            "choices": [
+              {
+                "value": "en",
+                "label": "English",
+                "src": "https://www.svgrepo.com/show/508668/flag-us.svg"
+              },
+              {
+                "value": "vi",
+                "label": "Tiếng Việt",
+                "src": "https://www.svgrepo.com/show/401799/flag-for-vietnam.svg"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
