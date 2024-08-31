@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, defineModel, defineProps, type PropType } from 'vue'
-import type { InputProperties } from '../../types'
-import InputText from 'primevue/inputtext'
+import { computed, defineModel, defineProps, type PropType } from "vue";
+import type { InputProperties } from "../../types";
+import InputText from "primevue/inputtext";
 
 const props = defineProps({
   input: {
@@ -11,24 +11,24 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
-      label: 'w-full text-black dark:text-white',
-      input: 'w-full bg-white dark:bg-gray-800 text-black dark:text-white',
-      description: 'text-sm text-slate-700 dark:text-slate-300',
-      error: 'text-red-600 dark:text-red-400',
+      container: "flex flex-col gap-2 ",
+      label: "w-full",
+      input: "w-full ",
+      description: "text-sm",
+      error: "text-red-600 dark:text-red-400",
     }),
   },
   error: {
     type: String,
-    default: '',
+    default: "",
   },
-})
+});
 
-const model = defineModel<string>({ default: '' })
+const model = defineModel<string>({ default: "" });
 
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
-)
+  props.input.validations?.map((v) => v.rule).includes("required")
+);
 </script>
 
 <template>
@@ -51,5 +51,3 @@ const isRequired = computed(() =>
     </div>
   </div>
 </template>
-
-<style scoped></style>

@@ -1,8 +1,14 @@
+<script setup lang="ts">
+defineEmits<{
+  toggleTheme: [];
+}>();
+</script>
+
 <template>
-  <nav class="bg-primary p-4 text-white">
+  <nav class="p-4">
     <div class="flex justify-between items-center">
       <div>My App</div>
-      <button class="bg-secondary p-2 rounded" @click="$emit('toggle-theme')">
+      <button class="p-2 rounded" @click="$emit('toggleTheme')">
         Toggle Theme
       </button>
     </div>
