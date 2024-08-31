@@ -3,6 +3,8 @@ import { ref, type Ref } from 'vue'
 import { useSortable } from '@vueuse/integrations/useSortable'
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
+import DragIcon from '~icons/material-symbols/drag-handle'
+import TrashIcon from '~icons/material-symbols/delete'
 
 const list: Ref<{ label: string; id: string; editing: boolean }[]> = ref([])
 const listEl: Ref<HTMLElement | null> = ref(null)
@@ -26,9 +28,7 @@ const addItem = () => {
 </script>
 
 <template>
-  <div class="text-start p-4">
-    <h2 class="mb-3">List</h2>
-
+  <div class="text-start">
     <div ref="listEl" class="flex flex-col gap-3 justify-center">
       <div
         v-for="(item, index) in list"
@@ -45,13 +45,9 @@ const addItem = () => {
           "
           class="w-full"
         />
-        <Icon
-          name="material-symbols:drag-handle"
-          class="handle cursor-move"
-          :size="20"
-        />
+        <DragIcon class="handle cursor-move"></DragIcon>
         <button @click="removeItem(index)">
-          <Icon name="material-symbols:delete" />
+          <TrashIcon />
         </button>
       </div>
     </div>

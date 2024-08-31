@@ -7,7 +7,11 @@
       "~/*": ["./src/*"]
     },
     "resolveJsonModule": true,
-    "types": ["vite/client", "unplugin-vue-components"],
+    "types": [
+      "vite/client",
+      "unplugin-vue-components",
+      "unplugin-icons/types/vue"
+    ],
     "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
