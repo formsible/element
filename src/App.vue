@@ -91,7 +91,7 @@ const state = reactive<Record<string, unknown>>({});
 
 interface IComponent {
   name: string;
-  component: Component;
+  component: Component | string;
   inputProps: any;
 }
 
