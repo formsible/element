@@ -4,6 +4,14 @@ import tseslint from "typescript-eslint";
 import pluginVue from "eslint-plugin-vue";
 
 export default [
+  {
+    files: ["**/*.cjs"],
+    languageOptions: {
+      globals: {
+        ...globals.node, // Add Node.js globals
+      },
+    },
+  },
   { files: ["**/*.{js,mjs,cjs,ts,vue}"] },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
@@ -16,15 +24,6 @@ export default [
     },
   },
   {
-    files: ["src/**/*.vue"],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
-  },
-  {
-    files: ["**/*.js"],
-    languageOptions: {
-      globals: {
-        ...globals.node, // Add Node.js globals
-      },
-    },
   },
 ];
