@@ -34,16 +34,9 @@
             "component": "list",
             "description": "A sortable list of items.",
             "placeholder": "Add an item",
-            "items": [
-              {
-                "label": "Item 1",
-                "id": "0"
-              },
-              {
-                "label": "Item 2",
-                "id": "1"
-              }
-            ]
+            "props": {
+              "items": ["First item", "Second item"]
+            }
           }
         }
       }
