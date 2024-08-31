@@ -21,6 +21,35 @@
     },
     {
       "meta": {
+        "name": "Sortable List",
+        "enabled": true,
+        "description": "A sortable list with input fields.",
+        "icon": "material-symbols:list-alt"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "List",
+            "component": "list",
+            "description": "A sortable list of items.",
+            "placeholder": "Add an item",
+            "items": [
+              {
+                "label": "Item 1",
+                "id": "0"
+              },
+              {
+                "label": "Item 2",
+                "id": "1"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
         "name": "LongText",
         "enabled": true,
         "description": "Multi-line text input field for longer responses.",
