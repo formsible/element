@@ -21,6 +21,28 @@
     },
     {
       "meta": {
+        "name": "Sortable List",
+        "enabled": true,
+        "description": "A sortable list with input fields.",
+        "icon": "material-symbols:list-alt"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "List",
+            "component": "list",
+            "description": "A sortable list of items.",
+            "placeholder": "Add an item",
+            "props": {
+              "items": ["First item", "Second item"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "meta": {
         "name": "LongText",
         "enabled": true,
         "description": "Multi-line text input field for longer responses.",
@@ -123,6 +145,29 @@
             "description": "Browse or drag and drop files to upload.",
             "placeholder": "Upload files here",
             "validations": [{ "rule": "maxLength", "params": ["3"] }]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
+        "name": "AudioRecorder",
+        "enabled": true,
+        "description": "Field for recording audio clips.",
+        "icon": "material-symbols:mic"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Audio Recorder",
+            "component": "audio_recorder",
+            "description": "Press the button to start recording an audio clip.",
+            "placeholder": "Record your audio here",
+            "validations": [
+              { "rule": "required" },
+              { "rule": "maxLength", "params": ["1"] }
+            ]
           }
         }
       }
