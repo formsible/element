@@ -52,7 +52,7 @@ const onCellEditComplete = (event: any) => {
 const addNewRow = () => {
   const defaultRow = props.input.choices?.reduce(
     (acc, column) => {
-      acc[column.value] = 'a' // Default value for each column
+      acc[column.value] = '' // Default value for each column
       return acc
     },
     {} as Record<string, string>,
