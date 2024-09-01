@@ -56,7 +56,6 @@ const addNewRow = () => {
 
 <template>
   <div :class="theme.container">
-    <pre>{{ model }}</pre>
     <label :class="theme.label" :for="input.key">
       {{ input.label }}
       <span v-if="isRequired" class="text-red-600 dark:text-red-400">*</span>
