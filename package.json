@@ -23,8 +23,9 @@
     "signature_pad": "^5.0.2",
     "sortablejs": "^1",
     "tailwindcss": "^3.4.9",
+    "vue-paypal-checkout": "^3.2.0",
     "vue": "^3.4.38",
-    "vue-paypal-checkout": "^3.2.0"
+    "wavesurfer.js": "^7.8.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
@@ -32,12 +33,12 @@
     "@primevue/auto-import-resolver": "^4.0.5",
     "@vitejs/plugin-vue": "^5.1.2",
     "@vue/tsconfig": "^0.5.1",
-    "eslint": "^9.9.1",
     "eslint-plugin-vue": "^9.27.0",
+    "eslint": "^9.9.1",
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
-    "typescript": "~5.5.4",
     "typescript-eslint": "^8.3.0",
+    "typescript": "~5.5.4",
     "unplugin-icons": "^0.19.2",
     "unplugin-vue-components": "^0.27.4",
     "vite": "^5.4.2"

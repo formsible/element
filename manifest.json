@@ -151,6 +151,29 @@
     },
     {
       "meta": {
+        "name": "AudioRecorder",
+        "enabled": true,
+        "description": "Field for recording audio clips.",
+        "icon": "material-symbols:mic"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Audio Recorder",
+            "component": "audio_recorder",
+            "description": "Press the button to start recording an audio clip.",
+            "placeholder": "Record your audio here",
+            "validations": [
+              { "rule": "required" },
+              { "rule": "maxLength", "params": ["1"] }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
         "name": "DatePicker",
         "enabled": true,
         "description": "Date picker for selecting a date.",

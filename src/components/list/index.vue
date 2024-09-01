@@ -71,7 +71,6 @@ const addItem = () => {
 
 <template>
   <div>
-    <p>{{ model }}</p>
     <div ref="listEl" class="flex flex-col gap-3 justify-center">
       <div
         v-for="(item, index) in list"

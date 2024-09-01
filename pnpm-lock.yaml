@@ -53,6 +53,9 @@ importers:
       vue-paypal-checkout:
         specifier: ^3.2.0
         version: 3.2.0
+      wavesurfer.js:
+        specifier: ^7.8.2
+        version: 7.8.4
     devDependencies:
       '@eslint/js':
         specifier: ^9.9.1
@@ -1584,6 +1587,9 @@ packages:
       typescript:
         optional: true
 
+  wavesurfer.js@7.8.4:
+    resolution: {integrity: sha512-KhCCdts2sL/cjgsGWayvqTSagz55YauTvObzY5dgU9WXYddDUJ5rQwy/4MI/CNURfAjDL17kufOVbKgeIR5tZA==}
+
   webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
@@ -3065,6 +3071,8 @@ snapshots:
       '@vue/shared': 3.4.38
     optionalDependencies:
       typescript: 5.5.4
+
+  wavesurfer.js@7.8.4: {}
 
   webpack-sources@3.2.3: {}
 
