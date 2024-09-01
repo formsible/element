@@ -438,6 +438,58 @@
     },
     {
       "meta": {
+        "name": "Data Table",
+        "enabled": true,
+        "description": "A table element that allows users to view and edit data directly within the table.",
+        "icon": "material-symbols:table-rows"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Data Table",
+            "component": "data_table",
+            "description": "Edit data directly within the table.",
+            "choices": [
+              { "value": "name", "label": "Name" },
+              {
+                "value": "age",
+                "label": "Age"
+              },
+              {
+                "value": "email",
+                "label": "Email"
+              }
+            ],
+            "data": [
+              {
+                "name": "John Doe",
+                "age": 28,
+                "email": "john.doe@example.com"
+              },
+              {
+                "name": "Jane Smith",
+                "age": 34,
+                "email": "jane.smith@example.com"
+              }
+            ],
+            "options": {
+              "pagination": true,
+              "pageSize": 10,
+              "sortable": true,
+              "filterable": true,
+              "editable": true
+            },
+            "validations": [
+              { "rule": "required" },
+              { "rule": "email", "params": ["email"] }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "meta": {
         "name": "Captcha",
         "enabled": false,
         "description": "Verify human user",

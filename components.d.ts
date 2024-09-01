@@ -15,6 +15,7 @@ declare module 'vue' {
     Color_picker: typeof import('./src/components/color_picker/index.vue')['default']
     Consent_checkbox: typeof import('./src/components/consent_checkbox/index.vue')['default']
     copy: typeof import('./src/components/file_upload copy/index.vue')['default']
+    Data_table: typeof import('./src/components/data_table/index.vue')['default']
     Date_picker: typeof import('./src/components/date_picker/index.vue')['default']
     Dropdown: typeof import('./src/components/dropdown/index.vue')['default']
     Email: typeof import('./src/components/email/index.vue')['default']
