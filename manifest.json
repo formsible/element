@@ -455,10 +455,6 @@
               {
                 "value": "age",
                 "label": "Age"
-              },
-              {
-                "value": "email",
-                "label": "Email"
               }
             ],
             "data": [

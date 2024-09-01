@@ -37,6 +37,7 @@ const isRequired = computed(() =>
 
 // Function to handle cell edit completion
 const onCellEditComplete = (event: any) => {
+  console.log('data_table', 40, event)
   let { data, newValue, field } = event
 
   // Simple validation for non-empty fields
@@ -49,7 +50,6 @@ const onCellEditComplete = (event: any) => {
 
 // Function to add a new row with default values
 const addNewRow = () => {
-  console.log('add new row')
   const defaultRow = props.input.choices?.reduce(
     (acc, column) => {
       acc[column.value] = 'a' // Default value for each column
@@ -58,8 +58,7 @@ const addNewRow = () => {
     {} as Record<string, string>,
   )
 
-  // model.value.push(defaultRow)
-  model.value.push({ name: 'a', age: 'b', email: 'a@gm.com' })
+  model.value = model.value.concat([defaultRow])
 }
 </script>
 
@@ -74,7 +73,6 @@ const addNewRow = () => {
 
     <!-- DataTable section -->
     <DataTable
-      v-model:selection="model"
       :value="model"
       :class="theme.table"
       editMode="cell"
@@ -93,7 +91,6 @@ const addNewRow = () => {
         :key="column.value"
         :field="column.value"
         :header="column.label"
-        style="width: 25%"
       >
         <template #body="{ data, field }">
           {{ data[field] }}
