@@ -14,13 +14,13 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white',
-      table: 'p-datatable w-full',
+      table: 'w-full',
       description: 'text-sm text-slate-700 dark:text-slate-300',
       error: 'text-red-600 dark:text-red-400',
       input: 'w-full',
-      button: 'p-button p-component',
+      button: '',
     }),
   },
   error: {
@@ -35,17 +35,9 @@ const isRequired = computed(() =>
   props.input.validations?.map((v) => v.rule).includes('required'),
 )
 
-// Function to handle cell edit completion
-const onCellEditComplete = (event: any) => {
-  console.log('data_table', 40, event)
-  let { data, newValue, field } = event
-
-  // Simple validation for non-empty fields
-  if (newValue.trim().length > 0) {
-    data[field] = newValue
-  } else {
-    event.preventDefault()
-  }
+// Function to delete row
+const deleteRow = (index: number) => {
+  model.value.splice(index, 1)
 }
 
 // Function to add a new row with default values
@@ -72,20 +64,7 @@ const addNewRow = () => {
     <p :class="theme.description">{{ input.description }}</p>
 
     <!-- DataTable section -->
-    <DataTable
-      :value="model"
-      :class="theme.table"
-      editMode="cell"
-      @cell-edit-complete="onCellEditComplete"
-      :pt="{
-        table: { style: 'min-width: 50rem' },
-        column: {
-          bodycell: ({ state }: any) => ({
-            class: [{ 'pt-0 pb-0': state['d_editing'] }],
-          }),
-        },
-      }"
-    >
+    <DataTable :value="model" size="small" :class="theme.table">
       <Column
         v-for="column in input.choices"
         :key="column.value"
@@ -93,14 +72,22 @@ const addNewRow = () => {
         :header="column.label"
       >
         <template #body="{ data, field }">
-          {{ data[field] }}
-        </template>
-        <template #editor="{ data, field }">
           <InputText
             v-model="data[field]"
-            :class="theme.input"
-            autofocus
             fluid
+            :placeholder="field"
+            size="small"
+          />
+        </template>
+      </Column>
+      <Column :exportable="false">
+        <template #body="{ index }">
+          <Button
+            icon="pi pi-trash"
+            text
+            size="small"
+            severity="danger"
+            @click="deleteRow(index)"
           />
         </template>
       </Column>

@@ -82,47 +82,47 @@ import {
   onMounted,
   type Ref,
   type Component,
-} from "vue";
-import AppBar from "./AppBar.vue";
-import type { ElementManifest } from "./types";
-import { useTheme } from "./utils/apply-theme";
-import type { ThemeData } from "./types/theme";
-const state = reactive<Record<string, unknown>>({});
+} from 'vue'
+import AppBar from './AppBar.vue'
+import type { ElementManifest } from './types'
+import { useTheme } from './utils/apply-theme'
+import type { ThemeData } from './types/theme'
+const state = reactive<Record<string, unknown>>({})
 
 interface IComponent {
-  name: string;
-  component: Component | string;
-  inputProps: any;
+  name: string
+  component: Component | string
+  inputProps: any
 }
 
-const availableComponents: Ref<ElementManifest[]> = ref([]);
-const formComponents: Ref<IComponent[]> = ref([]);
-const selectedComponent = shallowRef<IComponent | undefined>();
+const availableComponents: Ref<ElementManifest[]> = ref([])
+const formComponents: Ref<IComponent[]> = ref([])
+const selectedComponent = shallowRef<IComponent | undefined>()
 
-const theme = ref("light");
+const theme = ref('light')
 
 const toggleTheme = () => {
-  theme.value = theme.value === "dark" ? "light" : "dark";
-  document.documentElement.classList.toggle("dark", theme.value === "dark");
-};
+  theme.value = theme.value === 'dark' ? 'light' : 'dark'
+  document.documentElement.classList.toggle('dark', theme.value === 'dark')
+}
 
 const selectComponent = (comp: ElementManifest) => {
   selectedComponent.value = formComponents.value.find(
-    (c: IComponent) => c.name === comp.meta.name
-  );
-};
+    (c: IComponent) => c.name === comp.meta.name,
+  )
+}
 
 onMounted(async () => {
-  const manifest = await import("../manifest.json");
+  const manifest = await import('../manifest.json')
   availableComponents.value = (
     manifest.components as unknown as ElementManifest[]
   ).filter((comp) => {
-    return comp.meta?.enabled;
-  });
+    return comp.meta?.enabled
+  })
 
   formComponents.value = availableComponents.value.map((comp) => {
     return {
-      name: comp.meta?.name || "Unnamed Component",
+      name: comp.meta?.name || 'Unnamed Component',
       component:
         comp.init?.properties.input?.component ||
         comp.init?.properties.display?.component,
@@ -130,78 +130,78 @@ onMounted(async () => {
         ...comp.init?.properties.input,
         ...comp.init?.properties.display,
       },
-    };
-  });
+    }
+  })
 
   for (const comp of formComponents.value) {
-    const module = await import(`./components/${comp.component}/index.vue`);
-    comp.component = shallowRef(module.default);
+    const module = await import(`./components/${comp.component}/index.vue`)
+    comp.component = shallowRef(module.default)
   }
 
   if (formComponents.value.length > 0) {
-    selectedComponent.value = formComponents.value[0];
+    selectedComponent.value = formComponents.value[0]
   }
 
   const themeData: Ref<ThemeData> = ref({
     tailwind: {
       container: {
-        padding: "p-4",
-        baseBackground: "bg-white",
-        baseTextColor: "text-black",
-        baseFontSize: "text-base",
+        padding: 'p-4',
+        baseBackground: 'bg-white',
+        baseTextColor: 'text-black',
+        baseFontSize: 'text-base',
       },
       button: {
-        padding: "py-2 px-4",
-        baseBackground: "bg-blue-500",
-        baseTextColor: "text-white",
-        borderRadius: "rounded-lg",
+        padding: 'py-2 px-4',
+        baseBackground: 'bg-blue-500',
+        baseTextColor: 'text-white',
+        borderRadius: 'rounded-lg',
       },
       input: {
-        baseBorder: "border",
-        basePadding: "p-2",
-        borderColor: "border-gray-300",
-        borderRadius: "rounded-md",
+        baseBorder: 'border',
+        basePadding: 'p-2',
+        borderColor: 'border-gray-300',
+        borderRadius: 'rounded-md',
       },
     },
     variables: {
       container: {
-        backgroundColor: "#ffffff",
-        textColor: "#000000",
-        fontSize: "16px",
+        backgroundColor: '#ffffff',
+        textColor: '#000000',
+        fontSize: '16px',
       },
       button: {
-        backgroundColor: "#3b82f6",
-        textColor: "#ffffff",
-        borderRadius: "0.5rem",
+        backgroundColor: '#3b82f6',
+        textColor: '#ffffff',
+        borderRadius: '0.5rem',
       },
       input: {
-        borderColor: "#d1d5db",
-        borderRadius: "0.375rem",
-        backgroundColor: "#ffffff",
-        textColor: "#000000",
+        borderColor: '#d1d5db',
+        borderRadius: '0.375rem',
+        backgroundColor: '#ffffff',
+        textColor: '#000000',
       },
       error: {
-        textColor: "#ef4444",
+        textColor: '#ef4444',
       },
     },
     values: {
       container: {
-        backgroundColor: "#ffffff",
-        textColor: "#000000",
-        fontSize: "16px",
+        backgroundColor: '#ffffff',
+        textColor: '#000000',
+        fontSize: '16px',
       },
       button: {
-        backgroundColor: "#3b82f6",
-        textColor: "#ffffff",
-        borderRadius: "0.5rem",
+        backgroundColor: '#3b82f6',
+        textColor: '#ffffff',
+        borderRadius: '0.5rem',
       },
       input: {
-        borderColor: "#d1d5db",
-        borderRadius: "0.375rem",
+        borderColor: '#d1d5db',
+        borderRadius: '0.375rem',
       },
     },
-  });
+  })
 
-  useTheme(themeData);
-});
+  useTheme(themeData)
+})
 </script>

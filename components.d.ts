@@ -10,6 +10,7 @@ declare module 'vue' {
     Address: typeof import('./src/components/address/index.vue')['default']
     Appointment: typeof import('./src/components/appointment/index.vue')['default']
     Audio_recorder: typeof import('./src/components/audio_recorder/index.vue')['default']
+    Button: typeof import('primevue/button')['default']
     Captcha: typeof import('./src/components/captcha/index.vue')['default']
     Checkboxes: typeof import('./src/components/checkboxes/index.vue')['default']
     Color_picker: typeof import('./src/components/color_picker/index.vue')['default']

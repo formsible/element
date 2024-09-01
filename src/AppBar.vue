@@ -1,16 +1,16 @@
 <script setup lang="ts">
 defineEmits<{
-  toggleTheme: [];
-}>();
+  toggleTheme: []
+}>()
 </script>
 
 <template>
-  <nav class="p-4">
-    <div class="flex justify-between items-center">
-      <div>My App</div>
-      <button class="p-2 rounded" @click="$emit('toggleTheme')">
-        Toggle Theme
-      </button>
-    </div>
-  </nav>
+  <div
+    class="flex sticky top-0 w-full justify-between py-2 px-4 bg-gray-100 dark:bg-gray-900 dark:text-white z-50 items-center"
+  >
+    <div>My App</div>
+    <Button @click="$emit('toggleTheme')" severity="secondary"
+      >Toggle Theme</Button
+    >
+  </div>
 </template>
