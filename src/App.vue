@@ -3,37 +3,43 @@
     class="bg-white dark:bg-gray-900 text-black flex flex-col h-screen overflow-hidden dark:text-white"
   >
     <AppBar v-model:theme="theme" class="flex-none" />
-    <div class="flex gap-4 mx-auto overflow-hidden flex-auto max-w-7xl">
+    <div class="flex gap-4 mx-auto overflow-hidden flex-auto">
       <div class="w-1/4 overflow-auto p-4">
-        <h2 class="text-xl font-bold mb-4">Available Components</h2>
-        <button
-          v-for="comp in availableComponents"
-          :key="comp.meta.name"
-          :class="[
-            'w-full text-start transition p-2 mb-2 rounded  ',
-            selectedComponent?.name === comp.meta.name
-              ? 'text-[var(--p-primary-500)] dark:bg-[var(--p-primary-950)] bg-[var(--p-primary-50)]'
-              : 'hover:bg-gray-100 dark:hover:bg-gray-800',
-          ]"
-          @click="selectComponent(comp)"
-        >
-          <div>
-            <div class="font-semibold">{{ comp.meta.name }}</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-              {{ comp.meta.description }}
+        <h2 class="text-xl font-bold mb-4">Components</h2>
+
+        <template v-for="group in componentGroups" :key="group.label">
+          <p class="font-semibold mb-2 text-slate-600 dark:text-slate-300">
+            {{ group.label }}
+          </p>
+          <button
+            v-for="comp in availableComponents"
+            :key="comp.meta.name"
+            :class="[
+              'w-full text-start transition p-2 mb-2 rounded  ',
+              selectedComponent?.name === comp.meta.name
+                ? 'text-[var(--p-primary-500)] dark:bg-[var(--p-primary-950)] bg-[var(--p-primary-50)]'
+                : 'hover:bg-gray-100 dark:hover:bg-gray-800',
+            ]"
+            @click="selectComponent(comp)"
+          >
+            <div>
+              <div class="font-semibold">{{ comp.meta.name }}</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                {{ comp.meta.description }}
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+        </template>
       </div>
 
       <div class="w-1/2 overflow-auto p-4">
-        <h2 class="text-xl font-bold mb-4">Form Preview</h2>
+        <h2 class="text-xl font-bold mb-4">Preview</h2>
         <Transition
           mode="out-in"
-          enterActiveClass="transition delay-100"
-          leaveActiveClass="transition"
-          enterFromClass="opacity-0"
-          leaveToClass="opacity-0"
+          enterActiveClass="transition duration-100 delay-100"
+          leaveActiveClass="transition duration-100"
+          enterFromClass="opacity-0 scale-95"
+          leaveToClass="opacity-0 scale-95"
         >
           <component
             v-if="currentComponentIndex > -1"
@@ -47,7 +53,7 @@
       </div>
 
       <div class="w-1/4 overflow-auto p-4">
-        <h2 class="text-xl font-bold mb-4">Component Options</h2>
+        <h2 class="text-xl font-bold mb-4">Options</h2>
         <div v-if="selectedComponent">
           <label for="label">Label</label>
           <InputText
@@ -121,6 +127,26 @@ const currentComponentIndex = computed(() =>
     (el) => el.name == selectedComponent.value?.name,
   ),
 )
+const inputComponents = computed(() =>
+  availableComponents.value.filter(
+    (component) => component.init.type == 'input',
+  ),
+)
+const displayComponents = computed(() =>
+  availableComponents.value.filter(
+    (component) => component.init.type == 'input',
+  ),
+)
+const componentGroups = computed(() => [
+  {
+    label: 'Input',
+    items: inputComponents.value,
+  },
+  {
+    label: 'Display',
+    items: displayComponents.value,
+  },
+])
 
 const theme = ref('light')
 
