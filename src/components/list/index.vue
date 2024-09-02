@@ -89,6 +89,7 @@ const addItem = () => {
       label="Add Item"
       severity="secondary"
       class="mt-3"
+      size="small"
       @click="addItem"
     />
   </div>
