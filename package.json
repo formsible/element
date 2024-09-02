@@ -1,6 +1,6 @@
 {
   "name": "@formsible/element",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "main": "dist/element.umd.js",
   "module": "dist/index.es.js",
@@ -8,7 +8,8 @@
     ".": {
       "import": "./dist/element.es.js",
       "require": "./dist/element.umd.js"
-    }
+    },
+    "./manifest.json": "./dist/manifest.json"
   },
   "license": "MIT",
   "scripts": {
@@ -32,6 +33,7 @@
     "postcss": "^8.4.41",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.4",
+    "rollup-plugin-copy": "^3.5.0",
     "signature_pad": "^5.0.2",
     "sortablejs": "^1",
     "tailwindcss": "^3.4.9",
