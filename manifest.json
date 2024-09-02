@@ -39,6 +39,24 @@
     },
     {
       "meta": {
+        "name": "Code JavaScript",
+        "enabled": true,
+        "description": "An input for JavaScript code",
+        "icon": "material-symbols:code-rounded"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "JavaScript Code Input",
+            "component": "code_js",
+            "description": "An input for JavaScript code"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
         "name": "Sortable List",
         "enabled": true,
         "description": "A sortable list with input fields.",
