@@ -18,13 +18,13 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'p-4 dark:bg-gray-800', // Dark mode background
-      item: 'p-2 bg-gray-200 dark:bg-gray-700 rounded border border-gray-300 dark:border-gray-600 mb-2 cursor-move  text-gray-800 dark:text-gray-200',
+      container: '', // Dark mode background
+      item: 'p-2 bg-gray-100 dark:bg-gray-800 rounded  mb-2 text-gray-800 dark:text-gray-200',
       dragHandle: 'cursor-move',
       submitButton:
         'mt-4 p-2 bg-blue-500 dark:bg-blue-700 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-800',
       label: 'w-full text-lg font-semibold text-gray-900 dark:text-gray-100',
-      description: 'text-sm text-gray-700 dark:text-gray-400',
+      description: 'text-sm text-gray-700 dark:text-gray-400 mb-1',
       error: 'text-red-600',
     }),
   },
@@ -42,6 +42,8 @@ const model = defineModel<string[]>({
 
 useSortable(el, items, {
   handle: '.handle',
+  chosenClass: 'dragClass',
+  animation: 150,
   onEnd() {
     model.value = items.value.map((item) => item.value)
   },
@@ -52,10 +54,10 @@ watch(
   () => props.input.choices,
   (newChoices) => {
     items.value = newChoices
-  }
+  },
 )
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
@@ -79,3 +81,12 @@ const isRequired = computed(() =>
     </small>
   </div>
 </template>
+
+<style scoped lang="css">
+.dragClass {
+  outline: 2px solid var(--p-primary-500);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+</style>

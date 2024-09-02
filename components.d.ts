@@ -28,6 +28,7 @@ declare module 'vue' {
     Html_block: typeof import('./src/components/html_block/index.vue')['default']
     Icon_display: typeof import('./src/components/icon_display/index.vue')['default']
     Image_choice: typeof import('./src/components/image_choice/index.vue')['default']
+    InputText: typeof import('primevue/inputtext')['default']
     Likert_scale: typeof import('./src/components/likert_scale/index.vue')['default']
     List: typeof import('./src/components/list/index.vue')['default']
     Locale_selector: typeof import('./src/components/locale_selector/index.vue')['default']
@@ -51,6 +52,7 @@ declare module 'vue' {
     Signature: typeof import('./src/components/signature/index.vue')['default']
     Slider: typeof import('./src/components/slider/index.vue')['default']
     Term_of_service: typeof import('./src/components/term_of_service/index.vue')['default']
+    Textarea: typeof import('primevue/textarea')['default']
     Time_picker: typeof import('./src/components/time_picker/index.vue')['default']
     Website: typeof import('./src/components/website/index.vue')['default']
   }

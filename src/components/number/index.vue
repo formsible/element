@@ -11,11 +11,10 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
-      label: 'w-full text-lg font-semibold text-gray-900 dark:text-gray-100',
-      input:
-        'w-full p-2 border rounded-md bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100',
-      description: 'text-sm text-gray-700 dark:text-gray-400',
+      container: '',
+      label: '',
+      input: '',
+      description: 'text-sm text-gray-700 dark:text-gray-400 mb-1',
       error: 'text-red-600',
     }),
   },
@@ -27,7 +26,7 @@ const props = defineProps({
 
 const model = defineModel<number>()
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 

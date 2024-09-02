@@ -45,7 +45,7 @@ const model = ref({
 
 // Computed property for combined value
 const combinedModelValue = computed(
-  () => `${model.value.countryCode}${model.value.phoneNumber}`
+  () => `${model.value.countryCode}${model.value.phoneNumber}`,
 )
 
 // Watch and emit changes for combined model value
@@ -53,7 +53,7 @@ watch(
   () => combinedModelValue.value,
   (newValue) => {
     emit('update:modelValue', newValue)
-  }
+  },
 )
 
 // Watch and emit changes for phoneNumber
@@ -61,7 +61,7 @@ watch(
   () => model.value.phoneNumber,
   (newValue) => {
     emit('update:phoneNumber', newValue as string)
-  }
+  },
 )
 
 // Watch and emit changes for countryCode
@@ -69,10 +69,10 @@ watch(
   () => model.value.countryCode,
   (newValue) => {
     emit('update:countryCode', newValue as string)
-  }
+  },
 )
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
@@ -83,7 +83,7 @@ const isRequired = computed(() =>
       <span v-if="isRequired" class="text-red-600 dark:text-red-400">*</span>
     </label>
     <p :class="theme.description">{{ input.description }}</p>
-    <div class="flex">
+    <div class="space-x-2">
       <Select
         v-model="model.countryCode"
         :options="countryCodes"
@@ -99,8 +99,8 @@ const isRequired = computed(() =>
         :input-id="props.input.key"
         :class="props.theme.phoneInput"
         :placeholder="props.input?.placeholder || 'Enter phone number'"
-        :mode="'decimal'"
-        :min="0"
+        mode="decimal"
+        :min="10"
         :use-grouping="false"
       />
     </div>

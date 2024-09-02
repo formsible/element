@@ -1,18 +1,19 @@
 <template>
-  <div class="bg-white dark:bg-gray-900 text-black dark:text-white">
-    <AppBar @toggleTheme="toggleTheme" />
-    <div class="flex p-4 gap-4 mx-auto max-w-7xl">
-      <div class="w-1/4 pr-4">
+  <div
+    class="bg-white dark:bg-gray-900 text-black flex flex-col h-screen overflow-hidden dark:text-white"
+  >
+    <AppBar v-model:theme="theme" class="flex-none" />
+    <div class="flex gap-4 mx-auto overflow-hidden flex-auto max-w-7xl">
+      <div class="w-1/4 overflow-auto p-4">
         <h2 class="text-xl font-bold mb-4">Available Components</h2>
-        <div
+        <button
           v-for="comp in availableComponents"
           :key="comp.meta.name"
           :class="[
-            'flex items-center p-2 mb-2 border rounded cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700',
-            {
-              'bg-blue-100 dark:bg-blue-800':
-                selectedComponent?.name === comp.meta.name,
-            },
+            'w-full text-start transition p-2 mb-2 rounded  ',
+            selectedComponent?.name === comp.meta.name
+              ? 'text-[var(--p-primary-500)] dark:bg-[var(--p-primary-950)] bg-[var(--p-primary-50)]'
+              : 'hover:bg-gray-100 dark:hover:bg-gray-800',
           ]"
           @click="selectComponent(comp)"
         >
@@ -22,31 +23,42 @@
               {{ comp.meta.description }}
             </div>
           </div>
-        </div>
+        </button>
       </div>
 
-      <div class="w-1/2 px-4">
+      <div class="w-1/2 overflow-auto p-4">
         <h2 class="text-xl font-bold mb-4">Form Preview</h2>
-        <div v-for="comp in formComponents" :key="comp.name" class="my-4">
+        <Transition
+          mode="out-in"
+          enterActiveClass="transition delay-100"
+          leaveActiveClass="transition"
+          enterFromClass="opacity-0"
+          leaveToClass="opacity-0"
+        >
           <component
-            :is="comp.component"
-            v-model="state[comp.name]"
-            :input="comp.inputProps"
-            :display="comp.inputProps"
-            :error="comp.inputProps?.error"
+            v-if="currentComponentIndex > -1"
+            :is="formComponents[currentComponentIndex].component"
+            v-model="state[formComponents[currentComponentIndex].name]"
+            :input="formComponents[currentComponentIndex].inputProps"
+            :display="formComponents[currentComponentIndex].inputProps"
+            :error="formComponents[currentComponentIndex].inputProps?.error"
           />
-        </div>
+        </Transition>
       </div>
 
-      <div class="w-1/4 pl-4">
+      <div class="w-1/4 overflow-auto p-4">
         <h2 class="text-xl font-bold mb-4">Component Options</h2>
-        <div v-if="selectedComponent" class="p-4 rounded-lg shadow-md">
-          <input
+        <div v-if="selectedComponent">
+          <label for="label">Label</label>
+          <InputText
+            id="label"
             v-model="selectedComponent.inputProps.label"
             placeholder="Label"
             class="w-full mb-2 p-2 border rounded"
           />
-          <input
+          <label for="description">Description</label>
+          <Textarea
+            id="description"
             v-model="selectedComponent.inputProps.description"
             placeholder="Description"
             class="w-full mb-2 p-2 border rounded"
@@ -57,13 +69,17 @@
               selectedComponent.name === 'ShortText'
             "
           >
-            <input
+            <label for="placeholder">Placeholder</label>
+            <InputText
+              id="placeholder"
               v-model="selectedComponent.inputProps.placeholder"
               placeholder="Placeholder"
               class="w-full mb-2 p-2 border rounded"
             />
           </template>
-          <input
+          <label for="error">Error Message</label>
+          <InputText
+            id="error"
             v-model="selectedComponent.inputProps.error"
             placeholder="Error Message"
             class="w-full mb-2 p-2 border rounded"
@@ -82,6 +98,8 @@ import {
   onMounted,
   type Ref,
   type Component,
+  computed,
+  watch,
 } from 'vue'
 import AppBar from './AppBar.vue'
 import type { ElementManifest } from './types'
@@ -98,13 +116,17 @@ interface IComponent {
 const availableComponents: Ref<ElementManifest[]> = ref([])
 const formComponents: Ref<IComponent[]> = ref([])
 const selectedComponent = shallowRef<IComponent | undefined>()
+const currentComponentIndex = computed(() =>
+  formComponents.value.findIndex(
+    (el) => el.name == selectedComponent.value?.name,
+  ),
+)
 
 const theme = ref('light')
 
-const toggleTheme = () => {
-  theme.value = theme.value === 'dark' ? 'light' : 'dark'
+watch(theme, () => {
   document.documentElement.classList.toggle('dark', theme.value === 'dark')
-}
+})
 
 const selectComponent = (comp: ElementManifest) => {
   selectedComponent.value = formComponents.value.find(
