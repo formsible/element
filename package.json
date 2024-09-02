@@ -1,8 +1,16 @@
 {
-  "name": "element",
-  "version": "0.1.0",
+  "name": "@formsible/element",
+  "version": "0.2.0",
   "type": "module",
-  "private": true,
+  "main": "dist/element.umd.js",
+  "module": "dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/element.es.js",
+      "require": "./dist/element.umd.js"
+    }
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",

@@ -18,6 +18,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'src/index'),
       name: '@formsible/element',
+      fileName: (format) => `element.${format}.js`,
     },
     rollupOptions: {
       external: ['vue'],
