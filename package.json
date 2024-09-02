@@ -10,6 +10,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.2",
     "@fawmi/vue-google-maps": "^0.9.79",
     "@primevue/themes": "^4.0.5",
     "@tailwindcss/typography": "^0.5.14",
@@ -17,14 +18,16 @@
     "@vueuse/core": "^11.0.3",
     "@vueuse/integrations": "^11.0.3",
     "autoprefixer": "^10.4.20",
+    "codemirror": "^6.0.1",
     "postcss": "^8.4.41",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.4",
     "signature_pad": "^5.0.2",
     "sortablejs": "^1",
     "tailwindcss": "^3.4.9",
-    "vue-paypal-checkout": "^3.2.0",
     "vue": "^3.4.38",
+    "vue-codemirror": "^6.1.1",
+    "vue-paypal-checkout": "^3.2.0",
     "wavesurfer.js": "^7.8.2"
   },
   "devDependencies": {
@@ -33,12 +36,12 @@
     "@primevue/auto-import-resolver": "^4.0.5",
     "@vitejs/plugin-vue": "^5.1.2",
     "@vue/tsconfig": "^0.5.1",
-    "eslint-plugin-vue": "^9.27.0",
     "eslint": "^9.9.1",
+    "eslint-plugin-vue": "^9.27.0",
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
-    "typescript-eslint": "^8.3.0",
     "typescript": "~5.5.4",
+    "typescript-eslint": "^8.3.0",
     "unplugin-icons": "^0.19.2",
     "unplugin-vue-components": "^0.27.4",
     "vite": "^5.4.2"

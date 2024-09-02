@@ -21,6 +21,24 @@
     },
     {
       "meta": {
+        "name": "Code",
+        "enabled": true,
+        "description": "An input text but for code",
+        "icon": "material-symbols:code-blocks-rounded"
+      },
+      "init": {
+        "type": "input",
+        "properties": {
+          "input": {
+            "label": "Code Input",
+            "component": "code",
+            "description": "An input text but for code"
+          }
+        }
+      }
+    },
+    {
+      "meta": {
         "name": "Sortable List",
         "enabled": true,
         "description": "A sortable list with input fields.",
