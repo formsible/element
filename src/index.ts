@@ -3,7 +3,7 @@ import Address from './components/address/index.vue'
 import AudioRecorder from './components/audio_recorder/index.vue'
 import Captcha from './components/captcha/index.vue'
 import Checkboxes from './components/checkboxes/index.vue'
-import Code from './components/code/index.vue'
+import CodeJson from './components/code_json/index.vue'
 import DataTable from './components/data_table/index.vue'
 import DatePicker from './components/date_picker/index.vue'
 import Dropdown from './components/dropdown/index.vue'
@@ -39,7 +39,7 @@ export {
   AudioRecorder,
   Captcha,
   Checkboxes,
-  Code,
+  CodeJson,
   DataTable,
   DatePicker,
   Dropdown,

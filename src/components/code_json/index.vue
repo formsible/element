@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { defineProps, ref, shallowRef, type PropType } from 'vue'
+import { defineProps, ref, shallowRef, watch, type PropType } from 'vue'
 import type { InputProperties } from '../../types'
 import type { EditorView } from '@codemirror/view'
 import { Codemirror } from 'vue-codemirror'
-import { javascript } from '@codemirror/lang-javascript'
+import { json } from '@codemirror/lang-json'
 import { oneDark } from '@codemirror/theme-one-dark'
+import { useDebounce } from '@vueuse/core'
 
 const props = defineProps({
   input: {
@@ -27,15 +28,33 @@ const props = defineProps({
   },
 })
 
-const extensions: any[] = [oneDark]
-// const code = defineModel<string>({ default: '' })
-const code = ref(`console.log('Hello, world!')`)
+const model = defineModel<object>({ default: {} })
+const code = ref('')
 
+const extensions: any[] = [json(), oneDark]
 const view = shallowRef<EditorView | null>(null)
 const handleReady = (payload: any) => {
   console.log('Handle ready', payload)
   view.value = payload.view
 }
+
+// Utililties
+const validJSON = (json: string): boolean => {
+  try {
+    JSON.parse(code.value)
+  } catch (error) {
+    return false
+  }
+  return true
+}
+
+// Debounce
+const debouncedCode = useDebounce(code, 2000)
+watch(debouncedCode, () => {
+  if (validJSON(debouncedCode.value)) {
+    model.value = JSON.parse(debouncedCode.value)
+  }
+})
 </script>
 
 <template>
@@ -45,7 +64,7 @@ const handleReady = (payload: any) => {
     <div>
       <Codemirror
         v-model="code"
-        placeholder="Code goes here..."
+        :placeholder="input.placeholder || 'Enter your code'"
         :style="{ height: '400px' }"
         :autofocus="true"
         :indent-with-tab="true"

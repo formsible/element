@@ -21,9 +21,9 @@
     },
     {
       "meta": {
-        "name": "Code",
+        "name": "Code Json",
         "enabled": true,
-        "description": "An input text but for code",
+        "description": "An input for json code",
         "icon": "material-symbols:code-blocks-rounded"
       },
       "init": {
@@ -31,8 +31,8 @@
         "properties": {
           "input": {
             "label": "Code Input",
-            "component": "code",
-            "description": "An input text but for code"
+            "component": "code_json",
+            "description": "An input for json code"
           }
         }
       }
