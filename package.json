@@ -26,7 +26,6 @@
     "@vueuse/core": "^11.0.3",
     "@vueuse/integrations": "^11.0.3",
     "autoprefixer": "^10.4.20",
-    "codemirror": "^6.0.1",
     "postcss": "^8.4.41",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.4",

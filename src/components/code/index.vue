@@ -27,7 +27,7 @@ const props = defineProps({
   },
 })
 
-const extensions = [javascript(), oneDark]
+const extensions: any[] = [oneDark]
 // const code = defineModel<string>({ default: '' })
 const code = ref(`console.log('Hello, world!')`)
 
