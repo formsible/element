@@ -42,7 +42,7 @@
     },
     {
       "meta": {
-        "name": "CodeJavaScript",
+        "name": "CodeJavascript",
         "enabled": true,
         "description": "An input for JavaScript code",
         "icon": "material-symbols:code-rounded"
@@ -52,7 +52,7 @@
         "properties": {
           "input": {
             "label": "JavaScript Code Input",
-            "component": "code_js",
+            "component": "code_javascript",
             "description": "An input for JavaScript code"
           }
         }

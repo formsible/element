@@ -3,6 +3,7 @@ import Address from './components/address/index.vue'
 import AudioRecorder from './components/audio_recorder/index.vue'
 import Captcha from './components/captcha/index.vue'
 import Checkboxes from './components/checkboxes/index.vue'
+import CodeJavascript from './components/code_javascript/index.vue'
 import CodeJson from './components/code_json/index.vue'
 import DataTable from './components/data_table/index.vue'
 import DatePicker from './components/date_picker/index.vue'
@@ -30,7 +31,6 @@ import RatingScale from './components/rating_scale/index.vue'
 import ShortText from './components/short_text/index.vue'
 import Signature from './components/signature/index.vue'
 import Slider from './components/slider/index.vue'
-import SortableList from './components/list/index.vue'
 import TimePicker from './components/time_picker/index.vue'
 import Website from './components/website/index.vue'
 
@@ -39,6 +39,7 @@ export {
   AudioRecorder,
   Captcha,
   Checkboxes,
+  CodeJavascript,
   CodeJson,
   DataTable,
   DatePicker,
@@ -66,7 +67,6 @@ export {
   ShortText,
   Signature,
   Slider,
-  SortableList,
   TimePicker,
   Website,
 }

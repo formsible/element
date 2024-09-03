@@ -12,7 +12,7 @@ declare module 'vue' {
     Audio_recorder: typeof import('./src/components/audio_recorder/index.vue')['default']
     Captcha: typeof import('./src/components/captcha/index.vue')['default']
     Checkboxes: typeof import('./src/components/checkboxes/index.vue')['default']
-    Code_js: typeof import('./src/components/code_js/index.vue')['default']
+    Code_javascript: typeof import('./src/components/code_javascript/index.vue')['default']
     Code_json: typeof import('./src/components/code_json/index.vue')['default']
     Color_picker: typeof import('./src/components/color_picker/index.vue')['default']
     Consent_checkbox: typeof import('./src/components/consent_checkbox/index.vue')['default']
