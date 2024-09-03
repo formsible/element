@@ -1,6 +1,7 @@
 {
   "ShortText": [
     {
+      "id": "1",
       "type": "input",
       "properties": {
         "input": {
