@@ -21,7 +21,7 @@ const props = defineProps({
         'italic border-l-4 pl-4 text-gray-600 border-gray-300 dark:text-gray-400 dark:border-gray-600',
       ul: 'list-disc list-inside text-gray-700 dark:text-gray-300',
       ol: 'list-decimal list-inside text-gray-700 dark:text-gray-300',
-      img: 'w-full max-w-full h-auto rounded-lg border border-gray-300 dark:border-gray-700',
+      img: 'w-full max-w-full h-auto rounded',
       code: 'bg-gray-100 dark:bg-gray-800 p-2 rounded-md text-sm font-mono text-red-600 dark:text-red-400',
       pre: 'bg-gray-100 dark:bg-gray-800 p-4 rounded-md text-sm font-mono overflow-auto text-gray-800 dark:text-gray-200',
       hr: 'border-t border-gray-300 dark:border-gray-600 my-4',
@@ -56,6 +56,6 @@ const tag = computed(() => props.display.tag || 'p')
       :src="display.src"
       :alt="display.alt"
       :class="[theme.img, display.size, display.color]"
-    >
+    />
   </div>
 </template>

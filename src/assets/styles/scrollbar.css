@@ -1,0 +1,20 @@
+/* assets/css/scrollbar.css */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #e2e8f0; /* Light gray color for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a5568; /* Dark gray color for the thumb */
+  border-radius: 100vh;
+  border: 3px solid #edf2f7; /* Lightest gray color for the border */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3748; /* Darker gray color for the thumb on hover */
+}

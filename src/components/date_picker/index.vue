@@ -14,7 +14,7 @@ const props = defineProps({
       container: 'flex flex-col gap-2',
       label: 'w-full text-black dark:text-white', // Label colors for dark and light mode
       inputContainer: 'relative w-full', // Wrapper for input and icon
-      input: 'w-full', // Input styling
+      input: '', // Input styling
       description: 'text-sm text-slate-700 dark:text-slate-300', // Description text for both modes
       error: 'text-red-600 dark:text-red-400', // Error colors for dark and light mode
       icon: 'text-slate-600 dark:text-slate-400', // Icon styling
@@ -28,7 +28,7 @@ const props = defineProps({
 
 const model = defineModel<string>({ default: '' })
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
@@ -43,9 +43,9 @@ const isRequired = computed(() =>
       <!-- PrimeVue Calendar Icon appended to the right of the input -->
       <DatePicker
         v-model="model"
-        show-icon
+        showIcon
         fluid
-        icon-display="input"
+        iconDisplay="input"
         :class="theme.input"
         v-bind="{ ...$attrs, ...props.input.props }"
       />
