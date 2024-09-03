@@ -5,7 +5,7 @@
       "type": "input",
       "properties": {
         "input": {
-          "label": "Short Text",
+          "label": "Short Text (Fetched)",
           "component": "short_text",
           "description": "Enter a short text response.",
           "placeholder": "Type something here"
