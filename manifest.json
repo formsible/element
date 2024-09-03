@@ -15,6 +15,9 @@
             "component": "short_text",
             "description": "Enter a short text response.",
             "placeholder": "Type something here"
+          },
+          "fetch": {
+            "url": "https://my-json-server.typicode.com/formsible/element/ShortText/1"
           }
         }
       }
