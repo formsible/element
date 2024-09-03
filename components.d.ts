@@ -46,8 +46,6 @@ declare module 'vue' {
     Ranking: typeof import('./src/components/ranking/index.vue')['default']
     Rating_scale: typeof import('./src/components/rating_scale/index.vue')['default']
     Rich_text: typeof import('./src/components/rich_text/index.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
     Short_text: typeof import('./src/components/short_text/index.vue')['default']
     Signature: typeof import('./src/components/signature/index.vue')['default']
     Slider: typeof import('./src/components/slider/index.vue')['default']
