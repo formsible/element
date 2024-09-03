@@ -1,0 +1,15 @@
+{
+  "ShortText": [
+    {
+      "type": "input",
+      "properties": {
+        "input": {
+          "label": "Short Text",
+          "component": "short_text",
+          "description": "Enter a short text response.",
+          "placeholder": "Type something here"
+        }
+      }
+    }
+  ]
+}

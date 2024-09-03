@@ -21,7 +21,7 @@
     },
     {
       "meta": {
-        "name": "Code Json",
+        "name": "CodeJson",
         "enabled": true,
         "description": "An input for json code",
         "icon": "material-symbols:code-blocks-rounded"
@@ -39,7 +39,7 @@
     },
     {
       "meta": {
-        "name": "Code JavaScript",
+        "name": "CodeJavaScript",
         "enabled": true,
         "description": "An input for JavaScript code",
         "icon": "material-symbols:code-rounded"
@@ -57,7 +57,7 @@
     },
     {
       "meta": {
-        "name": "Sortable List",
+        "name": "SortableList",
         "enabled": true,
         "description": "A sortable list with input fields.",
         "icon": "material-symbols:list-alt"
