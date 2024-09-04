@@ -52,10 +52,12 @@ watch(
   { deep: true, immediate: true },
 )
 
-useSortable(listEl, list, {
-  handle: '.handle',
-  animation: 150,
-})
+if (!props?.input?.props?.readonly) {
+  useSortable(listEl, list, {
+    handle: '.handle',
+    animation: 150,
+  })
+}
 
 const removeItem = (index: number) => {
   list.value.splice(index, 1)
@@ -71,14 +73,21 @@ const addItem = () => {
 
 <template>
   <div>
+    {{ !props?.input?.props?.readonly }}
     <div ref="listEl" class="flex flex-col gap-3 justify-center">
       <div
         v-for="(item, index) in list"
         :key="item.id"
         class="flex flex-row gap-2 items-center"
       >
-        <InputText v-model="list[index].label" placeholder="Label" />
-        <DragIcon class="handle cursor-move"></DragIcon>
+        <InputText
+          v-model="list[index].label"
+          placeholder="Label"
+          v-bind="props.input.props"
+        />
+        <DragIcon
+          :class="[{ 'handle cursor-move': !props?.input?.props?.readonly }]"
+        ></DragIcon>
         <button @click="removeItem(index)">
           <TrashIcon />
         </button>
