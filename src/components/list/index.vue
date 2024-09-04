@@ -78,6 +78,9 @@ const addItem = () => {
 <template>
   <div>
     Readonly: {{ readonly }}
+
+    <p class="font-medium">{{ props.input.label }}</p>
+    <p class="mb-2 text-sm">{{ props.input.description }}</p>
     <div ref="listEl" class="flex flex-col gap-3 justify-center">
       <div
         v-for="(item, index) in list"

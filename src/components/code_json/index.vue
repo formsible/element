@@ -26,13 +26,17 @@ const props = defineProps({
       container: '',
       label: 'font-medium',
       input: '',
-      description: 'text-sm',
+      description: 'text-sm mb-2',
       error: 'text-red-600 dark:text-red-400',
     }),
   },
   error: {
     type: String,
     default: '',
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
   },
 })
 
@@ -105,11 +109,12 @@ const handleReady = (payload: { view: EditorView }) => {
 
 <template>
   <div>
-    <p :class="theme.label">{{ props.input.label }}</p>
-    <p :class="theme.description">{{ props.input.description }}</p>
-    <div>
+    <p class="font-medium">{{ props.input.label }}</p>
+    <p class="mb-2 text-sm">{{ props.input.description }}</p>
+    <div class="rounded overflow-hidden">
       <Codemirror
         v-model="code"
+        :disabled="readonly"
         :placeholder="input.placeholder || 'Enter your code'"
         :style="{ height: '400px' }"
         :autofocus="true"
