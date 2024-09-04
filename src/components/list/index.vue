@@ -26,6 +26,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
 })
 const model = defineModel<string[]>({ default: [] })
 
@@ -52,7 +56,7 @@ watch(
   { deep: true, immediate: true },
 )
 
-if (!props?.input?.props?.readonly) {
+if (!props.readonly) {
   useSortable(listEl, list, {
     handle: '.handle',
     animation: 150,
@@ -73,7 +77,7 @@ const addItem = () => {
 
 <template>
   <div>
-    {{ !props?.input?.props?.readonly }}
+    Readonly: {{ readonly }}
     <div ref="listEl" class="flex flex-col gap-3 justify-center">
       <div
         v-for="(item, index) in list"
@@ -83,11 +87,9 @@ const addItem = () => {
         <InputText
           v-model="list[index].label"
           placeholder="Label"
-          v-bind="props.input.props"
+          :readonly="readonly"
         />
-        <DragIcon
-          :class="[{ 'handle cursor-move': !props?.input?.props?.readonly }]"
-        ></DragIcon>
+        <DragIcon :class="[{ 'handle cursor-move': !readonly }]"></DragIcon>
         <button @click="removeItem(index)">
           <TrashIcon />
         </button>
@@ -99,6 +101,7 @@ const addItem = () => {
       severity="secondary"
       class="mt-3"
       size="small"
+      :disabled="readonly"
       @click="addItem"
     />
   </div>
