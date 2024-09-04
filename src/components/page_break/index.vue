@@ -10,7 +10,7 @@ defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full',
       input: 'w-full',
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -20,5 +20,5 @@ defineProps({
 })
 </script>
 <template>
-  <div :class="theme.container"/>
+  <div :class="theme.container" />
 </template>

@@ -15,7 +15,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white', // Added text color for label
       input: 'w-full h-32 bg-white dark:bg-gray-800 text-black dark:text-white', // Added background and text color for TextArea
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -77,8 +77,6 @@ const addItem = () => {
 
 <template>
   <div>
-    Readonly: {{ readonly }}
-
     <p class="font-medium">{{ props.input.label }}</p>
     <p class="mb-2 text-sm">{{ props.input.description }}</p>
     <div ref="listEl" class="flex flex-col gap-3 justify-center">

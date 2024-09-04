@@ -12,7 +12,7 @@
             {{ group.label }}
           </p>
           <button
-            v-for="comp in availableComponents"
+            v-for="comp in group.items"
             :key="comp.meta.name"
             :class="[
               'w-full text-start transition p-2 mb-2 rounded  ',
@@ -135,7 +135,7 @@ const inputComponents = computed(() =>
 )
 const displayComponents = computed(() =>
   availableComponents.value.filter(
-    (component) => component.init.type == 'input',
+    (component) => component.init.type == 'display',
   ),
 )
 const componentGroups = computed(() => [

@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white', // Added text color for label
       input: 'w-full', // Applied to the dropdown input
       description: 'text-sm text-slate-700 dark:text-slate-300', // Description text for both modes
@@ -22,24 +22,29 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
 })
 const model = defineModel<string>({ default: '' })
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
 <template>
   <div :class="theme.container">
-    <label :class="theme.label" :for="input.key">
-      {{ input.label }}
-      <span v-if="isRequired" class="text-red-600 dark:text-red-400">*</span>
-      <!-- Adjusted for dark mode -->
-    </label>
-    <p :class="theme.description">{{ input.description }}</p>
+    <p class="font-medium">
+      {{ props.input.label }}
+      <span v-if="isRequired" class="text-red-500">*</span>
+    </p>
+    <p class="mb-2 text-sm">{{ props.input.description }}</p>
+
     <Select
       :id="input.key"
       v-model="model"
+      :disabled="readonly"
       :options="input.choices"
       option-label="label"
       option-value="value"

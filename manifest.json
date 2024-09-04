@@ -454,29 +454,6 @@
     },
     {
       "meta": {
-        "name": "Ranking",
-        "enabled": true,
-        "description": "Field for ranking items by preference.",
-        "icon": "material-symbols:sort"
-      },
-      "init": {
-        "type": "input",
-        "properties": {
-          "input": {
-            "label": "Ranking",
-            "component": "ranking",
-            "description": "Order the items by preference.",
-            "placeholder": "Rank the items",
-            "choices": [
-              { "label": "Item 1", "value": "item1" },
-              { "label": "Item 2", "value": "item2" }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "meta": {
         "name": "Data Table",
         "enabled": true,
         "description": "A table element that allows users to view and edit data directly within the table.",

@@ -19,7 +19,6 @@ const props = defineProps({
     type: Object,
     default: () => ({
       container: '', // Dark mode background
-      item: 'p-2 bg-gray-100 dark:bg-gray-800 rounded  mb-2 text-gray-800 dark:text-gray-200',
       dragHandle: 'cursor-move',
       submitButton:
         'mt-4 p-2 bg-blue-500 dark:bg-blue-700 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-800',
@@ -32,29 +31,31 @@ const props = defineProps({
     type: String,
     default: '',
   },
-})
-
-const items = ref(props.input.choices)
-const el = ref<HTMLElement | null>(null)
-const model = defineModel<string[]>({
-  default: [],
-})
-
-useSortable(el, items, {
-  handle: '.handle',
-  chosenClass: 'dragClass',
-  animation: 150,
-  onEnd() {
-    model.value = items.value.map((item) => item.value)
+  readonly: {
+    type: Boolean,
+    default: false,
   },
 })
+
+const el = ref<HTMLElement | null>(null)
+const model = defineModel<string[]>({
+  required: true,
+})
+
+if (!props.readonly) {
+  useSortable(el, model, {
+    handle: '.handle',
+    animation: 150,
+  })
+}
 
 // Sync items with props to handle external changes
 watch(
   () => props.input.choices,
   (newChoices) => {
-    items.value = newChoices
+    if (newChoices) model.value = newChoices.map((el) => el.label)
   },
+  { immediate: true },
 )
 const isRequired = computed(() =>
   props.input.validations?.map((v) => v.rule).includes('required'),
@@ -69,10 +70,14 @@ const isRequired = computed(() =>
     </label>
     <p :class="theme.description">{{ input.description }}</p>
     <!-- input section -->
-    <div ref="el">
-      <div v-for="item in items" :key="item.value" :class="theme.item">
+    <div ref="el" class="flex flex-col gap-3">
+      <div
+        v-for="item in model"
+        :key="item"
+        class="p-2 bg-gray-100 rounded dark:bg-gray-900"
+      >
         <span class="handle" :class="theme.dragHandle">☰</span>
-        {{ item.label }}
+        {{ item }}
       </div>
     </div>
     <!-- if error -->
@@ -81,12 +86,3 @@ const isRequired = computed(() =>
     </small>
   </div>
 </template>
-
-<style scoped lang="css">
-.dragClass {
-  outline: 2px solid var(--p-primary-500);
-  box-shadow:
-    0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-</style>

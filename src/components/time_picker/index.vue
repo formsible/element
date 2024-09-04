@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white', // Label colors for dark and light mode
       inputContainer: 'relative w-full', // Wrapper for input and icon
       input: 'w-full pr-10', // Input styling with padding for the icon
@@ -27,7 +27,7 @@ const props = defineProps({
 })
 const model = defineModel<Date | null>({ default: null })
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 

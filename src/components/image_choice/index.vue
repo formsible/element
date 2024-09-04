@@ -10,7 +10,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-lg font-semibold text-gray-900 dark:text-gray-100',
       input: 'w-full flex flex-wrap gap-2',
       description: 'text-sm text-gray-700 dark:text-gray-300',
@@ -37,7 +37,7 @@ const selectImage = (value: string) => {
   model.value = value
 }
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
@@ -69,7 +69,7 @@ const isRequired = computed(() =>
               theme.image,
               { [theme.imageSelected]: selected === option.value },
             ]"
-          >
+          />
         </div>
         <span class="mt-1 text-sm text-gray-800 dark:text-gray-200">{{
           option.label

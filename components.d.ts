@@ -41,7 +41,7 @@ declare module 'vue' {
     Net_promoter_score: typeof import('./src/components/net_promoter_score/index.vue')['default']
     Number: typeof import('./src/components/number/index.vue')['default']
     Page_break: typeof import('./src/components/page_break/index.vue')['default']
-    Password: typeof import('./src/components/password/index.vue')['default']
+    Password: typeof import('primevue/password')['default']
     Payment: typeof import('./src/components/payment/index.vue')['default']
     Phone_number: typeof import('./src/components/phone_number/index.vue')['default']
     Range: typeof import('./src/components/range/index.vue')['default']

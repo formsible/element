@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-lg font-semibold text-gray-900 dark:text-gray-100',
       input:
         'w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md',
@@ -23,20 +23,25 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
 })
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 const model = defineModel<number>()
 </script>
 
 <template>
   <div :class="theme.container">
-    <label :class="theme.label" :for="input.key">
-      {{ input.label }}
-      <span v-if="isRequired" class="text-red-600">*</span>
-    </label>
-    <p :class="theme.description">{{ input.description }}</p>
+    <p class="font-medium">
+      {{ props.input.label }}
+      <span v-if="isRequired" class="text-red-500">*</span>
+    </p>
+    <p class="mb-4 text-sm">{{ props.input.description }}</p>
+
     <!-- input section -->
     <InputSlider
       :id="input.key"
@@ -49,6 +54,7 @@ const model = defineModel<number>()
           'border-gray-300 dark:border-gray-600': !error,
         },
       ]"
+      :disabled="readonly"
       :min="input.props?.min"
       :max="input.props?.max"
       :step="input.props?.step"

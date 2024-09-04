@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white', // Added text color for label
       input: 'flex flex-col gap-2', // Layout for checkboxes
       description: 'text-sm text-slate-700 dark:text-slate-300', // Description text for both modes
@@ -27,7 +27,7 @@ const props = defineProps({
 })
 const model = defineModel<string[]>()
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
