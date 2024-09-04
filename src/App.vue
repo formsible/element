@@ -48,6 +48,7 @@
             :input="formComponents[currentComponentIndex].inputProps"
             :display="formComponents[currentComponentIndex].inputProps"
             :error="formComponents[currentComponentIndex].inputProps?.error"
+            :readonly="true"
           />
         </Transition>
       </div>

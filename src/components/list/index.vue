@@ -3,7 +3,7 @@ import { PropType, ref, watch, type Ref } from 'vue'
 import { useSortable } from '@vueuse/integrations/useSortable'
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
-import DragIcon from '~icons/material-symbols/drag-handle'
+import DragIcon from '~icons/material-symbols/drag-pan-rounded'
 import TrashIcon from '~icons/material-symbols/delete'
 import { InputProperties } from '~/types'
 
@@ -82,17 +82,29 @@ const addItem = () => {
       <div
         v-for="(item, index) in list"
         :key="item.id"
-        class="flex flex-row gap-2 items-center"
+        class="flex flex-row items-center"
       >
         <InputText
           v-model="list[index].label"
           placeholder="Label"
           :readonly="readonly"
+          class="mr-2"
         />
-        <DragIcon :class="[{ 'handle cursor-move': !readonly }]"></DragIcon>
-        <button @click="removeItem(index)">
+        <DragIcon
+          :class="[
+            { '!handle !cursor-move': !readonly },
+            'text-xl text-slate-400 dark:text-slate-600',
+          ]"
+        />
+        <Button
+          text
+          size="small"
+          plain
+          :disabled="props.readonly"
+          @click="removeItem(index)"
+        >
           <TrashIcon />
-        </button>
+        </Button>
       </div>
     </div>
 
