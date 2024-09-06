@@ -30,6 +30,7 @@
     "@vueuse/core": "^11.0.3",
     "@vueuse/integrations": "^11.0.3",
     "autoprefixer": "^10.4.20",
+    "dayjs": "^1.11.13",
     "postcss": "^8.4.41",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.4",
