@@ -1,4 +1,7 @@
 # element
+Mock server for remote input config:
+- Endpoint: https://my-json-server.typicode.com/formsible/element/db
+- Mock data [db.json](./db.json)
 
 ## Project setup
 ```

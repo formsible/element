@@ -1,166 +1,47 @@
 {
-  "ShortText": {
-    "label": "Single-line text input",
-    "component": "short_text",
-    "description": "Enter a short text response.",
-    "placeholder": "Type something here"
-  },
-  "CodeJson": {
-    "label": "Input for JSON code",
-    "component": "code_json",
-    "description": "Enter or paste JSON code.",
-    "placeholder": "Paste JSON code here"
-  },
-  "CodeJavascript": {
-    "label": "Input for JavaScript code",
-    "component": "code_javascript",
-    "description": "Enter or paste JavaScript code.",
-    "placeholder": "Paste JavaScript code here"
-  },
-  "SortableList": {
-    "label": "A sortable list with input fields",
-    "component": "sortable_list",
-    "description": "Create and sort a list of items.",
-    "placeholder": "Add items"
-  },
-  "LongText": {
-    "label": "Multi-line text input",
-    "component": "long_text",
-    "description": "Enter a long text response.",
-    "placeholder": "Type something here"
-  },
-  "MultipleChoice": {
-    "label": "Radio buttons for selecting one option",
-    "component": "multiple_choice",
-    "description": "Select one option.",
-    "choices": [
-      { "label": "Option 1", "value": "1" },
-      { "label": "Option 2", "value": "2" },
-      { "label": "Option 3", "value": "3" }
-    ]
-  },
-  "Checkboxes": {
-    "label": "Checkboxes for selecting multiple options",
-    "component": "checkboxes",
-    "description": "Select multiple options.",
-    "choices": [
-      { "label": "Option 1", "value": "1" },
-      { "label": "Option 2", "value": "2" },
-      { "label": "Option 3", "value": "3" }
-    ]
-  },
-  "Dropdown": {
-    "label": "Dropdown menu for selecting one option",
-    "component": "dropdown",
-    "description": "Choose one option from the dropdown menu.",
-    "choices": [
-      { "label": "Option 1", "value": "1" },
-      { "label": "Option 2", "value": "2" },
-      { "label": "Option 3", "value": "3" }
-    ]
-  },
-  "FileUpload": {
-    "label": "Field for uploading files",
-    "component": "file_upload",
-    "description": "Upload a file.",
-    "props": {
-      "accept": "image/*"
+  "elements": [
+    {
+      "id": 1,
+      "label": "ShortText",
+      "component": "short_text",
+      "description": "Enter a short text response.",
+      "placeholder": "Type something here"
+    },
+    {
+      "id": 2,
+      "label": "CodeJson",
+      "component": "code_json",
+      "description": "Enter or paste JSON code.",
+      "placeholder": "Paste JSON code here"
+    },
+    {
+      "id": 3,
+      "label": "SortableList",
+      "component": "sortable_list",
+      "description": "Create and sort a list of items.",
+      "placeholder": "Add items"
+    },
+    {
+      "id": 4,
+      "label": "MultipleChoice",
+      "component": "multiple_choice",
+      "description": "Select one option.",
+      "choices": [
+        { "label": "Option 1", "value": "1" },
+        { "label": "Option 2", "value": "2" },
+        { "label": "Option 3", "value": "3" }
+      ]
+    },
+    {
+      "id": 5,
+      "label": "Dropdown",
+      "component": "dropdown",
+      "description": "Choose one option from the dropdown menu.",
+      "choices": [
+        { "label": "Option 1", "value": "1" },
+        { "label": "Option 2", "value": "2" },
+        { "label": "Option 3", "value": "3" }
+      ]
     }
-  },
-  "AudioRecorder": {
-    "label": "Field for recording audio clips",
-    "component": "audio_recorder",
-    "description": "Record and upload an audio clip.",
-    "placeholder": "Record your audio here"
-  },
-  "DatePicker": {
-    "label": "Date picker for selecting a date",
-    "component": "datepicker",
-    "description": "Pick a date.",
-    "placeholder": "MM/DD/YYYY"
-  },
-  "TimePicker": {
-    "label": "Time picker for selecting a time",
-    "component": "timepicker",
-    "description": "Pick a time.",
-    "placeholder": "HH:MM"
-  },
-  "LikertScale": {
-    "label": "Rating grid for multiple questions on a scale",
-    "component": "likert_scale",
-    "description": "Rate each statement on a scale.",
-    "choices": [
-      { "label": "Strongly Disagree", "value": "Strongly Disagree" },
-      { "label": "Disagree", "value": "Disagree" },
-      { "label": "Neutral", "value": "Neutral" },
-      { "label": "Agree", "value": "Agree" },
-      { "label": "Strongly Agree", "value": "Strongly Agree" }
-    ]
-  },
-  "NetPromoterScore": {
-    "label": "0-10 rating scale with a specific question",
-    "component": "net_promoter_score",
-    "description": "Rate how likely you are to recommend us to a friend or colleague.",
-    "placeholder": "0 to 10"
-  },
-  "Signature": {
-    "label": "Field for capturing a digital signature",
-    "component": "signature",
-    "description": "Sign your name digitally.",
-    "placeholder": "Sign here"
-  },
-  "PhoneNumber": {
-    "label": "Input field for entering a formatted phone number",
-    "component": "phone_number",
-    "description": "Enter your phone number.",
-    "placeholder": "(XXX) XXX-XXXX"
-  },
-  "Address": {
-    "label": "Input field for entering a formatted address",
-    "component": "address",
-    "description": "Enter your address.",
-    "placeholder": "Street, City, State, ZIP"
-  },
-  "Website": {
-    "label": "Input field for entering a URL",
-    "component": "website",
-    "description": "Enter your website URL.",
-    "placeholder": "https://example.com"
-  },
-  "Email": {
-    "label": "Input field for entering an email address",
-    "component": "email",
-    "description": "Enter your email address.",
-    "placeholder": "yourname@example.com"
-  },
-  "Number": {
-    "label": "Input field for entering numerical values",
-    "component": "number",
-    "description": "Enter a number.",
-    "placeholder": "Enter a number"
-  },
-  "Slider": {
-    "label": "Slider for selecting a value within a range",
-    "component": "slider",
-    "description": "Slide to select a value.",
-    "placeholder": "0 to 100"
-  },
-  "Ranking": {
-    "label": "Field for ranking items by preference",
-    "component": "ranking",
-    "description": "Rank the items in order of preference.",
-    "placeholder": "Drag to rank"
-  },
-  "DataTable": {
-    "label": "Editable data table element",
-    "component": "data_table",
-    "description": "Edit data in a table format.",
-    "placeholder": "Add rows and columns"
-  },
-  "Captcha": {
-    "label": "Verification component for human users",
-    "component": "captcha",
-    "description": "Verify you are not a robot.",
-    "placeholder": "Complete the captcha"
-  }
+  ]
 }
