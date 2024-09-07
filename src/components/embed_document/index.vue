@@ -10,7 +10,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       iframe: 'w-full h-full border-none',
     }),
   },

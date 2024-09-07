@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full',
       button: 'w-full p-button p-component',
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -42,7 +42,7 @@ const handleGeolocation = async () => {
       (error) => {
         console.error('Geolocation error:', error)
         // Handle error (e.g., show user feedback)
-      }
+      },
     )
   } else {
     console.error('Geolocation not supported')
@@ -50,7 +50,7 @@ const handleGeolocation = async () => {
   }
 }
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 

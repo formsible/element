@@ -12,7 +12,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full',
       description: 'text-sm text-slate-700 dark:text-slate-300',
       error: 'text-red-600',
@@ -23,7 +23,7 @@ const props = defineProps({
 const model = defineModel<string>({ default: '' })
 
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)

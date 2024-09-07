@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white', // Label colors for dark and light mode
       inputContainer: 'relative w-full', // Wrapper for input and icon
       input: '', // Input styling

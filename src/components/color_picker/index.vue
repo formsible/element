@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full',
       colorPicker: 'w-full',
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -30,7 +30,7 @@ const handleColorChange = (color: { hex: string }) => {
   model.value = color.hex
 }
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 

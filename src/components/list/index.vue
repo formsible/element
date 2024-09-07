@@ -3,7 +3,7 @@ import { PropType, ref, watch, type Ref } from 'vue'
 import { useSortable } from '@vueuse/integrations/useSortable'
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
-import DragIcon from '~icons/material-symbols/drag-handle'
+import DragIcon from '~icons/material-symbols/drag-pan-rounded'
 import TrashIcon from '~icons/material-symbols/delete'
 import { InputProperties } from '~/types'
 
@@ -15,7 +15,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white', // Added text color for label
       input: 'w-full h-32 bg-white dark:bg-gray-800 text-black dark:text-white', // Added background and text color for TextArea
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -25,6 +25,10 @@ const props = defineProps({
   error: {
     type: String,
     default: '',
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
   },
 })
 const model = defineModel<string[]>({ default: [] })
@@ -52,10 +56,12 @@ watch(
   { deep: true, immediate: true },
 )
 
-useSortable(listEl, list, {
-  handle: '.handle',
-  animation: 150,
-})
+if (!props.readonly) {
+  useSortable(listEl, list, {
+    handle: '.handle',
+    animation: 150,
+  })
+}
 
 const removeItem = (index: number) => {
   list.value.splice(index, 1)
@@ -71,17 +77,35 @@ const addItem = () => {
 
 <template>
   <div>
+    <p class="font-medium">{{ props.input.label }}</p>
+    <p class="mb-2 text-sm">{{ props.input.description }}</p>
     <div ref="listEl" class="flex flex-col gap-3 justify-center">
       <div
         v-for="(item, index) in list"
         :key="item.id"
-        class="flex flex-row gap-2 items-center"
+        class="flex flex-row items-center"
       >
-        <InputText v-model="list[index].label" placeholder="Label" />
-        <DragIcon class="handle cursor-move"></DragIcon>
-        <button @click="removeItem(index)">
+        <InputText
+          v-model="list[index].label"
+          placeholder="Label"
+          :readonly="readonly"
+          class="mr-2"
+        />
+        <DragIcon
+          :class="[
+            { '!handle !cursor-move': !readonly },
+            'text-xl text-slate-400 dark:text-slate-600',
+          ]"
+        />
+        <Button
+          text
+          size="small"
+          plain
+          :disabled="props.readonly"
+          @click="removeItem(index)"
+        >
           <TrashIcon />
-        </button>
+        </Button>
       </div>
     </div>
 
@@ -90,6 +114,7 @@ const addItem = () => {
       severity="secondary"
       class="mt-3"
       size="small"
+      :disabled="readonly"
       @click="addItem"
     />
   </div>

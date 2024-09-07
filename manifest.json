@@ -42,7 +42,7 @@
     },
     {
       "meta": {
-        "name": "CodeJavaScript",
+        "name": "CodeJavascript",
         "enabled": true,
         "description": "An input for JavaScript code",
         "icon": "material-symbols:code-rounded"
@@ -52,7 +52,7 @@
         "properties": {
           "input": {
             "label": "JavaScript Code Input",
-            "component": "code_js",
+            "component": "code_javascript",
             "description": "An input for JavaScript code"
           }
         }
@@ -425,29 +425,6 @@
             "placeholder": "Adjust slider",
             "min": 0,
             "max": 100
-          }
-        }
-      }
-    },
-    {
-      "meta": {
-        "name": "Ranking",
-        "enabled": true,
-        "description": "Field for ranking items by preference.",
-        "icon": "material-symbols:sort"
-      },
-      "init": {
-        "type": "input",
-        "properties": {
-          "input": {
-            "label": "Ranking",
-            "component": "ranking",
-            "description": "Order the items by preference.",
-            "placeholder": "Rank the items",
-            "choices": [
-              { "label": "Item 1", "value": "item1" },
-              { "label": "Item 2", "value": "item2" }
-            ]
           }
         }
       }

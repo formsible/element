@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white', // Added text color for label
       input: 'w-full h-32 bg-white dark:bg-gray-800 text-black dark:text-white', // Added background and text color for TextArea
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -25,7 +25,7 @@ const props = defineProps({
 })
 const model = defineModel<string>({ default: '' })
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 

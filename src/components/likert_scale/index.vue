@@ -11,7 +11,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white', // Label colors for dark and light mode
       input: 'flex items-center text-black dark:text-white', // Ensure RadioButton and label text colors adapt
       description: 'text-sm text-slate-700 dark:text-slate-300', // Description text for both modes
@@ -25,17 +25,18 @@ const props = defineProps({
 })
 const model = defineModel<string>({ default: '' })
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
 <template>
   <div :class="theme.container">
-    <label :class="theme.label">
-      {{ input.label }}
-      <span v-if="isRequired" class="text-red-600 dark:text-red-400">*</span>
-    </label>
-    <p :class="theme.description">{{ input.description }}</p>
+    <p class="font-medium">
+      {{ props.input.label }}
+      <span v-if="isRequired" class="text-red-500">*</span>
+    </p>
+    <p class="mb-2 text-sm">{{ props.input.description }}</p>
+
     <div class="flex flex-col">
       <div
         v-for="option in input.choices"

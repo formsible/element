@@ -10,7 +10,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'flex items-center gap-2',
       checkbox: 'h-4 w-4',
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -25,7 +25,7 @@ const props = defineProps({
 
 const model = ref<boolean>(false)
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
@@ -39,7 +39,7 @@ const isRequired = computed(() =>
         :class="theme.checkbox"
         :required="isRequired"
         v-bind="{ ...$attrs, ...props.input.props }"
-      >
+      />
       <span>{{ input.label }}</span>
       <span v-if="isRequired" class="text-red-600">*</span>
     </label>

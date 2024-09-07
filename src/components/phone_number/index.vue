@@ -15,7 +15,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full text-black dark:text-white',
       input: 'w-full',
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -27,6 +27,10 @@ const props = defineProps({
   error: {
     type: String,
     default: '',
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
   },
 })
 
@@ -60,7 +64,7 @@ watch(
 watch(
   () => model.value.phoneNumber,
   (newValue) => {
-    emit('update:phoneNumber', newValue as string)
+    if (newValue) emit('update:phoneNumber', newValue)
   },
 )
 

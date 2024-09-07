@@ -12,7 +12,7 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: 'flex flex-col gap-2',
+      container: '',
       label: 'w-full',
       calendar: 'w-full',
       description: 'text-sm text-slate-700 dark:text-slate-300',
@@ -44,7 +44,7 @@ const formattedDateTime = computed(() => {
   }`
 })
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required')
+  props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
