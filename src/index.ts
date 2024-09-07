@@ -1,6 +1,7 @@
 // src/index.ts
 import Address from './components/address/index.vue'
 import AudioRecorder from './components/audio_recorder/index.vue'
+import ActionRedirect from './components/action_redirect/index.vue'
 import Captcha from './components/captcha/index.vue'
 import Checkboxes from './components/checkboxes/index.vue'
 import CodeJavascript from './components/code_javascript/index.vue'
@@ -35,6 +36,7 @@ import TimePicker from './components/time_picker/index.vue'
 import Website from './components/website/index.vue'
 
 export {
+  ActionRedirect,
   Address,
   AudioRecorder,
   Captcha,
