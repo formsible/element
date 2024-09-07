@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, PropType } from 'vue'
+import type { DisplayProperties } from '../../types'
 
 defineProps({
   display: {
-    type: Object,
+    type: Object as PropType<DisplayProperties>,
     required: true,
   },
   theme: {
