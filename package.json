@@ -1,6 +1,6 @@
 {
   "name": "@formsible/element",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "formsible.com",
   "type": "module",
   "main": "dist/element.umd.js",
@@ -17,7 +17,11 @@
     "dev": "vite dev",
     "build": "vite build",
     "serve": "vite preview",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "test": "vitest run",
+    "prepare": "npm run build", 
+    "prepublishOnly": "npm test",
+    "publish": "npm run build && npm publish"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.2",
