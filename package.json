@@ -1,6 +1,7 @@
 {
   "name": "@formsible/element",
   "version": "0.2.1",
+  "author": "formsible.com",
   "type": "module",
   "main": "dist/element.umd.js",
   "module": "dist/index.es.js",
