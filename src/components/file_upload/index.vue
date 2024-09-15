@@ -38,7 +38,7 @@ const props = defineProps({
 })
 const files = defineModel<IFile[]>('files', { default: [] })
 // Define emits
-const emit = defineEmits(['select', 'remove'])
+const emit = defineEmits(['remove'])
 
 // Define computed properties
 const isRequired = computed(() =>
@@ -54,10 +54,6 @@ const maxFiles = computed(() => {
   return v?.params ? parseInt(v.params[0]) : 1
 })
 
-const isAllowedToUpload = computed(() => {
-  return files.value.length < maxFiles.value
-})
-
 // Handle file selection
 const onFileSelected = (event: { files: File[] }) => {
   const selectedFiles: IFile[] =
@@ -65,7 +61,6 @@ const onFileSelected = (event: { files: File[] }) => {
       file,
       status: 'queued',
     })) || []
-  emit('select', selectedFiles)
   files.value = files.value?.concat(selectedFiles).slice(0, maxFiles.value)
 }
 
@@ -89,35 +84,15 @@ const onFileRemove = (file: IFile) => {
     </p>
     <p class="mb-2 text-sm">{{ props.input.description }}</p>
 
-    <FileUpload
-      custom-upload
-      @uploader="onFileSelected"
-      auto
-      :show-cancel-button="false"
-      :show-upload-button="false"
-      :multiple="maxFiles > 1"
-      :accept="accept"
-      v-bind="{ ...$attrs, ...input.props }"
-    >
+    <FileUpload custom-upload @uploader="onFileSelected" auto :show-cancel-button="false" :show-upload-button="false"
+      :multiple="maxFiles > 1" :accept="accept" v-bind="{ ...$attrs, ...input.props }">
       <template #header="{ chooseCallback }">
-        <Button
-          label="Upload"
-          icon="pi pi-upload"
-          @click="chooseCallback"
-          :disabled="readonly"
-        />
-        <p>Accepted files: {{ accept }}, Limit: {{ maxFiles }}</p></template
-      >
+        <Button label="Upload" icon="pi pi-upload" @click="chooseCallback" :disabled="readonly" />
+        <p>Accepted files: {{ accept }}, Limit: {{ maxFiles }}</p>
+      </template>
       <template #empty>
-        <span>Drag and drop files to here to upload.</span> </template
-      ><template #content>
-        <FileCard
-          v-for="file in files"
-          :key="file.file.name"
-          :file="file"
-          class="mb-2"
-          @remove="onFileRemove(file)"
-        />
+        <span>Drag and drop files to here to upload.</span> </template><template #content>
+        <FileCard v-for="file in files" :key="file.file.name" :file="file" class="mb-2" @remove="onFileRemove(file)" />
       </template>
     </FileUpload>
 

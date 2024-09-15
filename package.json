@@ -1,6 +1,6 @@
 {
   "name": "@formsible/element",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "formsible.com",
   "type": "module",
   "main": "dist/element.umd.js",

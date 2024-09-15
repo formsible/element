@@ -44,7 +44,7 @@ const message = ref<string>(props.error)
 const files = ref<IFile[]>([])
 
 // Define emits
-const emit = defineEmits(['select', 'remove'])
+const emit = defineEmits(['remove'])
 
 // States for recording and playback
 const isRecording = ref(false)
@@ -55,7 +55,8 @@ const audioUrl = ref<string | null>(null)
 const waveSurfer = ref<WaveSurfer | null>(null)
 const isPlaying = ref(false)
 const recordingTime = ref(0)
-const intervalId = ref<number | null>(null)
+// eslint-disable-next-line no-undef
+const intervalId = ref<NodeJS.Timeout | null>(null)
 const audioDuration = ref(0)
 
 // Computed properties
@@ -109,7 +110,7 @@ const startRecording = async () => {
       if (waveSurfer.value) {
         waveSurfer.value.loadBlob(audioBlob.value)
         waveSurfer.value.on('ready', () => {
-          audioDuration.value = waveSurfer.value.getDuration()
+          audioDuration.value = waveSurfer.value?.getDuration() || 0
         })
       }
 
@@ -120,8 +121,7 @@ const startRecording = async () => {
         }),
         status: 'queued',
       }
-      files.value.push(recordedFile)
-      emit('select', [recordedFile])
+      files.value = files.value?.concat([recordedFile]).slice(0, maxFiles.value)
     }
 
     mediaRecorder.value.start()
@@ -167,7 +167,7 @@ const onFileRemove = (file: IFile) => {
   )
   files.value = files.value.filter(
     (_file) => _file.file.name !== file.file.name,
-  )
+  ) || []
 }
 
 // Setup WaveSurfer on component mount
@@ -211,32 +211,24 @@ onBeforeUnmount(() => {
 
     <div class="p-6 my-4 mb-10 bg-white dark:bg-zinc-800 rounded-lg border">
       <div class="w-full max-w-40 mx-auto grid place-items-center">
-        <div
-          :class="[
-            'p-4 rounded-full w-20 h-20 flex items-center justify-center',
-            isRecording ? 'bg-red-500 animate-pulse' : 'bg-gray-200',
-            isPlaying ? 'cursor-not-allowed opacity-50' : '',
-          ]"
-        >
-          <Button
-            :disabled="isPlaying || !isAllowedToRecord || readonly"
-            @click="isRecording ? stopRecording() : startRecording()"
-          >
-            <i
-              :class="[
-                'pi pi-microphone text-3xl dark:text-zinc-800',
-                isRecording ? 'pi pi-pause !text-2xl text-white' : '',
-                isPlaying ? 'cursor-not-allowed opacity-50' : '',
-              ]"
-            ></i>
+        <div :class="[
+          'p-4 rounded-full w-20 h-20 flex items-center justify-center',
+          isRecording ? 'bg-red-500 animate-pulse' : 'bg-gray-200',
+          isPlaying ? 'cursor-not-allowed opacity-50' : '',
+        ]">
+          <Button :disabled="isPlaying || !isAllowedToRecord || readonly"
+            @click="isRecording ? stopRecording() : startRecording()">
+            <i :class="[
+              'pi pi-microphone text-3xl dark:text-zinc-800',
+              isRecording ? 'pi pi-pause !text-2xl text-white' : '',
+              isPlaying ? 'cursor-not-allowed opacity-50' : '',
+            ]"></i>
           </Button>
         </div>
-        <div
-          :class="[
-            'mt-3 text-sm font-semibold',
-            isPlaying ? 'cursor-not-allowed opacity-30' : '',
-          ]"
-        >
+        <div :class="[
+          'mt-3 text-sm font-semibold',
+          isPlaying ? 'cursor-not-allowed opacity-30' : '',
+        ]">
           <span v-if="!isRecording">Press to record</span>
           <span v-else> Recording time: {{ formatTime(recordingTime) }} </span>
         </div>
@@ -244,18 +236,11 @@ onBeforeUnmount(() => {
 
       <div id="waveform" :class="['mt-4', audioBlob ? '' : 'hidden']"></div>
 
-      <div
-        class="mt-4 w-full max-w-40 mx-auto flex gap-3 items-center justify-center"
-      >
-        <Button
-          v-if="audioBlob"
-          :class="[
-            'px-4 py-2 mt-4 rounded-md flex items-center gap-1 bg-gray-200 hover:bg-gray-300 text-black',
-            isRecording ? 'pointer-events-none opacity-50' : '',
-          ]"
-          :disabled="isRecording"
-          @click="playAudio"
-        >
+      <div class="mt-4 w-full max-w-40 mx-auto flex gap-3 items-center justify-center">
+        <Button v-if="audioBlob" :class="[
+          'px-4 py-2 mt-4 rounded-md flex items-center gap-1 bg-gray-200 hover:bg-gray-300 text-black',
+          isRecording ? 'pointer-events-none opacity-50' : '',
+        ]" :disabled="isRecording" @click="playAudio">
           <span v-if="!isPlaying">Play</span>
           <span v-else>Pause</span>
         </Button>
@@ -266,12 +251,7 @@ onBeforeUnmount(() => {
 
       <!-- Display recorded files -->
       <div v-if="files.length > 0" class="mt-4">
-        <FileCard
-          v-for="file in files"
-          :key="file.file.name"
-          :file="file"
-          @remove="onFileRemove(file)"
-        />
+        <FileCard v-for="file in files" :key="file.file.name" :file="file" @remove="onFileRemove(file)" />
       </div>
     </div>
   </div>
