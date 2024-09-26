@@ -19,7 +19,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '20'
-        cache: 'pnpm' # Cache for pnpm instead of npm
+
 
     # Step 3: Install pnpm
     - name: Install pnpm
