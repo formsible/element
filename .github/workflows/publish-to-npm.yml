@@ -10,50 +10,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the latest code
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Step 2: Install Node.js and pnpm
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
-        cache: 'pnpm'
-        check-latest: true
+        node-version: '20'
+        cache: 'npm'
 
-    # Step 3: Install pnpm
-    - name: Install pnpm
-      run: |
-        npm install -g pnpm
-        pnpm config set store-dir ~/.pnpm-store
-
-    # Step 4: Install dependencies using pnpm
     - name: Install dependencies
-      run: pnpm install
+      run: npm install
 
-    # Step 5: Run linting
-    - name: Lint code
-      run: pnpm run lint
-
-    # Step 6: Run tests
     - name: Run tests
-      run: pnpm run test
+      run: npm run test # Modify based on your test command
 
-    # Step 7: Build the library
     - name: Build the library
-      run: pnpm run build
+      run: npm run build # Modify based on your build command
 
-    # Step 8: Publish to NPM (on successful build)
     - name: Publish to NPM
-      if: github.ref == 'refs/heads/main'
-      run: pnpm publish --access public
+      run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    # Step 9: Create GitHub Release (optional)
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          dist/** # Modify based on your output directory
+          dist/** # Modify based on your build output
+
+    - name: Post-publish cleanup
+      run: rm -rf dist # Modify based on your output cleanup
