@@ -40,7 +40,7 @@ jobs:
       run: pnpm run build
 
     - name: Check NPM_TOKEN
-      run: echo "NPM_TOKEN is set"
+      run: echo $NPM_TOKEN
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}      
 
