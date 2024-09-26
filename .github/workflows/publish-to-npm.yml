@@ -41,9 +41,10 @@ jobs:
 
     # Step 7: Publish to NPM (on successful build)
     - name: Publish to NPM
-      run: pnpm publish --access public
+      run: pnpm publish --access public --no-git-checks
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 
     # Step 8: Create GitHub Release (optional)
     - name: Create GitHub Release
