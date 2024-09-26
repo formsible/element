@@ -49,4 +49,11 @@ jobs:
       if: github.ref == 'refs/heads/main'
       run: pnpm publish --access public
       env:
-        NODE_AUTH_TOKEN: ${{ secrets
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    # Step 9: Create GitHub Release (optional)
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/** # Modify based on your output directory
