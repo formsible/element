@@ -5,6 +5,8 @@
 
 `@formsible/element` is a Vue.js component library designed to provide highly customizable elements for form-building applications. This library leverages the best UI practices, optimized performance, and offers a range of form-related components.
 
+**Note:** This library is used in the form-building application [Formsible](https://formsible.com). You can use it in any Vue or Nuxt applications. The project is sponsored by [WellCare](https://wellcare.vn).
+
 ## Features
 
 - 📦 Lightweight and modular form-building components
@@ -181,16 +183,3 @@ pnpm run test
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## Additional Notes
-
-### Badges and Shields
-- Include badges to show the NPM version, license, and possibly build status (e.g., from GitHub Actions).
-
-### Links to Documentation
-- If you have additional documentation (e.g., API docs or component details), provide links to them.
-
-### Contribution Guide
-- This section briefly outlines the contributing process, but if you want a more detailed guide, consider adding a `CONTRIBUTING.md` file.
