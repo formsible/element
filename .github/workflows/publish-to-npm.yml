@@ -2,8 +2,8 @@ name: Publish to NPM
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '*'  # Triggers on all tag pushes
 
 jobs:
   build:
@@ -14,12 +14,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Step 2: Setup Node.js (v20) and configure pnpm cache
+    # Step 2: Setup Node.js (v20)
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '20'
-
 
     # Step 3: Install pnpm
     - name: Install pnpm
@@ -39,24 +38,14 @@ jobs:
     - name: Build the library
       run: pnpm run build
 
-    - name: Check NPM_TOKEN
-      run: echo $NPM_TOKEN
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}      
+    # Step 7: Set version to the Git tag version
+    - name: Set NPM version from Git tag
+      run: |
+        TAG_NAME=${GITHUB_REF#refs/tags/}  # Extract tag name from GITHUB_REF
+        npm version "$TAG_NAME" --no-git-tag-version  # Set npm version to tag name without creating a new git tag
 
-    # Step 7: Publish to NPM (on successful build)
-    - uses: JS-DevTools/npm-publish@v3
+    # Step 8: Publish to NPM (on successful build)
+    - name: Publish to NPM
+      uses: JS-DevTools/npm-publish@v3
       with:
         token: ${{ secrets.NPM_TOKEN }}
-
-
-    # Step 8: Create GitHub Release (optional)
-    - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
-      with:
-        files: |
-          dist/**
-
-    # Step 9: Post-publish cleanup (optional)
-    - name: Post-publish cleanup
-      run: rm -rf dist
