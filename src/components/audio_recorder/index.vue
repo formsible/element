@@ -7,11 +7,11 @@ import {
   onMounted,
   onBeforeUnmount,
   type PropType,
-} from 'vue'
-import WaveSurfer from 'wavesurfer.js'
-import Button from 'primevue/button'
-import dayjs from 'dayjs'
-import type { IFile, InputProperties, Validation } from '../../types'
+} from "vue";
+import WaveSurfer from "wavesurfer.js";
+import Button from "primevue/button";
+import dayjs from "dayjs";
+import type { IFile, InputProperties, Validation } from "../../types";
 
 // Define props
 const props = defineProps({
@@ -22,183 +22,187 @@ const props = defineProps({
   theme: {
     type: Object,
     default: () => ({
-      container: '',
-      label: 'w-full text-black dark:text-white',
-      input: 'w-full',
-      description: 'text-sm text-slate-700 dark:text-slate-300',
-      error: 'text-red-600 dark:text-red-400',
+      container: "",
+      label: "w-full text-black dark:text-white",
+      input: "w-full",
+      description: "text-sm text-slate-700 dark:text-slate-300",
+      error: "text-red-600 dark:text-red-400",
     }),
   },
   error: {
     type: String,
-    default: '',
+    default: "",
   },
   readonly: {
     type: Boolean,
     default: false,
   },
-})
+});
 
-const message = ref<string>(props.error)
+const message = ref<string>(props.error);
 
-const files = ref<IFile[]>([])
+const files = defineModel<IFile[]>("files", { default: [] });
 
 // Define emits
-const emit = defineEmits(['remove'])
+const emit = defineEmits(["remove"]);
 
 // States for recording and playback
-const isRecording = ref(false)
-const mediaRecorder = ref<MediaRecorder | null>(null)
-const audioChunks = ref<Blob[]>([])
-const audioBlob = ref<Blob | null>(null)
-const audioUrl = ref<string | null>(null)
-const waveSurfer = ref<WaveSurfer | null>(null)
-const isPlaying = ref(false)
-const recordingTime = ref(0)
+const isRecording = ref(false);
+const mediaRecorder = ref<MediaRecorder | null>(null);
+const audioChunks = ref<Blob[]>([]);
+const audioBlob = ref<Blob | null>(null);
+const audioUrl = ref<string | null>(null);
+const waveSurfer = ref<WaveSurfer | null>(null);
+const isPlaying = ref(false);
+const recordingTime = ref(0);
 // eslint-disable-next-line no-undef
-const intervalId = ref<NodeJS.Timeout | null>(null)
-const audioDuration = ref(0)
+const intervalId = ref<NodeJS.Timeout | null>(null);
+const audioDuration = ref(0);
 
 // Computed properties
 const isRequired = computed(() =>
-  props.input.validations?.map((v) => v.rule).includes('required'),
-)
+  props.input.validations?.map((v) => v.rule).includes("required")
+);
 
 const maxFiles = computed(() => {
   const v = props.input?.validations?.find(
-    (v: Validation) => v.rule == 'maxLength',
-  )
-  return v?.params ? parseInt(v.params[0]) : 1
-})
+    (v: Validation) => v.rule == "maxLength"
+  );
+  return v?.params ? parseInt(v.params[0]) : 1;
+});
 
 const isAllowedToRecord = computed(() => {
-  return files.value.length < maxFiles.value
-})
+  return files.value.length < maxFiles.value;
+});
 
 // Formatting time for display
 function formatTime(seconds: number) {
-  return dayjs().startOf('day').second(seconds).format('mm:ss')
+  return dayjs().startOf("day").second(seconds).format("mm:ss");
 }
 
 // Start recording
 const startRecording = async () => {
-  const devices = await navigator.mediaDevices.enumerateDevices()
-  const hasMicrophone = devices.some((device) => device.kind === 'audioinput')
+  const devices = await navigator.mediaDevices.enumerateDevices();
+  const hasMicrophone = devices.some((device) => device.kind === "audioinput");
 
   if (!hasMicrophone) {
-    message.value = 'No microphone found on this device.'
-    return
+    message.value = "No microphone found on this device.";
+    return;
   }
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-    message.value = 'The browser does not support the getUserMedia API'
-    return
+    message.value = "The browser does not support the getUserMedia API";
+    return;
   }
 
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
       audio: true,
-    })
-    mediaRecorder.value = new MediaRecorder(stream)
+    });
+    mediaRecorder.value = new MediaRecorder(stream);
     mediaRecorder.value.ondataavailable = (event: BlobEvent) => {
-      audioChunks.value.push(event.data)
-    }
+      audioChunks.value.push(event.data);
+    };
     mediaRecorder.value.onstop = () => {
-      audioBlob.value = new Blob(audioChunks.value, { type: 'audio/wav' })
-      audioUrl.value = URL.createObjectURL(audioBlob.value)
-      audioChunks.value = []
+      audioBlob.value = new Blob(audioChunks.value, { type: "audio/wav" });
+      audioUrl.value = URL.createObjectURL(audioBlob.value);
+      audioChunks.value = [];
 
       if (waveSurfer.value) {
-        waveSurfer.value.loadBlob(audioBlob.value)
-        waveSurfer.value.on('ready', () => {
-          audioDuration.value = waveSurfer.value?.getDuration() || 0
-        })
+        waveSurfer.value.loadBlob(audioBlob.value);
+        waveSurfer.value.on("ready", () => {
+          audioDuration.value = waveSurfer.value?.getDuration() || 0;
+        });
       }
 
       // Handle file selection after recording stops
       const recordedFile: IFile = {
-        file: new File([audioBlob.value], 'recorded_audio.wav', {
-          type: 'audio/wav',
+        file: new File([audioBlob.value], "recorded_audio.wav", {
+          type: "audio/wav",
         }),
-        status: 'queued',
-      }
-      files.value = files.value?.concat([recordedFile]).slice(0, maxFiles.value)
-    }
+        status: "queued",
+        duration: audioDuration.value,
+      };
 
-    mediaRecorder.value.start()
-    isRecording.value = true
+      // Add to the list of files and limit to maximum allowed files
+      files.value = files.value
+        ?.concat([recordedFile])
+        .slice(0, maxFiles.value);
+    };
+
+    mediaRecorder.value.start();
+    isRecording.value = true;
 
     // Start timer
-    recordingTime.value = 0
+    recordingTime.value = 0;
     intervalId.value = setInterval(() => {
-      recordingTime.value++
-    }, 1000)
+      recordingTime.value++;
+    }, 1000);
   } catch (err: any) {
-    message.value = err.message
+    message.value = err.message;
   }
-}
+};
 
 // Stop recording
 const stopRecording = () => {
   if (mediaRecorder.value) {
-    mediaRecorder.value.stop()
-    isRecording.value = false
+    mediaRecorder.value.stop();
+    isRecording.value = false;
 
     // Stop timer
     if (intervalId.value) {
-      clearInterval(intervalId.value)
-      intervalId.value = null
+      clearInterval(intervalId.value);
+      intervalId.value = null;
     }
   }
-}
+};
 
 // Play/pause audio
 const playAudio = () => {
   if (waveSurfer.value) {
-    waveSurfer.value.playPause()
-    isPlaying.value = !isPlaying.value
+    waveSurfer.value.playPause();
+    isPlaying.value = !isPlaying.value;
   }
-}
+};
 
 // Remove recorded audio
 const onFileRemove = (file: IFile) => {
   emit(
-    'remove',
-    files.value.find((_file) => _file.file.name === file.file.name),
-  )
-  files.value = files.value.filter(
-    (_file) => _file.file.name !== file.file.name,
-  ) || []
-}
+    "remove",
+    files.value.find((_file) => _file.file.name === file.file.name)
+  );
+  files.value =
+    files.value.filter((_file) => _file.file.name !== file.file.name) || [];
+};
 
 // Setup WaveSurfer on component mount
 onMounted(() => {
   waveSurfer.value = WaveSurfer.create({
-    container: '#waveform',
-    waveColor: '#000',
-    progressColor: '#009688',
+    container: "#waveform",
+    waveColor: "#000",
+    progressColor: "#009688",
     height: 40,
     barWidth: 4,
     barGap: 2,
     barRadius: 20,
-  })
+  });
 
-  waveSurfer.value.on('finish', () => {
-    isPlaying.value = false
-  })
-})
+  waveSurfer.value.on("finish", () => {
+    isPlaying.value = false;
+  });
+});
 
 // Cleanup on component unmount
 onBeforeUnmount(() => {
   if (waveSurfer.value) {
-    waveSurfer.value.destroy()
+    waveSurfer.value.destroy();
   }
   if (mediaRecorder.value) {
-    mediaRecorder.value.stream.getTracks().forEach((track) => track.stop())
+    mediaRecorder.value.stream.getTracks().forEach((track) => track.stop());
   }
   if (intervalId.value) {
-    clearInterval(intervalId.value)
+    clearInterval(intervalId.value);
   }
-})
+});
 </script>
 
 <template>
@@ -211,24 +215,32 @@ onBeforeUnmount(() => {
 
     <div class="p-6 my-4 mb-10 bg-white dark:bg-zinc-800 rounded-lg border">
       <div class="w-full max-w-40 mx-auto grid place-items-center">
-        <div :class="[
-          'p-4 rounded-full w-20 h-20 flex items-center justify-center',
-          isRecording ? 'bg-red-500 animate-pulse' : 'bg-gray-200',
-          isPlaying ? 'cursor-not-allowed opacity-50' : '',
-        ]">
-          <Button :disabled="isPlaying || !isAllowedToRecord || readonly"
-            @click="isRecording ? stopRecording() : startRecording()">
-            <i :class="[
-              'pi pi-microphone text-3xl dark:text-zinc-800',
-              isRecording ? 'pi pi-pause !text-2xl text-white' : '',
-              isPlaying ? 'cursor-not-allowed opacity-50' : '',
-            ]"></i>
+        <div
+          :class="[
+            'p-4 rounded-full w-20 h-20 flex items-center justify-center',
+            isRecording ? 'bg-red-500 animate-pulse' : 'bg-gray-200',
+            isPlaying ? 'cursor-not-allowed opacity-50' : '',
+          ]"
+        >
+          <Button
+            :disabled="isPlaying || !isAllowedToRecord || readonly"
+            @click="isRecording ? stopRecording() : startRecording()"
+          >
+            <i
+              :class="[
+                'pi pi-microphone text-3xl dark:text-zinc-800',
+                isRecording ? 'pi pi-pause !text-2xl text-white' : '',
+                isPlaying ? 'cursor-not-allowed opacity-50' : '',
+              ]"
+            ></i>
           </Button>
         </div>
-        <div :class="[
-          'mt-3 text-sm font-semibold',
-          isPlaying ? 'cursor-not-allowed opacity-30' : '',
-        ]">
+        <div
+          :class="[
+            'mt-3 text-sm font-semibold',
+            isPlaying ? 'cursor-not-allowed opacity-30' : '',
+          ]"
+        >
           <span v-if="!isRecording">Press to record</span>
           <span v-else> Recording time: {{ formatTime(recordingTime) }} </span>
         </div>
@@ -236,11 +248,18 @@ onBeforeUnmount(() => {
 
       <div id="waveform" :class="['mt-4', audioBlob ? '' : 'hidden']"></div>
 
-      <div class="mt-4 w-full max-w-40 mx-auto flex gap-3 items-center justify-center">
-        <Button v-if="audioBlob" :class="[
-          'px-4 py-2 mt-4 rounded-md flex items-center gap-1 bg-gray-200 hover:bg-gray-300 text-black',
-          isRecording ? 'pointer-events-none opacity-50' : '',
-        ]" :disabled="isRecording" @click="playAudio">
+      <div
+        class="mt-4 w-full max-w-40 mx-auto flex gap-3 items-center justify-center"
+      >
+        <Button
+          v-if="audioBlob"
+          :class="[
+            'px-4 py-2 mt-4 rounded-md flex items-center gap-1 bg-gray-200 hover:bg-gray-300 text-black',
+            isRecording ? 'pointer-events-none opacity-50' : '',
+          ]"
+          :disabled="isRecording"
+          @click="playAudio"
+        >
           <span v-if="!isPlaying">Play</span>
           <span v-else>Pause</span>
         </Button>
@@ -251,7 +270,12 @@ onBeforeUnmount(() => {
 
       <!-- Display recorded files -->
       <div v-if="files.length > 0" class="mt-4">
-        <FileCard v-for="file in files" :key="file.file.name" :file="file" @remove="onFileRemove(file)" />
+        <FileCard
+          v-for="file in files"
+          :key="file.file.name"
+          :file="file"
+          @remove="onFileRemove(file)"
+        />
       </div>
     </div>
   </div>
