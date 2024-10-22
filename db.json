@@ -1,42 +1,10 @@
 {
   "elements": [
     {
-      "id": 1,
-      "label": "ShortText",
-      "component": "short_text",
-      "description": "Enter a short text response.",
-      "placeholder": "Type something here"
-    },
-    {
-      "id": 2,
-      "label": "CodeJson",
-      "component": "code_json",
-      "description": "Enter or paste JSON code.",
-      "placeholder": "Paste JSON code here"
-    },
-    {
-      "id": 3,
-      "label": "SortableList",
-      "component": "sortable_list",
-      "description": "Create and sort a list of items.",
-      "placeholder": "Add items"
-    },
-    {
       "id": 4,
       "label": "MultipleChoice",
       "component": "multiple_choice",
       "description": "Select one option.",
-      "choices": [
-        { "label": "Option 1", "value": "1" },
-        { "label": "Option 2", "value": "2" },
-        { "label": "Option 3", "value": "3" }
-      ]
-    },
-    {
-      "id": 5,
-      "label": "Dropdown",
-      "component": "dropdown",
-      "description": "Choose one option from the dropdown menu.",
       "choices": [
         { "label": "Option 1", "value": "1" },
         { "label": "Option 2", "value": "2" },
