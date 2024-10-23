@@ -3,9 +3,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import 'primeicons/primeicons.css'
-import './assets/styles/scrollbar.css'
-import './assets/styles/variables.css'
-import './assets/styles/tailwind.css'
+import './assets/scrollbar.css'
+import './assets/variables.css'
+import './assets/tailwind.css'
 
 const app = createApp(App)
 app.use(PrimeVue, {
