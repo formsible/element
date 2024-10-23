@@ -23,9 +23,6 @@ importers:
       '@fawmi/vue-google-maps':
         specifier: ^0.9.79
         version: 0.9.79
-      '@primevue/themes':
-        specifier: ^4.0.5
-        version: 4.0.5
       '@tailwindcss/typography':
         specifier: ^0.5.14
         version: 0.5.15(tailwindcss@3.4.10)
@@ -38,21 +35,15 @@ importers:
       '@vueuse/integrations':
         specifier: ^11.0.3
         version: 11.0.3(sortablejs@1.15.3)(vue@3.4.38(typescript@5.5.4))
-      autoprefixer:
-        specifier: ^10.4.20
-        version: 10.4.20(postcss@8.4.44)
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
-      postcss:
-        specifier: ^8.4.41
-        version: 8.4.44
       primeicons:
         specifier: ^7.0.0
         version: 7.0.0
       primevue:
-        specifier: ^4.0.4
-        version: 4.0.5(vue@3.4.38(typescript@5.5.4))
+        specifier: ^4.1.1
+        version: 4.1.1(vue@3.4.38(typescript@5.5.4))
       rollup-plugin-copy:
         specifier: ^3.5.0
         version: 3.5.0
@@ -62,9 +53,9 @@ importers:
       sortablejs:
         specifier: ^1
         version: 1.15.3
-      tailwindcss:
-        specifier: ^3.4.9
-        version: 3.4.10
+      tailwindcss-primeui:
+        specifier: ^0.3.4
+        version: 0.3.4(tailwindcss@3.4.10)
       vue:
         specifier: ^3.4.38
         version: 3.4.38(typescript@5.5.4)
@@ -93,6 +84,9 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.5.1
         version: 0.5.1
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.20(postcss@8.4.44)
       eslint:
         specifier: ^9.9.1
         version: 9.9.1(jiti@1.21.6)
@@ -102,9 +96,15 @@ importers:
       globals:
         specifier: ^15.9.0
         version: 15.9.0
+      postcss:
+        specifier: ^8.4.44
+        version: 8.4.44
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
+      tailwindcss:
+        specifier: ^3.4.10
+        version: 3.4.10
       typescript:
         specifier: ~5.5.4
         version: 5.5.4
@@ -438,34 +438,30 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@primeuix/styled@0.0.5':
-    resolution: {integrity: sha512-pVoGn/uPkVm/DyF3TR3EmH/pL/dP4nR42FcYbVduFq9VfO3KVeOEqvcCULHXos66RZO9MCbCFUoLy6ctf9GUGQ==}
+  '@primeuix/styled@0.2.0':
+    resolution: {integrity: sha512-3Q6bDrmwTW88tzJsFIFenC0VyXLj0+/wYw+TZnJ/4CCDfehR4WfTs4EZdpuFtYqvmbpJ6zWXAiwSCNdSYTZkyA==}
     engines: {node: '>=12.11.0'}
 
-  '@primeuix/utils@0.0.5':
-    resolution: {integrity: sha512-ntUiUgtRtkF8KuaxHffzhYxQxoXk6LAPHm7CVlFjdqS8Rx8xRkLkZVyo84E+pO2hcNFkOGVP/GxHhQ2s94O8zA==}
+  '@primeuix/utils@0.2.0':
+    resolution: {integrity: sha512-AaDIeRFlsbkVTk2s0mlEjnGSLi31X669NVwo+n+AVAnBdDiQznjipNTpHbOobVBtjOKZize74PChK6uoaSBRUw==}
     engines: {node: '>=12.11.0'}
 
   '@primevue/auto-import-resolver@4.0.5':
     resolution: {integrity: sha512-rSV3s+VJRt10gH3Cly1ONOZ5jwet1XvH4n617KJiy03vp3o1kOIs/WtG9yfgKRqI+CYMiHMHc9b3Sd4r74BELw==}
     engines: {node: '>=12.11.0'}
 
-  '@primevue/core@4.0.5':
-    resolution: {integrity: sha512-DUCslDA93eUOVW0A1I3yoZgRLI4zmI2++loZQXbUF5jaXCwKiAza14+iyUU+cWH27VSq+jQnCEP9QJtPZiJJ0w==}
+  '@primevue/core@4.1.1':
+    resolution: {integrity: sha512-jUDrTh3g0FskTdD6rCCsoWfxKky0R7959p7vnaNYI6wMLreaTL3yC3nzYlEniIpb+F51Sm3KJ1eSJBN6DnSB8Q==}
     engines: {node: '>=12.11.0'}
     peerDependencies:
       vue: ^3.0.0
 
-  '@primevue/icons@4.0.5':
-    resolution: {integrity: sha512-ZxR9W1wlAE2fTtUhrHyeMx5t0jNyAgxDcHPm0cNXpX8q1XF95rSM/qb48QKXIBDBrJ/xs57BcyCNADP/VDPY4g==}
+  '@primevue/icons@4.1.1':
+    resolution: {integrity: sha512-Ybeb+AHUsVybITuYNwS7goqWcXLLgCDSiCPoymyYwYkzn5qLakvJbQH1EX8lGOsrvqK0hG+s+n7Wm2MHJ8A72w==}
     engines: {node: '>=12.11.0'}
 
   '@primevue/metadata@4.0.5':
     resolution: {integrity: sha512-IydjQ4K1k4eJppBCmup/YPTpHWqJt05yuSIxLoCtk6h0ivljEIJ/TGScEciRjF5u4mIIhltyjdHCpexVnoCaIQ==}
-    engines: {node: '>=12.11.0'}
-
-  '@primevue/themes@4.0.5':
-    resolution: {integrity: sha512-cRrAhOapOT8eFCTDwNdB/acg2ZEEkn7y6h6p188PYSjJsWnYK+D8eI1Js1ZB5HwWo4sWs3oR3Sy8bPwejnGbAw==}
     engines: {node: '>=12.11.0'}
 
   '@rollup/pluginutils@5.1.0':
@@ -1507,8 +1503,8 @@ packages:
   primeicons@7.0.0:
     resolution: {integrity: sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==}
 
-  primevue@4.0.5:
-    resolution: {integrity: sha512-MALszGIZ5SnEQy1XeZLBFhpMXQ1OS7D1U7H+l/JAX5U46RQ1vufo7NAiWbbV5/ADjPGw4uLplqMQxujkksNY2g==}
+  primevue@4.1.1:
+    resolution: {integrity: sha512-FeJkv7FhfePfUBoApW0qAhid6Znq18VgbGFZdmhUcxvOD49Y2Eo/k2Yn7ypPhRbRApWiaSRN0v/2G1I4AMj3xg==}
     engines: {node: '>=12.11.0'}
 
   punycode@2.3.1:
@@ -1638,6 +1634,11 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  tailwindcss-primeui@0.3.4:
+    resolution: {integrity: sha512-5+Qfoe5Kpq2Iwrd6umBUb3rQH6b7+pL4jxJUId0Su5agUM6TwCyH5Pyl9R0y3QQB3IRuTxBNmeS11B41f+30zw==}
+    peerDependencies:
+      tailwindcss: '>=3.1.0'
 
   tailwindcss@3.4.10:
     resolution: {integrity: sha512-KWZkVPm7yJRhdu4SRSl9d4AK2wM3a50UsvgHZO7xY77NQr2V+fIrEuoDGQcbvswWvFGbS2f6e+jC/6WJm1Dl0w==}
@@ -2235,34 +2236,30 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@primeuix/styled@0.0.5':
+  '@primeuix/styled@0.2.0':
     dependencies:
-      '@primeuix/utils': 0.0.5
+      '@primeuix/utils': 0.2.0
 
-  '@primeuix/utils@0.0.5': {}
+  '@primeuix/utils@0.2.0': {}
 
   '@primevue/auto-import-resolver@4.0.5':
     dependencies:
       '@primevue/metadata': 4.0.5
 
-  '@primevue/core@4.0.5(vue@3.4.38(typescript@5.5.4))':
+  '@primevue/core@4.1.1(vue@3.4.38(typescript@5.5.4))':
     dependencies:
-      '@primeuix/styled': 0.0.5
-      '@primeuix/utils': 0.0.5
+      '@primeuix/styled': 0.2.0
+      '@primeuix/utils': 0.2.0
       vue: 3.4.38(typescript@5.5.4)
 
-  '@primevue/icons@4.0.5(vue@3.4.38(typescript@5.5.4))':
+  '@primevue/icons@4.1.1(vue@3.4.38(typescript@5.5.4))':
     dependencies:
-      '@primeuix/utils': 0.0.5
-      '@primevue/core': 4.0.5(vue@3.4.38(typescript@5.5.4))
+      '@primeuix/utils': 0.2.0
+      '@primevue/core': 4.1.1(vue@3.4.38(typescript@5.5.4))
     transitivePeerDependencies:
       - vue
 
   '@primevue/metadata@4.0.5': {}
-
-  '@primevue/themes@4.0.5':
-    dependencies:
-      '@primeuix/styled': 0.0.5
 
   '@rollup/pluginutils@5.1.0(rollup@4.21.2)':
     dependencies:
@@ -3323,12 +3320,12 @@ snapshots:
 
   primeicons@7.0.0: {}
 
-  primevue@4.0.5(vue@3.4.38(typescript@5.5.4)):
+  primevue@4.1.1(vue@3.4.38(typescript@5.5.4)):
     dependencies:
-      '@primeuix/styled': 0.0.5
-      '@primeuix/utils': 0.0.5
-      '@primevue/core': 4.0.5(vue@3.4.38(typescript@5.5.4))
-      '@primevue/icons': 4.0.5(vue@3.4.38(typescript@5.5.4))
+      '@primeuix/styled': 0.2.0
+      '@primeuix/utils': 0.2.0
+      '@primevue/core': 4.1.1(vue@3.4.38(typescript@5.5.4))
+      '@primevue/icons': 4.1.1(vue@3.4.38(typescript@5.5.4))
     transitivePeerDependencies:
       - vue
 
@@ -3461,6 +3458,10 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  tailwindcss-primeui@0.3.4(tailwindcss@3.4.10):
+    dependencies:
+      tailwindcss: 3.4.10
 
   tailwindcss@3.4.10:
     dependencies:
