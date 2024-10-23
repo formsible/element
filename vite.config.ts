@@ -5,6 +5,7 @@ import { PrimeVueResolver } from '@primevue/auto-import-resolver'
 import Icons from 'unplugin-icons/vite'
 import path from 'path'
 import copy from 'rollup-plugin-copy'
+import tailwindcss from 'tailwindcss'
 
 export default defineConfig({
   plugins: [
@@ -14,6 +15,13 @@ export default defineConfig({
     }),
     Icons(),
   ],
+  css: {
+    postcss: {
+      plugins: [
+        tailwindcss(),
+      ]
+    }
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index'),
