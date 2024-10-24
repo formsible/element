@@ -222,7 +222,7 @@ onBeforeUnmount(() => {
                         'p-4 rounded-full w-20 h-20 flex items-center justify-center',
                         isRecording
                             ? 'bg-red-500 animate-pulse'
-                            : 'bg-gray-200',
+                            : 'bg-surface-200',
                         isPlaying ? 'cursor-not-allowed opacity-50' : '',
                     ]"
                 >
@@ -269,7 +269,7 @@ onBeforeUnmount(() => {
                 <Button
                     v-if="audioBlob"
                     :class="[
-                        'px-4 py-2 mt-4 rounded-md flex items-center gap-1 bg-gray-200 hover:bg-gray-300 text-black',
+                        'px-4 py-2 mt-4 rounded-md flex items-center gap-1 bg-surface-200 hover:bg-surface-300 text-black',
                         isRecording ? 'pointer-events-none opacity-50' : '',
                     ]"
                     :disabled="isRecording"

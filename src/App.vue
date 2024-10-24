@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-white dark:bg-gray-900 text-black flex flex-col h-screen overflow-hidden dark:text-white"
+        class="bg-white dark:bg-surface-900 text-black flex flex-col h-screen overflow-hidden dark:text-white"
     >
         <AppBar v-model:theme="theme" class="flex-none" />
         <div class="flex gap-4 mx-auto overflow-hidden flex-auto">
@@ -20,7 +20,7 @@
                             'w-full text-start transition p-2 mb-2 rounded  ',
                             selectedComponent?.name === comp.meta.name
                                 ? 'text-[var(--p-primary-500)] dark:bg-[var(--p-primary-950)] bg-[var(--p-primary-50)]'
-                                : 'hover:bg-gray-100 dark:hover:bg-gray-800',
+                                : 'hover:bg-surface-100 dark:hover:bg-surface-800',
                         ]"
                         @click="selectComponent(comp)"
                     >
@@ -63,7 +63,6 @@
                             formComponents[currentComponentIndex].inputProps
                                 ?.error
                         "
-                        :readonly="true"
                     />
                 </Transition>
             </div>
@@ -106,6 +105,9 @@
                         placeholder="Error Message"
                         class="w-full mb-2 p-2 border rounded"
                     />
+                    <pre>{{
+                        formComponents[currentComponentIndex].inputProps
+                    }}</pre>
                 </div>
             </div>
         </div>
