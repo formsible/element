@@ -3,6 +3,9 @@
     "version": "0.2.4",
     "author": "formsible.com",
     "type": "module",
+    "files": [
+        "dist"
+    ],
     "main": "dist/element.umd.js",
     "module": "dist/index.es.js",
     "exports": {

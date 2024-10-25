@@ -40,7 +40,6 @@
 
             <div class="w-1/2 overflow-auto p-4">
                 <h2 class="text-xl font-bold mb-4">Preview</h2>
-                <pre>{{ formComponents[currentComponentIndex] }}</pre>
                 <Transition
                     mode="out-in"
                     enterActiveClass="transition duration-100 delay-100"
@@ -106,9 +105,6 @@
                         placeholder="Error Message"
                         class="w-full mb-2 p-2 border rounded"
                     />
-                    <pre>{{
-                        formComponents[currentComponentIndex].inputProps
-                    }}</pre>
                 </div>
             </div>
         </div>
@@ -128,8 +124,6 @@ import {
 } from 'vue'
 import AppBar from './AppBar.vue'
 import type { ElementManifest } from './types'
-import { useTheme } from './utils/apply-theme'
-import type { ThemeData } from './types/theme'
 const state = reactive<Record<string, unknown>>({})
 
 interface IComponent {
@@ -208,67 +202,5 @@ onMounted(async () => {
     if (formComponents.value.length > 0) {
         selectedComponent.value = formComponents.value[0]
     }
-
-    const themeData: Ref<ThemeData> = ref({
-        tailwind: {
-            container: {
-                padding: 'p-4',
-                baseBackground: 'bg-white',
-                baseTextColor: 'text-black',
-                baseFontSize: 'text-base',
-            },
-            button: {
-                padding: 'py-2 px-4',
-                baseBackground: 'bg-blue-500',
-                baseTextColor: 'text-white',
-                borderRadius: 'rounded-lg',
-            },
-            input: {
-                baseBorder: 'border',
-                basePadding: 'p-2',
-                borderColor: 'border-gray-300',
-                borderRadius: 'rounded-md',
-            },
-        },
-        variables: {
-            container: {
-                backgroundColor: '#ffffff',
-                textColor: '#000000',
-                fontSize: '16px',
-            },
-            button: {
-                backgroundColor: '#3b82f6',
-                textColor: '#ffffff',
-                borderRadius: '0.5rem',
-            },
-            input: {
-                borderColor: '#d1d5db',
-                borderRadius: '0.375rem',
-                backgroundColor: '#ffffff',
-                textColor: '#000000',
-            },
-            error: {
-                textColor: '#ef4444',
-            },
-        },
-        values: {
-            container: {
-                backgroundColor: '#ffffff',
-                textColor: '#000000',
-                fontSize: '16px',
-            },
-            button: {
-                backgroundColor: '#3b82f6',
-                textColor: '#ffffff',
-                borderRadius: '0.5rem',
-            },
-            input: {
-                borderColor: '#d1d5db',
-                borderRadius: '0.375rem',
-            },
-        },
-    })
-
-    useTheme(themeData)
 })
 </script>

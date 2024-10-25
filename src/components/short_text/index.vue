@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineProps, withDefaults } from 'vue'
+import { computed, defineProps } from 'vue'
 import type { InputProperties } from '../../types'
 import InputText from 'primevue/inputtext'
 
@@ -8,9 +8,7 @@ interface Props {
     error?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
-    error: undefined,
-})
+const props = defineProps<Props>()
 const model = defineModel<string>({ default: '' })
 
 const isRequired = computed(() =>
@@ -19,11 +17,11 @@ const isRequired = computed(() =>
 </script>
 
 <template>
-    <div :class="theme.container">
-        <p class="font-medium">
+    <div>
+        <label :for="input.key">
             {{ props.input.label }}
             <span v-if="isRequired" class="text-red-500">*</span>
-        </p>
+        </label>
         <p class="mb-2 text-sm">{{ props.input.description }}</p>
 
         <InputText
@@ -31,12 +29,10 @@ const isRequired = computed(() =>
             v-model="model"
             :placeholder="props.input.placeholder"
             :input-id="input.key"
-            :class="theme.input"
             v-bind="{ ...$attrs, ...input.props }"
         />
-        <div v-if="error" :class="theme.error">
-            <span class="material-icons">error_outline</span>
+        <p v-if="error">
             {{ error }}
-        </div>
+        </p>
     </div>
 </template>

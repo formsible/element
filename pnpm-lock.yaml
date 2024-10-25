@@ -28,7 +28,7 @@ importers:
         version: 0.5.15(tailwindcss@3.4.14)
       '@tinymce/tinymce-vue':
         specifier: ^6.1.0
-        version: 6.1.0(tinymce@7.3.0)(vue@3.5.12(typescript@5.6.3))
+        version: 6.1.0(vue@3.5.12(typescript@5.6.3))
       '@vueuse/core':
         specifier: ^11.1.0
         version: 11.1.0(vue@3.5.12(typescript@5.6.3))
@@ -116,10 +116,10 @@ importers:
         version: 8.11.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.6.3)
       unplugin-icons:
         specifier: ^0.19.3
-        version: 0.19.3(@vue/compiler-sfc@3.5.12)(webpack-sources@3.2.3)
+        version: 0.19.3(@vue/compiler-sfc@3.5.12)
       unplugin-vue-components:
         specifier: ^0.27.4
-        version: 0.27.4(@babel/parser@7.25.9)(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3))(webpack-sources@3.2.3)
+        version: 0.27.4(@babel/parser@7.25.9)(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3))
       vite:
         specifier: ^5.4.10
         version: 5.4.10(@types/node@22.7.9)
@@ -697,14 +697,14 @@ packages:
   '@vitest/utils@2.1.3':
     resolution: {integrity: sha512-xpiVfDSg1RrYT0tX6czgerkpcKFmFOF/gCr30+Mve5V2kewCy4Prn1/NDMSRwaSmT7PRaOF83wu+bEtsY1wrvA==}
 
-  '@volar/language-core@2.4.6':
-    resolution: {integrity: sha512-FxUfxaB8sCqvY46YjyAAV6c3mMIq/NWQMVvJ+uS4yxr1KzOvyg61gAuOnNvgCvO4TZ7HcLExBEsWcDu4+K4E8A==}
+  '@volar/language-core@2.4.7':
+    resolution: {integrity: sha512-G/EB0vkArVB04F8DVBf30AlRK/QAOx63CzsuKKuda2ZIJamQlv4t6gEJrFVmYF560kbslFtaAJcmn8cyg7QmLA==}
 
-  '@volar/source-map@2.4.6':
-    resolution: {integrity: sha512-Nsh7UW2ruK+uURIPzjJgF0YRGP5CX9nQHypA2OMqdM2FKy7rh+uv3XgPnWPw30JADbKvZ5HuBzG4gSbVDYVtiw==}
+  '@volar/source-map@2.4.7':
+    resolution: {integrity: sha512-c+7IJrD4mht1s8FLlCf6dAUC1aTUY9leKeLosfUiuMxavcG/sY3IPBiD1rdLL5qrhzYVmUWRGxhWvJeyYa/bsQ==}
 
-  '@volar/typescript@2.4.6':
-    resolution: {integrity: sha512-NMIrA7y5OOqddL9VtngPWYmdQU03htNKFtAYidbYfWA0TOhyGVd9tfcP4TsLWQ+RBWDZCbBqsr8xzU0ZOxYTCQ==}
+  '@volar/typescript@2.4.7':
+    resolution: {integrity: sha512-sp3mFLmMtXY47S8GrMwFnwjGiW7aVtCLMAwnePRJA4P7CfSkrRj2DjoSxl//0pt+KR7oGG/48T2q413b8TvPbg==}
 
   '@vue/compiler-core@3.5.12':
     resolution: {integrity: sha512-ISyBTRMmMYagUxhcpyEH0hpXRd/KqDU4ymofPgl2XAkY9ZhQ+h0ovEZJIiPop13UmR/54oA2cgMDjgroRelaEw==}
@@ -1715,9 +1715,6 @@ packages:
   tinyexec@0.3.1:
     resolution: {integrity: sha512-WiCJLEECkO18gwqIp6+hJg0//p23HXp4S+gGtAKu3mI2F2/sXC4FvHvXvB0zJVVaTPhx1/tOwdbRsa1sOBIKqQ==}
 
-  tinymce@7.3.0:
-    resolution: {integrity: sha512-Ls4PgYlpk73XAxBSBqbVmSl8Mb3DuNfgF01GZ0lY6/MOEVRl3IL+VxC1Oe6165e8WqbqVsxO3Qj/PmoYNvQKGQ==}
-
   tinypool@1.0.1:
     resolution: {integrity: sha512-URZYihUbRPcGv95En+sz6MfghfIc2OJ1sv/RmhWZLouPY0/8Vo80viwPvg3dlaS9fuq7fQMEfgRRK7BBZThBEA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -1943,10 +1940,6 @@ packages:
 
   wavesurfer.js@7.8.8:
     resolution: {integrity: sha512-FNiJ6RCAu4TijRcwdaqlN19+Y+Hhqb7Nfo2P4LudzhNnQRMKvF3QmXd9+KHlQZrSjexeK3WbY4COsxgGJkxMag==}
-
-  webpack-sources@3.2.3:
-    resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
-    engines: {node: '>=10.13.0'}
 
   webpack-virtual-modules@0.6.2:
     resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
@@ -2386,11 +2379,9 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.14
 
-  '@tinymce/tinymce-vue@6.1.0(tinymce@7.3.0)(vue@3.5.12(typescript@5.6.3))':
+  '@tinymce/tinymce-vue@6.1.0(vue@3.5.12(typescript@5.6.3))':
     dependencies:
       vue: 3.5.12(typescript@5.6.3)
-    optionalDependencies:
-      tinymce: 7.3.0
 
   '@types/estree@1.0.6': {}
 
@@ -2539,15 +2530,15 @@ snapshots:
       loupe: 3.1.2
       tinyrainbow: 1.2.0
 
-  '@volar/language-core@2.4.6':
+  '@volar/language-core@2.4.7':
     dependencies:
-      '@volar/source-map': 2.4.6
+      '@volar/source-map': 2.4.7
 
-  '@volar/source-map@2.4.6': {}
+  '@volar/source-map@2.4.7': {}
 
-  '@volar/typescript@2.4.6':
+  '@volar/typescript@2.4.7':
     dependencies:
-      '@volar/language-core': 2.4.6
+      '@volar/language-core': 2.4.7
       path-browserify: 1.0.1
       vscode-uri: 3.0.8
 
@@ -2596,7 +2587,7 @@ snapshots:
 
   '@vue/language-core@2.1.6(typescript@5.6.3)':
     dependencies:
-      '@volar/language-core': 2.4.6
+      '@volar/language-core': 2.4.7
       '@vue/compiler-dom': 3.5.12
       '@vue/compiler-vue2': 2.7.16
       '@vue/shared': 3.5.12
@@ -3608,9 +3599,6 @@ snapshots:
 
   tinyexec@0.3.1: {}
 
-  tinymce@7.3.0:
-    optional: true
-
   tinypool@1.0.1: {}
 
   tinyrainbow@1.2.0: {}
@@ -3652,7 +3640,7 @@ snapshots:
 
   universalify@0.1.2: {}
 
-  unplugin-icons@0.19.3(@vue/compiler-sfc@3.5.12)(webpack-sources@3.2.3):
+  unplugin-icons@0.19.3(@vue/compiler-sfc@3.5.12):
     dependencies:
       '@antfu/install-pkg': 0.4.1
       '@antfu/utils': 0.7.10
@@ -3660,14 +3648,14 @@ snapshots:
       debug: 4.3.7
       kolorist: 1.8.0
       local-pkg: 0.5.0
-      unplugin: 1.14.1(webpack-sources@3.2.3)
+      unplugin: 1.14.1
     optionalDependencies:
       '@vue/compiler-sfc': 3.5.12
     transitivePeerDependencies:
       - supports-color
       - webpack-sources
 
-  unplugin-vue-components@0.27.4(@babel/parser@7.25.9)(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3))(webpack-sources@3.2.3):
+  unplugin-vue-components@0.27.4(@babel/parser@7.25.9)(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3)):
     dependencies:
       '@antfu/utils': 0.7.10
       '@rollup/pluginutils': 5.1.3(rollup@4.24.0)
@@ -3678,7 +3666,7 @@ snapshots:
       magic-string: 0.30.12
       minimatch: 9.0.5
       mlly: 1.7.2
-      unplugin: 1.14.1(webpack-sources@3.2.3)
+      unplugin: 1.14.1
       vue: 3.5.12(typescript@5.6.3)
     optionalDependencies:
       '@babel/parser': 7.25.9
@@ -3687,12 +3675,10 @@ snapshots:
       - supports-color
       - webpack-sources
 
-  unplugin@1.14.1(webpack-sources@3.2.3):
+  unplugin@1.14.1:
     dependencies:
       acorn: 8.13.0
       webpack-virtual-modules: 0.6.2
-    optionalDependencies:
-      webpack-sources: 3.2.3
 
   update-browserslist-db@1.1.1(browserslist@4.24.2):
     dependencies:
@@ -3802,7 +3788,7 @@ snapshots:
 
   vue-tsc@2.1.6(typescript@5.6.3):
     dependencies:
-      '@volar/typescript': 2.4.6
+      '@volar/typescript': 2.4.7
       '@vue/language-core': 2.1.6(typescript@5.6.3)
       semver: 7.6.3
       typescript: 5.6.3
@@ -3825,9 +3811,6 @@ snapshots:
   w3c-keyname@2.2.8: {}
 
   wavesurfer.js@7.8.8: {}
-
-  webpack-sources@3.2.3:
-    optional: true
 
   webpack-virtual-modules@0.6.2: {}
 

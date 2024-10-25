@@ -474,36 +474,7 @@
                         "label": "Data Table",
                         "component": "data_table",
                         "description": "Edit data directly within the table.",
-                        "choices": [
-                            { "value": "name", "label": "Name" },
-                            {
-                                "value": "age",
-                                "label": "Age"
-                            }
-                        ],
-                        "data": [
-                            {
-                                "name": "John Doe",
-                                "age": 28,
-                                "email": "john.doe@example.com"
-                            },
-                            {
-                                "name": "Jane Smith",
-                                "age": 34,
-                                "email": "jane.smith@example.com"
-                            }
-                        ],
-                        "options": {
-                            "pagination": true,
-                            "pageSize": 10,
-                            "sortable": true,
-                            "filterable": true,
-                            "editable": true
-                        },
-                        "validations": [
-                            { "rule": "required" },
-                            { "rule": "email", "params": ["email"] }
-                        ]
+                        "fields": ["key", "label"]
                     }
                 }
             }
