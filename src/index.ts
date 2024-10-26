@@ -12,9 +12,7 @@ import Dropdown from './components/dropdown/index.vue'
 import Email from './components/email/index.vue'
 import EmbedDocument from './components/embed_document/index.vue'
 import EmbedSlides from './components/embed_slides/index.vue'
-import EmbedVideo from './components/embed_video/index.vue'
 import FileUpload from './components/file_upload/index.vue'
-import HtmlBlock from './components/html_block/index.vue'
 import IconDisplay from './components/icon_display/index.vue'
 import ImageChoice from './components/image_choice/index.vue'
 import LikertScale from './components/likert_scale/index.vue'
@@ -34,6 +32,9 @@ import Signature from './components/signature/index.vue'
 import Slider from './components/slider/index.vue'
 import TimePicker from './components/time_picker/index.vue'
 import Website from './components/website/index.vue'
+import HtmlBlockList from './components/html_block_list/index.vue'
+import HtmlBlockContent from './components/html_block_content/index.vue'
+import HtmlBlockMedia from './components/html_block_media/index.vue'
 
 export {
   ActionRedirect,
@@ -49,9 +50,7 @@ export {
   Email,
   EmbedDocument,
   EmbedSlides,
-  EmbedVideo,
   FileUpload,
-  HtmlBlock,
   IconDisplay,
   ImageChoice,
   LikertScale,
@@ -71,4 +70,7 @@ export {
   Slider,
   TimePicker,
   Website,
+  HtmlBlockContent,
+  HtmlBlockList,
+  HtmlBlockMedia
 }
