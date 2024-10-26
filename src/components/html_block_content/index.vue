@@ -8,7 +8,10 @@ defineProps<Props>()
 </script>
 
 <template>
-    <component :is="display.type">
-        {{ display.content }}
-    </component>
+    <div>
+        <pre>{{ display }}</pre>
+        <component :is="display.type">
+            {{ display.content }}
+        </component>
+    </div>
 </template>

@@ -557,26 +557,6 @@
         },
         {
             "meta": {
-                "name": "EmbedVideo",
-                "enabled": true,
-                "description": "Display a video",
-                "icon": "material-symbols:videocam"
-            },
-            "init": {
-                "type": "display",
-                "properties": {
-                    "display": {
-                        "component": "embed_video",
-                        "alt": "Embedded video",
-                        "width": "100%",
-                        "height": "480px",
-                        "src": "https://example.com/video.mp4"
-                    }
-                }
-            }
-        },
-        {
-            "meta": {
                 "name": "Heading 1",
                 "enabled": true,
                 "description": "HTML <h1> tag",
@@ -587,7 +567,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "tag": "h1",
+                        "type": "h1",
                         "content": "Heading 1"
                     }
                 }
@@ -793,6 +773,7 @@
                                 "type": "video/mp4"
                             }
                         ],
+                        "controls": true,
                         "alt": "Your browser does not support the video tag."
                     }
                 }

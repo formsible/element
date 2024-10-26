@@ -19,18 +19,17 @@ defineProps<Props>()
     <component
         v-else
         :is="display.type"
-        :width="display.width"
-        :height="display.type == 'video' ? display.height : undefined"
+        :controls="display.controls || true"
+        :width="display.type == 'video' ? display.height || 400 : undefined"
+        :height="display.type == 'video' ? display.height || 320 : undefined"
     >
-        <template>
-            <source
-                v-for="source in display.sources"
-                :key="source.src"
-                :src="source.src"
-                :media="source.media"
-                :type="source.type"
-            />
-            <p>{{ display.alt }}</p>
-        </template>
+        <source
+            v-for="source in display.sources"
+            :key="source.src"
+            :src="source.src"
+            :media="source.media"
+            :type="source.type"
+        />
+        <p>{{ display.alt }}</p>
     </component>
 </template>

@@ -31,6 +31,7 @@ declare module 'vue' {
     Html_block: typeof import('./src/components/html_block/index.vue')['default']
     Html_block_content: typeof import('./src/components/html_block_content/index.vue')['default']
     Html_block_list: typeof import('./src/components/html_block_list/index.vue')['default']
+    Html_block_media: typeof import('./src/components/html_block_media/index.vue')['default']
     Html_media: typeof import('./src/components/html_media/index.vue')['default']
     Icon_display: typeof import('./src/components/icon_display/index.vue')['default']
     Image_choice: typeof import('./src/components/image_choice/index.vue')['default']

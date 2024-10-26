@@ -97,6 +97,7 @@ interface HTMLBlockMediaProperties {
     src?: string
     alt: string
     width?: number
+    controls?: boolean
     height?: number
 }
 
