@@ -2,3 +2,31 @@
 @import 'tailwindcss/components';
 @import './primevue/tailwind.css';
 @import 'tailwindcss/utilities';
+
+@layer base {
+    /* Custom styles for typography */
+    h1 {
+        @apply text-4xl font-bold text-gray-900 mb-4 border-b-2 border-gray-300 pb-2;
+    }
+    h2 {
+        @apply text-3xl font-semibold text-gray-800 mb-3 border-b border-gray-300 pb-1;
+    }
+    h3 {
+        @apply text-2xl font-medium text-gray-700 mb-2;
+    }
+    h4 {
+        @apply text-xl font-medium text-gray-600 mb-1;
+    }
+
+    blockquote {
+        @apply border-l-4 border-primary-500 pl-4 italic text-surface-600 dark:text-surface-400 dark:bg-surface-800 rounded bg-surface-50 py-2;
+    }
+
+    pre {
+        @apply bg-gray-800 text-gray-100 p-3 rounded overflow-auto;
+    }
+
+    code {
+        @apply font-mono leading-snug;
+    }
+}
