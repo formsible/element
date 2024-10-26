@@ -59,34 +59,48 @@ export interface InputProperties {
     validations?: Validation[]
     props?: Record<string, any>
 }
+
+// Display
 export interface DisplayProperties {
     component: DisplayComponentType
     icon?: string // Icon name or path
-    alt?: string // Optional alt text for accessibility
-    size?: string // Optional size (e.g., 'w-6 h-6')
-    color?: string // Optional color class (e.g., 'text-red-500')
-    width?: string
-    height?: string
-    src?: string
-    tag?:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'p'
-    | 'blockquote'
-    | 'ul'
-    | 'ol'
-    | 'img'
-    | 'code'
-    | 'pre'
-    | 'hr'
-    | undefined // html tag, h1, h2, p, ...
-    content?: string // content of the tag
-    items?: string[]
 }
+
+// HTML content block
+type HTMLBlockContentType = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'blockquote' | 'pre' | 'code'
+interface HtmlBlockContentProperties extends DisplayProperties {
+    type: HTMLBlockContentType
+    content: string
+}
+
+// HTML list block
+type HTMLBlockListType = 'ordered' | 'unordered'
+// interface DescriptionItem {
+//     term: string
+//     descriptions: (string | DescriptionItem)[]
+// }
+interface HTMLBlockListProperties extends DisplayProperties {
+    type: HTMLBlockListType
+    items: string[]
+}
+
+//HTML media block
+type HTMLBlockMediaType = 'video' | 'audio' | 'img'
+interface HTMLSourceAttributes {
+    src: string,
+    type?: string,
+    media: string
+}
+interface HTMLBlockMediaProperties {
+    type: HTMLBlockMediaType
+    sources?: HTMLSourceAttributes[]
+    src?: string
+    alt: string
+    width?: number
+    height?: number
+}
+
+
 export interface ElementPropertes extends DisplayProperties, InputProperties { }
 
 export interface ElementManifest {
