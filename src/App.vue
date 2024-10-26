@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-white dark:bg-gray-900 text-black flex flex-col h-screen overflow-hidden dark:text-white"
+        class="bg-white dark:bg-surface-900 text-black flex flex-col h-screen overflow-hidden dark:text-white"
     >
         <AppBar v-model:theme="theme" class="flex-none" />
         <div class="flex gap-4 mx-auto overflow-hidden flex-auto">
@@ -20,7 +20,7 @@
                             'w-full text-start transition p-2 mb-2 rounded  ',
                             selectedComponent?.name === comp.meta.name
                                 ? 'text-[var(--p-primary-500)] dark:bg-[var(--p-primary-950)] bg-[var(--p-primary-50)]'
-                                : 'hover:bg-gray-100 dark:hover:bg-gray-800',
+                                : 'hover:bg-surface-100 dark:hover:bg-surface-800',
                         ]"
                         @click="selectComponent(comp)"
                     >
@@ -63,7 +63,6 @@
                             formComponents[currentComponentIndex].inputProps
                                 ?.error
                         "
-                        :readonly="true"
                     />
                 </Transition>
             </div>
@@ -125,8 +124,6 @@ import {
 } from 'vue'
 import AppBar from './AppBar.vue'
 import type { ElementManifest } from './types'
-import { useTheme } from './utils/apply-theme'
-import type { ThemeData } from './types/theme'
 const state = reactive<Record<string, unknown>>({})
 
 interface IComponent {
@@ -205,67 +202,5 @@ onMounted(async () => {
     if (formComponents.value.length > 0) {
         selectedComponent.value = formComponents.value[0]
     }
-
-    const themeData: Ref<ThemeData> = ref({
-        tailwind: {
-            container: {
-                padding: 'p-4',
-                baseBackground: 'bg-white',
-                baseTextColor: 'text-black',
-                baseFontSize: 'text-base',
-            },
-            button: {
-                padding: 'py-2 px-4',
-                baseBackground: 'bg-blue-500',
-                baseTextColor: 'text-white',
-                borderRadius: 'rounded-lg',
-            },
-            input: {
-                baseBorder: 'border',
-                basePadding: 'p-2',
-                borderColor: 'border-gray-300',
-                borderRadius: 'rounded-md',
-            },
-        },
-        variables: {
-            container: {
-                backgroundColor: '#ffffff',
-                textColor: '#000000',
-                fontSize: '16px',
-            },
-            button: {
-                backgroundColor: '#3b82f6',
-                textColor: '#ffffff',
-                borderRadius: '0.5rem',
-            },
-            input: {
-                borderColor: '#d1d5db',
-                borderRadius: '0.375rem',
-                backgroundColor: '#ffffff',
-                textColor: '#000000',
-            },
-            error: {
-                textColor: '#ef4444',
-            },
-        },
-        values: {
-            container: {
-                backgroundColor: '#ffffff',
-                textColor: '#000000',
-                fontSize: '16px',
-            },
-            button: {
-                backgroundColor: '#3b82f6',
-                textColor: '#ffffff',
-                borderRadius: '0.5rem',
-            },
-            input: {
-                borderColor: '#d1d5db',
-                borderRadius: '0.375rem',
-            },
-        },
-    })
-
-    useTheme(themeData)
 })
 </script>

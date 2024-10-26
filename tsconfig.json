@@ -1,26 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "paths": {
-      "~/*": ["./src/*"]
-    },
-    "resolveJsonModule": true,
-    "types": [
-      "vite/client",
-      "unplugin-vue-components",
-      "unplugin-icons/types/vue"
-    ],
-    "allowJs": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "skipLibCheck": true
-  },
-  "exclude": ["dist", "node_modules", "eslint.config.js", "*.css"]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }

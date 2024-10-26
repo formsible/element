@@ -57,7 +57,7 @@ export interface InputProperties {
     scale?: number
     choices?: InputChoice[]
     validations?: Validation[]
-    props?: Record<string, never>
+    props?: Record<string, any>
 }
 export interface DisplayProperties {
     component: DisplayComponentType
@@ -69,25 +69,25 @@ export interface DisplayProperties {
     height?: string
     src?: string
     tag?:
-        | 'h1'
-        | 'h2'
-        | 'h3'
-        | 'h4'
-        | 'h5'
-        | 'h6'
-        | 'p'
-        | 'blockquote'
-        | 'ul'
-        | 'ol'
-        | 'img'
-        | 'code'
-        | 'pre'
-        | 'hr'
-        | undefined // html tag, h1, h2, p, ...
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'p'
+    | 'blockquote'
+    | 'ul'
+    | 'ol'
+    | 'img'
+    | 'code'
+    | 'pre'
+    | 'hr'
+    | undefined // html tag, h1, h2, p, ...
     content?: string // content of the tag
     items?: string[]
 }
-export interface ElementPropertes extends DisplayProperties, InputProperties {}
+export interface ElementPropertes extends DisplayProperties, InputProperties { }
 
 export interface ElementManifest {
     meta: {
