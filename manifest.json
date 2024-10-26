@@ -805,23 +805,6 @@
         },
         {
             "meta": {
-                "name": "Horizontal Rule",
-                "enabled": false,
-                "description": "HTML <hr> tag",
-                "icon": "material-symbols:horizontal-rule"
-            },
-            "init": {
-                "type": "display",
-                "properties": {
-                    "display": {
-                        "component": "html_block",
-                        "tag": "hr"
-                    }
-                }
-            }
-        },
-        {
-            "meta": {
                 "name": "IconDisplay",
                 "enabled": true,
                 "description": "Display an icon",
