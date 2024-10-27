@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { DisplayProperties } from '../../types'
+import type { IconDisplayProperties } from '../../../types'
 
 interface Props {
-    display: DisplayProperties
+    display: IconDisplayProperties
 }
 defineProps<Props>()
 </script>

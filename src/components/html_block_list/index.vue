@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HTMLBlockListProperties } from '../../types'
+import { HTMLBlockListProperties } from '../../../types'
 
 interface Props {
     display: HTMLBlockListProperties

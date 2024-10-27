@@ -131,3 +131,5 @@ dist
 
 #vite config timestamp
 /vite.config.ts.timestamp-*.mjs
+
+pnpm-lock.yaml

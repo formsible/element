@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineModel, defineProps } from 'vue'
 import InputNumber from 'primevue/inputnumber'
-import type { InputProperties } from '../../types'
+import type { InputProperties } from '../../../types'
 
 interface Props {
     input: InputProperties
