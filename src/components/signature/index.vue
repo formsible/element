@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import type { PropType } from 'vue'
 import { defineModel, computed, defineProps, onMounted, ref } from 'vue'
 import SignaturePad from 'signature_pad'
@@ -37,9 +37,9 @@ onMounted(() => {
         })
 
         // Listen to SignaturePad events to update the model with the signature data
-        signaturePad.onEnd = () => {
-            model.value = signaturePad?.toDataURL() || ''
-        }
+        // signaturePad.onEnd = () => {
+        //     model.value = signaturePad?.toDataURL() || ''
+        // }
     }
 })
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, type PropType } from 'vue'
-import { IFile } from '../../../types'
+import { IFile } from '~/types'
 
 defineProps({
     file: {

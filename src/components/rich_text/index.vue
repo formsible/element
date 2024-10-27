@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, type PropType, ref, computed } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import Editor from '@tinymce/tinymce-vue'
 
 const props = defineProps({

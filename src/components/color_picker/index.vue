@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, type PropType, ref, computed } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import ColorPicker from 'primevue/colorpicker'
 
 const props = defineProps({

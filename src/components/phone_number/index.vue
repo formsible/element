@@ -4,7 +4,7 @@ import { ref, defineProps, defineEmits, computed, watch } from 'vue'
 import Select from 'primevue/select'
 import InputNumber from 'primevue/inputnumber'
 import countryCodes from '../../assets/country-codes.json' // Adjust the path as needed
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 
 // Define props
 const props = defineProps({

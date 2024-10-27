@@ -13,13 +13,11 @@ import Email from './components/email/index.vue'
 import EmbedDocument from './components/embed_document/index.vue'
 import EmbedSlides from './components/embed_slides/index.vue'
 import FileUpload from './components/file_upload/index.vue'
-import IconDisplay from './components/icon_display/index.vue'
 import ImageChoice from './components/image_choice/index.vue'
 import LikertScale from './components/likert_scale/index.vue'
 import List from './components/list/index.vue'
 import LocaleSelector from './components/locale_selector/index.vue'
 import LongText from './components/long_text/index.vue'
-import Matrix from './components/matrix/index.vue'
 import MultipleChoice from './components/multiple_choice/index.vue'
 import NetPromoterScore from './components/net_promoter_score/index.vue'
 import Number from './components/number/index.vue'
@@ -51,13 +49,11 @@ export {
   EmbedDocument,
   EmbedSlides,
   FileUpload,
-  IconDisplay,
   ImageChoice,
   LikertScale,
   List,
   LocaleSelector,
   LongText,
-  Matrix,
   MultipleChoice,
   NetPromoterScore,
   Number,

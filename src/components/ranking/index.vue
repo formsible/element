@@ -8,7 +8,7 @@ import {
     type PropType,
 } from 'vue'
 import { useSortable } from '@vueuse/integrations/useSortable'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 
 const props = defineProps({
     input: {

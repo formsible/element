@@ -1,41 +1,21 @@
 <script setup lang="ts">
-import {
-    defineProps,
-    defineModel,
-    defineEmits,
-    computed,
-    type PropType,
-} from 'vue'
 import FileUpload from 'primevue/fileupload'
+import type { FileUploadUploaderEvent } from 'primevue/fileupload'
 import Button from 'primevue/button'
 import FileCard from './file-card.vue'
-import type { IFile, InputProperties, Validation } from '../../../types'
+import type { IFile, InputProperties, Validation } from '~/types'
+import { computed } from 'vue'
 
 // Define props
-const props = defineProps({
-    input: {
-        type: Object as PropType<InputProperties>,
-        required: true,
-    },
-    theme: {
-        type: Object,
-        default: () => ({
-            container: '',
-            label: 'w-full text-black dark:text-white',
-            input: 'w-full',
-            description: 'text-sm text-slate-700 dark:text-slate-300',
-            error: 'text-red-600 dark:text-red-400',
-        }),
-    },
-    error: {
-        type: String,
-        default: '',
-    },
-    readonly: {
-        type: Boolean,
-        default: false,
-    },
+interface Props {
+    input: InputProperties
+    readonly?: boolean
+    error?: string
+}
+const props = withDefaults(defineProps<Props>(), {
+    readonly: false,
 })
+
 const files = defineModel<IFile[]>('files', { default: [] })
 // Define emits
 const emit = defineEmits(['remove'])
@@ -55,12 +35,14 @@ const maxFiles = computed(() => {
 })
 
 // Handle file selection
-const onFileSelected = (event: { files: File[] }) => {
+const onFileSelected = (event: FileUploadUploaderEvent) => {
     const selectedFiles: IFile[] =
-        event.files.map((file) => ({
-            file,
-            status: 'queued',
-        })) || []
+        (Array.isArray(event.files) ? event.files : [event.files]).map(
+            (file: any) => ({
+                file,
+                status: 'queued',
+            }),
+        ) || []
     files.value = files.value?.concat(selectedFiles).slice(0, maxFiles.value)
 }
 
@@ -77,7 +59,7 @@ const onFileRemove = (file: IFile) => {
 </script>
 
 <template>
-    <div :class="theme.container">
+    <div>
         <p class="font-medium">
             {{ props.input.label }}
             <span v-if="isRequired" class="text-red-500">*</span>
@@ -116,7 +98,7 @@ const onFileRemove = (file: IFile) => {
             </template>
         </FileUpload>
 
-        <small v-if="error" :id="`${input.key}-help`" :class="theme.error">
+        <small v-if="error" :id="`${input.key}-help`">
             {{ error }}
         </small>
     </div>

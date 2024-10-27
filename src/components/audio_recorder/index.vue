@@ -11,7 +11,7 @@ import {
 import WaveSurfer from 'wavesurfer.js'
 import Button from 'primevue/button'
 import dayjs from 'dayjs'
-import type { IFile, InputProperties, Validation } from '../../../types'
+import type { IFile, InputProperties, Validation } from '~/types'
 
 // Define props
 const props = defineProps({

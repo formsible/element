@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import type { ActionRedirectProperties } from '../../types'
+import type { ActionRedirectProperties } from '~/types'
 
 interface Props {
     display: ActionRedirectProperties

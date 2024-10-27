@@ -39,7 +39,7 @@ const listEl: Ref<HTMLElement | null> = ref(null)
 watch(
     () => props.input.props,
     () => {
-        list.value = (props.input?.props?.items || []).map((i) => {
+        list.value = (props.input?.props?.items || []).map((i: any) => {
             return {
                 id: crypto.randomUUID(),
                 label: i,

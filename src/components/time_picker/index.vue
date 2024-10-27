@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, defineModel, defineProps, type PropType } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import DatePicker from 'primevue/datepicker'
 
 const props = defineProps({

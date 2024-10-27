@@ -21,7 +21,11 @@
         "noFallthroughCasesInSwitch": true,
         "noUncheckedSideEffectImports": true,
 
-        "types": ["node", "unplugin-icons/types/vue"]
+        "types": ["node", "vite/client", "unplugin-icons/types/vue"],
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["src/*"]
+        }
     },
     "include": [
         "src/**/*.ts",

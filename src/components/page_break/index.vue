@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, type PropType } from 'vue'
-import type { DisplayProperties } from '../../../types'
+import type { DisplayProperties } from '~/types'
 
 defineProps({
     display: {

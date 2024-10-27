@@ -7,7 +7,7 @@ import {
     nextTick,
     type PropType,
 } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import type { EditorView } from '@codemirror/view'
 import { Codemirror } from 'vue-codemirror'
 import { json } from '@codemirror/lang-json'

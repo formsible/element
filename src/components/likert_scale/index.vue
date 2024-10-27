@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineModel, computed, defineProps, type PropType } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import RadioButton from 'primevue/radiobutton'
 
 const props = defineProps({

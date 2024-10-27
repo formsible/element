@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref, computed, type PropType } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import Calendar from 'primevue/calendar'
 import Button from 'primevue/button'
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, defineProps, type PropType, ref } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import Slider from 'primevue/slider'
 
 const props = defineProps({

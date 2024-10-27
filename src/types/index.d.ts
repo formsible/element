@@ -66,6 +66,19 @@ export interface DisplayProperties {
     icon?: string // Icon name or path
 }
 
+
+// Embed document properties
+interface EmbedPropeties extends DisplayProperties {
+    src: string
+    width?: number
+    height?: number
+}
+
+// Redirect component
+interface ActionRedirectProperties extends DisplayProperties {
+    src: string
+}
+
 // HTML content block
 type HTMLBlockContentType = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'blockquote' | 'pre' | 'code'
 interface HtmlBlockContentProperties extends DisplayProperties {

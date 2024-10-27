@@ -123,7 +123,7 @@ import {
     watch,
 } from 'vue'
 import AppBar from './AppBar.vue'
-import type { ElementManifest } from '../types'
+import type { ElementManifest } from '~/types'
 const state = reactive<Record<string, unknown>>({})
 
 interface IComponent {

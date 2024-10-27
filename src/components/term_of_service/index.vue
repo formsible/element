@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, computed, defineModel, type PropType } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 import Checkbox from 'primevue/checkbox'
 
 const props = defineProps({

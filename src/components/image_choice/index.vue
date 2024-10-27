@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, defineModel, defineProps, type PropType } from 'vue'
-import type { InputProperties } from '../../../types'
+import type { InputProperties } from '~/types'
 
 const props = defineProps({
     input: {
