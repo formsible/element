@@ -14,7 +14,10 @@ export default defineConfig({
       resolvers: [PrimeVueResolver()],
     }),
     Icons(),
-    dts()
+    dts({
+      include: ['src/components/**/*.vue', 'src/types/index.ts', 'src/index.ts'],
+      insertTypesEntry: true,
+    })
   ],
   resolve: {
     alias: {
@@ -28,10 +31,22 @@ export default defineConfig({
       fileName: 'element',
     },
     rollupOptions: {
-      external: ['vue'],
+      external: [
+        'vue',
+        '@vueuse/core',
+        '@vueuse/integrations',
+        'primevue',
+        'primeicons',
+        'tailwindcss-primeui',
+      ],
       output: {
         globals: {
           vue: 'Vue',
+          '@vueuse/core': 'VueUseCore',
+          '@vueuse/integrations': 'VueUseIntegrations',
+          primevue: 'PrimeVue',
+          primeicons: 'PrimeIcons',
+          'tailwindcss-primeui': 'TailwindPrimeUI',
         },
       },
       plugins: [
