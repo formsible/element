@@ -10,11 +10,8 @@ import DataTable from './components/data_table/index.vue'
 import DatePicker from './components/date_picker/index.vue'
 import Dropdown from './components/dropdown/index.vue'
 import Email from './components/email/index.vue'
-
-import type { EmbedProperties } from './types/index'
-import { default as EmbedDocument } from './components/embed_document/index.vue'
+import EmbedDocument from './components/embed_document/index.vue'
 import EmbedSlides from './components/embed_slides/index.vue'
-
 import FileUpload from './components/file_upload/index.vue'
 import ImageChoice from './components/image_choice/index.vue'
 import LikertScale from './components/likert_scale/index.vue'
@@ -72,8 +69,4 @@ export {
   HtmlBlockContent,
   HtmlBlockList,
   HtmlBlockMedia
-}
-
-export type {
-  EmbedProperties
 }
