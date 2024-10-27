@@ -1,4 +1,4 @@
-interface IFile {
+export interface IFile {
     id?: string
     url?: string
     readonly file: File
@@ -68,20 +68,20 @@ export interface DisplayProperties {
 
 
 // Embed document properties
-interface EmbedPropeties extends DisplayProperties {
+export interface EmbedPropeties extends DisplayProperties {
     src: string
     width?: number
     height?: number
 }
 
 // Redirect component
-interface ActionRedirectProperties extends DisplayProperties {
+export interface ActionRedirectProperties extends DisplayProperties {
     src: string
 }
 
 // HTML content block
 type HTMLBlockContentType = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'blockquote' | 'pre' | 'code'
-interface HtmlBlockContentProperties extends DisplayProperties {
+export interface HtmlBlockContentProperties extends DisplayProperties {
     type: HTMLBlockContentType
     content: string
 }
@@ -92,7 +92,7 @@ type HTMLBlockListType = 'ordered' | 'unordered'
 //     term: string
 //     descriptions: (string | DescriptionItem)[]
 // }
-interface HTMLBlockListProperties extends DisplayProperties {
+export interface HTMLBlockListProperties extends DisplayProperties {
     type: HTMLBlockListType
     items: string[]
 }
@@ -104,7 +104,7 @@ interface HTMLSourceAttributes {
     type?: string,
     media: string
 }
-interface HTMLBlockMediaProperties {
+export interface HTMLBlockMediaProperties {
     type: HTMLBlockMediaType
     sources?: HTMLSourceAttributes[]
     src?: string
@@ -114,8 +114,6 @@ interface HTMLBlockMediaProperties {
     height?: number
 }
 
-
-export interface ElementPropertes extends DisplayProperties, InputProperties { }
 
 export interface ElementManifest {
     meta: {
