@@ -10,7 +10,7 @@
     "module": "dist/element.js",
     "exports": {
         ".": {
-            "import": "./dist/element.es.js",
+            "import": "./dist/element.js",
             "require": "./dist/element.umd.js"
         },
         "./manifest.json": "./dist/manifest.json"
