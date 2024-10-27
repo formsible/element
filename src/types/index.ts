@@ -1,25 +1,48 @@
+// ==============================
+// File Handling
+// ==============================
+/**
+ * Represents a file object with optional properties for ID, URL, duration, and status.
+ */
 export interface IFile {
-    id?: string
-    url?: string
-    readonly file: File
-    duration?: number
-    status?: 'queued' | 'pending' | 'uploaded' | 'error'
+    id?: string; // Optional unique identifier for the file
+    url?: string; // Optional URL of the file
+    readonly file: File; // The actual File object
+    duration?: number; // Optional duration for media files
+    status?: 'queued' | 'pending' | 'uploaded' | 'error'; // Current status of the file
 }
 
+// ==============================
+// Input Choices
+// ==============================
+/**
+ * Describes choices available for inputs, containing a label, value, and source.
+ */
 interface InputChoice {
-    label: string
-    value: string
-    src: string
+    label: string; // Display label for the choice
+    value: string; // Value associated with the choice
+    src: string; // Source path or URL related to the choice
 }
-type DisplayComponentType =
+
+// ==============================
+// Component Types
+// ==============================
+/**
+ * Different types of display components.
+ */
+export type DisplayComponentType =
     | 'html'
     | 'icon'
     | 'video'
     | 'slide'
     | 'document'
     | 'locale_selector'
-    | 'page_break'
-type InputComponentType =
+    | 'page_break';
+
+/**
+ * Different types of input components.
+ */
+export type InputComponentType =
     | 'address'
     | 'captcha'
     | 'checkboxes'
@@ -42,224 +65,152 @@ type InputComponentType =
     | 'signature'
     | 'slider'
     | 'time_picker'
-    | 'website'
-interface Validation {
-    rule: 'required' | 'maxLength' | string
-    params?: string[]
+    | 'website';
+
+// ==============================
+// Validation
+// ==============================
+/**
+ * Defines rules for input validation, such as required fields or maximum length.
+ */
+export interface Validation {
+    rule: 'required' | 'maxLength' | string; // Validation rule type
+    params?: string[]; // Optional parameters for the rule
 }
+
+// ==============================
+// Input Properties
+// ==============================
+/**
+ * Properties for input components in the form.
+ */
 export interface InputProperties {
-    key: string
-    repeatable?: boolean
-    component?: InputComponentType
-    label: string
-    description?: string
-    placeholder?: string
-    scale?: number
-    choices?: InputChoice[]
-    validations?: Validation[]
-    props?: Record<string, any>
+    key: string; // Unique key for the input
+    repeatable?: boolean; // Indicates if the input can be repeated
+    component?: InputComponentType; // Type of input component
+    label: string; // Display label for the input
+    description?: string; // Optional description for the input
+    placeholder?: string; // Placeholder text for the input
+    scale?: number; // Optional scale value
+    choices?: InputChoice[]; // Optional choices for the input
+    validations?: Validation[]; // Optional validations for the input
+    props?: Record<string, any>; // Additional properties for the input
 }
 
-// Display
+// ==============================
+// Display Properties
+// ==============================
+/**
+ * Properties for display components.
+ */
 export interface DisplayProperties {
-    component: DisplayComponentType
-    icon?: string // Icon name or path
+    component: DisplayComponentType; // Type of display component
+    icon?: string; // Optional icon name or path
+}
+
+// ==============================
+// Embedded Document Properties
+// ==============================
+/**
+ * Properties for embedded documents.
+ */
+export interface EmbedProperties extends DisplayProperties {
+    src: string; // Source URL of the embedded document
+    width?: number; // Optional width for the embedded document
+    height?: number; // Optional height for the embedded document
 }
 
 
-// Embed document properties
-export interface EmbedPropeties extends DisplayProperties {
-    src: string
-    width?: number
-    height?: number
-}
-
-// Redirect component
+// ==============================
+// Redirect Properties
+// ==============================
+/**
+ * Properties for redirect.
+ */
 export interface ActionRedirectProperties extends DisplayProperties {
-    src: string
+    src: string; // Source URL of the embedded document
 }
 
-// HTML content block
-type HTMLBlockContentType = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'blockquote' | 'pre' | 'code'
+// ==============================
+// HTML Content Blocks
+// ==============================
+/**
+ * Different types of HTML block content.
+ */
+type HTMLBlockContentType = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'blockquote' | 'pre' | 'code';
+
+/**
+ * Properties for HTML content blocks.
+ */
 export interface HtmlBlockContentProperties extends DisplayProperties {
-    type: HTMLBlockContentType
-    content: string
+    type: HTMLBlockContentType; // Type of HTML block
+    content: string; // Content of the HTML block
 }
 
-// HTML list block
-type HTMLBlockListType = 'ordered' | 'unordered'
-// interface DescriptionItem {
-//     term: string
-//     descriptions: (string | DescriptionItem)[]
-// }
+// ==============================
+// HTML List Blocks
+// ==============================
+/**
+ * Different types of HTML lists.
+ */
+type HTMLBlockListType = 'ordered' | 'unordered';
+
+/**
+ * Properties for HTML list blocks.
+ */
 export interface HTMLBlockListProperties extends DisplayProperties {
-    type: HTMLBlockListType
-    items: string[]
+    type: HTMLBlockListType; // Type of HTML list
+    items: string[]; // Array of items in the list
 }
 
-//HTML media block
-type HTMLBlockMediaType = 'video' | 'audio' | 'img'
+// ==============================
+// HTML Media Blocks
+// ==============================
+/**
+ * Different types of HTML media.
+ */
+type HTMLBlockMediaType = 'video' | 'audio' | 'img';
+
+/**
+ * Attributes for media sources.
+ */
 interface HTMLSourceAttributes {
-    src: string,
-    type?: string,
-    media: string
+    src: string; // Source URL for the media
+    type?: string; // Optional media type (e.g., "video/mp4")
+    media: string; // Media query for the source
 }
+
+/**
+ * Properties for HTML media blocks.
+ */
 export interface HTMLBlockMediaProperties {
-    type: HTMLBlockMediaType
-    sources?: HTMLSourceAttributes[]
-    src?: string
-    alt: string
-    width?: number
-    controls?: boolean
-    height?: number
+    type: HTMLBlockMediaType; // Type of media block
+    sources?: HTMLSourceAttributes[]; // Optional sources for the media
+    src?: string; // Optional source URL for the media
+    alt: string; // Alternative text for the media
+    width?: number; // Optional width for the media
+    controls?: boolean; // Indicates if media controls are available
+    height?: number; // Optional height for the media
 }
 
-
+// ==============================
+// Element Manifest
+// ==============================
+/**
+ * Represents the metadata and initial properties for a UI component.
+ */
 export interface ElementManifest {
     meta: {
-        name: string
-        enabled: boolean
-        description: string
-        icon: string
-    }
+        name: string; // Name of the component
+        enabled: boolean; // Indicates if the component is enabled
+        description: string; // Description of the component
+        icon: string; // Icon for the component
+    };
     init: {
-        type: 'input' | 'display'
+        type: 'input' | 'display'; // Type of the component
         properties: {
-            input: InputProperties
-            display: DisplayProperties
-        }
-    }
-}
-
-export type FontFamily =
-    // Display
-    | 'Playfair Display'
-    | 'Titillium Web'
-    | 'Bebas Neue'
-    // Handwriting
-    | 'Dancing Script'
-    | 'Pacifico'
-    | 'Caveat'
-    // Monospace
-    | 'Roboto Mono'
-    | 'Inconsolata'
-    | 'Source Code Pro'
-    // Serif
-    | 'Merriweather'
-    | 'Lora'
-    // Slab Serif
-    | 'Roboto Slab'
-    | 'Arvo'
-    | 'Slabo 27px'
-    // Sans serif
-    | 'Roboto'
-    | 'Open Sans'
-    | 'Montserrat'
-    | 'Arial'
-    | 'default'
-export type FontClassification =
-    | 'Serif'
-    | 'Slab Serif'
-    | 'Sans Serif'
-    | 'Display'
-    | 'Handwriting'
-    | 'Monospace'
-
-export type Size = 'small' | 'medium' | 'large' | 'default' | 'Extra Large'
-export type FillType = 'Fill' | 'Outlined' | 'Bottom Border'
-export type Color =
-    | 'Midnight Blue'
-    | 'OliveDrab'
-    | 'Black'
-    | 'BurlyWood'
-    | 'DarkCyan'
-    | 'DarkGoldenRod'
-    | 'DarkGreen'
-    | 'DarkMagenta'
-    | 'DarkOliveGreen'
-    | 'DarkSlateBlue'
-    | 'DarkRed'
-    | 'DarkSlateGray'
-export type BgColor =
-    | 'Alice Blue'
-    | 'Antique White'
-    | 'Dark Sea Green'
-    | 'Light Sky Blue'
-    | 'White'
-    | 'Lavender'
-    | 'Floral White'
-    | 'Honey Dew'
-    | 'Mint Cream'
-    | 'Pale Green'
-    | 'Pale Turquoise'
-
-export type ColorApplicationArea = 'Outline' | 'Background'
-export type BackgroundType = 'Image' | 'Color'
-
-// Conditional type for formBackground
-export interface Style {
-    fontFamily: Record<FontFamily, string>
-    formBackground: Record<string | BgColor, string>
-    radius: Record<Size, string>
-    bg: Record<FillType, string>
-    color: Record<ColorApplicationArea, Record<Color, string>>
-}
-
-// Configuration for font groups in the style options
-interface FontGroupConfiguration {
-    optionLabel: string
-    optionGroupLabel: string
-    optionGroupChildren: string
-}
-
-// Represents an option for a specific style property
-export interface StylePropertyOption {
-    availableOptions: any[] // Consider specifying a more explicit type instead of 'any' if possible
-    label: string // Descriptive label for the property
-    modelKey: ThemePropertyKey // Key to map this option to the theme state
-    filter?: boolean // Option to enable filtering of the options
-    group?: FontGroupConfiguration // Grouping configuration, if applicable
-}
-
-// Configuration for the overall theme
-export interface ThemeConfiguration {
-    form: {
-        fontFamily: string
-        backgroundColor: string
-    }
-    input: {
-        borderRadius: string
-        background: string
-        textColor: string
-    }
-    button: {
-        borderRadius: string
-        fontFamily: string
-        textColor: string
-    }
-}
-
-// Define keys for properties that can be used in theme state
-export type ThemePropertyKey =
-    | 'fontFamily'
-    | 'borderRadius'
-    | 'background'
-    | 'primaryColor'
-    | 'backgroundColor'
-
-// Preset for themes, could be a custom or predefined, used in forms
-export interface Theme
-    extends Record<
-        ThemePropertyKey,
-        string | FontFamily | Size | FillType | Color | BgColor
-    > {
-    fontFamily: FontFamily
-    borderRadius: Size
-    background: FillType
-    primaryColor: Color
-    backgroundColor: BgColor | string
-}
-
-export interface PredefinedPreset extends Theme {
-    name: string
+            input: InputProperties; // Input properties
+            display: DisplayProperties; // Display properties
+        };
+    };
 }

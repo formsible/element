@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { EmbedPropeties } from '~/types'
+import type { EmbedProperties } from '~/types'
 
 interface Props {
-    display: EmbedPropeties
+    display: EmbedProperties
 }
 const props = defineProps<Props>()
 
