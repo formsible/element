@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HtmlBlockContentProperties } from '../../types'
+import { HtmlBlockContentProperties } from '~/types'
 
 interface Props {
     display: HtmlBlockContentProperties
