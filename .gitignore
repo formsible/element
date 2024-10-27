@@ -133,3 +133,5 @@ dist
 /vite.config.ts.timestamp-*.mjs
 
 pnpm-lock.yaml
+
+components.d.ts

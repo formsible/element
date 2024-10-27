@@ -27,12 +27,5 @@
             "~/*": ["src/*"]
         }
     },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue",
-        "types/index.d.ts",
-        "types/theme.d.ts",
-        "tests/shims-vue.d.ts"
-    ]
+    "include": ["src/**/*.ts", "src/**/*.vue", "types/index.d.ts"]
 }
