@@ -35,6 +35,10 @@ export default [
         },
     },
     {
-        ignores: ['dist'],
+        files: ['**/*.d.ts'], // Add this block for .d.ts files
+        rules: {
+            '@typescript-eslint/no-empty-interface': 'off', // Disable the rule for .d.ts files
+            '@typescript-eslint/no-empty-object-type': 'off', // Disable for empty object type too
+        },
     },
 ]

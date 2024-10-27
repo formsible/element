@@ -6,6 +6,7 @@
     "files": [
         "dist"
     ],
+    "types": "dist/index.d.ts",
     "main": "dist/element.umd.js",
     "module": "dist/element.js",
     "exports": {
@@ -18,7 +19,8 @@
     "license": "MIT",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "vue-tsc && vite build",
+        "build:types": "vue-tsc --declaration --emitDeclarationOnly",
         "serve": "vite preview",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",

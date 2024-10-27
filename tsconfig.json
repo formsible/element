@@ -27,5 +27,5 @@
             "~/*": ["src/*"]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.vue", "types/index.d.ts"]
+    "include": ["src/**/*.ts", "src/**/*.vue"]
 }
