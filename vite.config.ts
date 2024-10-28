@@ -16,7 +16,7 @@ export default defineConfig({
     }),
     Icons(),
     dts({
-      include: ['src/components/**/*.vue', 'src/types/index.ts', 'src/index.ts'],
+      include: ['src/components/**/*.vue', 'src/types/**/*.ts', 'src/index.ts'],
       insertTypesEntry: true,
     })
   ],
