@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineModel, defineProps } from 'vue'
 import InputNumber from 'primevue/inputnumber'
-import type { InputProperties } from '../../types'
+import type { InputProperties } from '~/types'
 
 interface Props {
     input: InputProperties
@@ -27,7 +27,6 @@ const isRequired = computed(() =>
             :id="input.key"
             v-model="model"
             :input-id="input.key"
-            :placeholder="input?.placeholder || 'Enter a number'"
             v-bind="input.props"
         />
         <!-- if error -->

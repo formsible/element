@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, defineModel, computed, type PropType } from 'vue'
 import TextArea from 'primevue/textarea'
-import type { InputProperties } from '../../types'
+import type { InputProperties } from '~/types'
 
 // Define props
 const props = defineProps({
@@ -51,8 +51,7 @@ const isRequired = computed(() =>
             :input-id="props.input.key"
             :class="props.theme.input"
             rows="4"
-            :placeholder="props.input?.placeholder || 'Enter your address'"
-            v-bind="{ ...$attrs, ...props.input.props }"
+            v-bind="props.input.props"
         />
         <!-- if error -->
         <small

@@ -72,7 +72,6 @@
                         "label": "List",
                         "component": "list",
                         "description": "A sortable list of items.",
-                        "placeholder": "Add an item",
                         "props": {
                             "items": ["First item", "Second item"]
                         }
@@ -729,7 +728,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_list",
-                        "tag": "ordered",
+                        "type": "ordered",
                         "items": ["First item", "Second item", "Third item"]
                     }
                 }
@@ -805,26 +804,6 @@
         },
         {
             "meta": {
-                "name": "IconDisplay",
-                "enabled": true,
-                "description": "Display an icon",
-                "icon": "material-symbols:emoji-symbols"
-            },
-            "init": {
-                "type": "display",
-                "properties": {
-                    "display": {
-                        "label": "Icon",
-                        "component": "icon_display",
-                        "icon": "pi pi-check-circle",
-                        "alt": "Icon display",
-                        "color": "text-blue-500"
-                    }
-                }
-            }
-        },
-        {
-            "meta": {
                 "name": "ActionRedirect",
                 "enabled": true,
                 "description": "Display a button that redirects to a URL after a countdown",
@@ -837,10 +816,7 @@
                         "label": "Action Redirect",
                         "component": "action_redirect",
                         "src": "https://example.com",
-                        "content": "You are being redirected to {url} in {x} seconds",
-                        "theme": {
-                            "buttonClass": "bg-blue-500 text-white font-bold py-2 px-4 rounded"
-                        }
+                        "content": "You are being redirected to {url} in {x} seconds"
                     }
                 }
             }

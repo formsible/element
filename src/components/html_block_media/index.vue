@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HTMLBlockMediaProperties } from '../../types'
+import { HTMLBlockMediaProperties } from '~/types'
 
 interface Props {
     display: HTMLBlockMediaProperties

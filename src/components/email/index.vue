@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineModel, defineProps, type PropType } from 'vue'
 import InputText from 'primevue/inputtext'
-import type { InputProperties } from '../../types'
+import type { InputProperties } from '~/types'
 
 const props = defineProps({
     input: {
@@ -44,8 +44,7 @@ const isRequired = computed(() =>
             :input-id="input.key"
             :class="theme.input"
             type="email"
-            :placeholder="input?.placeholder || 'Enter your email'"
-            v-bind="{ ...$attrs, ...input.props }"
+            v-bind="input.props"
         />
         <!-- if error -->
         <small v-if="error" :id="`${input.key}-help`" :class="theme.error">{{

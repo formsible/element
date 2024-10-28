@@ -11,7 +11,7 @@ import {
 import WaveSurfer from 'wavesurfer.js'
 import Button from 'primevue/button'
 import dayjs from 'dayjs'
-import type { IFile, InputProperties, Validation } from '../../types'
+import type { IFile, InputProperties, Validation } from '~/types'
 
 // Define props
 const props = defineProps({
@@ -55,7 +55,6 @@ const audioUrl = ref<string | null>(null)
 const waveSurfer = ref<WaveSurfer | null>(null)
 const isPlaying = ref(false)
 const recordingTime = ref(0)
-// eslint-disable-next-line no-undef
 const intervalId = ref<NodeJS.Timeout | null>(null)
 const audioDuration = ref(0)
 

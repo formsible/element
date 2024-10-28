@@ -4,7 +4,7 @@ import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
-import type { InputProperties } from '../../types'
+import type { InputProperties } from '~/types'
 
 interface DataTableProperties extends InputProperties {
     fields: string[]

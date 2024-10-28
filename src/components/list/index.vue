@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { PropType, ref, watch, type Ref } from 'vue'
+import { ref, watch } from 'vue'
+import type { Ref } from 'vue'
 import { useSortable } from '@vueuse/integrations/useSortable'
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
@@ -7,30 +8,13 @@ import DragIcon from '~icons/material-symbols/drag-pan-rounded'
 import TrashIcon from '~icons/material-symbols/delete'
 import { InputProperties } from '~/types'
 
-const props = defineProps({
-    input: {
-        type: Object as PropType<InputProperties>,
-        required: true,
-    },
-    theme: {
-        type: Object,
-        default: () => ({
-            container: '',
-            label: 'w-full text-black dark:text-white', // Added text color for label
-            input: 'w-full h-32 bg-white dark:bg-surface-800 text-black dark:text-white', // Added background and text color for TextArea
-            description: 'text-sm text-slate-700 dark:text-slate-300',
-            error: 'text-red-600 dark:text-red-400', // Added dark mode color for error
-        }),
-    },
-    error: {
-        type: String,
-        default: '',
-    },
-    readonly: {
-        type: Boolean,
-        default: false,
-    },
-})
+interface Props {
+    input: InputProperties
+    error?: string
+    readonly?: boolean
+}
+
+const props = defineProps<Props>()
 const model = defineModel<string[]>({ default: [] })
 
 const list: Ref<{ label: string; id: string }[]> = ref([])
@@ -39,7 +23,7 @@ const listEl: Ref<HTMLElement | null> = ref(null)
 watch(
     () => props.input.props,
     () => {
-        list.value = (props.input?.props?.items || []).map((i) => {
+        list.value = (props.input?.props?.items || []).map((i: any) => {
             return {
                 id: crypto.randomUUID(),
                 label: i,
