@@ -1,4 +1,4 @@
-// src/index.ts
+// Exporting all components
 import Address from './components/address/index.vue'
 import AudioRecorder from './components/audio_recorder/index.vue'
 import ActionRedirect from './components/action_redirect/index.vue'
@@ -71,4 +71,5 @@ export {
   HtmlBlockMedia
 }
 
+// Exporting all types
 export * from './types/index'
