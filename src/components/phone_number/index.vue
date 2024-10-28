@@ -104,7 +104,7 @@ const isRequired = computed(() =>
                 v-model="model.phoneNumber"
                 :input-id="props.input.key"
                 :class="props.theme.phoneInput"
-                :placeholder="props.input?.placeholder || 'Enter phone number'"
+                :v-bind="input.props"
                 mode="decimal"
                 :min="10"
                 :use-grouping="false"

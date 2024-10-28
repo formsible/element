@@ -27,7 +27,6 @@ const isRequired = computed(() =>
             :id="input.key"
             v-model="model"
             :input-id="input.key"
-            :placeholder="input?.placeholder || 'Enter a number'"
             v-bind="input.props"
         />
         <!-- if error -->

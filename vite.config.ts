@@ -11,11 +11,12 @@ export default defineConfig({
   plugins: [
     vue(),
     Components({
+      dts: true,
       resolvers: [PrimeVueResolver()],
     }),
     Icons(),
     dts({
-      include: ['src/components/**/*.vue', 'src/types/index.ts', 'src/index.ts'],
+      include: ['src/components/**/*.vue', 'src/types/**/*.ts', 'src/index.ts'],
       insertTypesEntry: true,
     })
   ],
@@ -25,6 +26,7 @@ export default defineConfig({
     }
   },
   build: {
+    copyPublicDir: false,
     lib: {
       entry: path.resolve(__dirname, 'src/index'),
       name: '@formsible/element',

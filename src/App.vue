@@ -181,18 +181,26 @@ onMounted(async () => {
         return comp.meta?.enabled
     })
 
-    formComponents.value = availableComponents.value.map((comp) => {
-        return {
-            name: comp.meta?.name || 'Unnamed Component',
-            component:
-                comp.init?.properties.input?.component ||
-                comp.init?.properties.display?.component,
-            inputProps: {
-                ...comp.init?.properties.input,
-                ...comp.init?.properties.display,
-            },
-        }
-    })
+    formComponents.value = availableComponents.value
+        .filter(
+            (components) =>
+                !!components.init.properties.display.component ||
+                !!components.init.properties.input.component,
+        )
+        .map((comp) => {
+            const displayComponent = comp.init?.properties.display.component
+            const inputComponent = comp.init?.properties.input.component
+            const component = inputComponent || displayComponent
+
+            return {
+                name: comp.meta?.name || 'Unnamed Component',
+                component: component as string | Component, // Ensure the type matches
+                inputProps: {
+                    ...comp.init.properties.input,
+                    ...comp.init.properties.display,
+                },
+            }
+        })
 
     for (const comp of formComponents.value) {
         const module = await import(`./components/${comp.component}/index.vue`)

@@ -115,10 +115,10 @@ const handleReady = (payload: { view: EditorView }) => {
             <Codemirror
                 v-model="code"
                 :disabled="readonly"
-                :placeholder="input.placeholder || 'Enter your code'"
                 :style="{ height: '400px' }"
                 :autofocus="true"
                 :indent-with-tab="true"
+                :v-bind="input.props"
                 :tab-size="2"
                 :extensions="extensions"
                 @ready="handleReady"
