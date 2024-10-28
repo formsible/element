@@ -27,11 +27,10 @@ const isRequired = computed(() =>
         <InputText
             :id="input.key"
             v-model="model"
-            :placeholder="props.input.placeholder"
             :input-id="input.key"
-            v-bind="{ ...$attrs, ...input.props }"
+            v-bind="input.props"
         />
-        <p v-if="error">
+        <p v-if="error" class="text-red-500">
             {{ error }}
         </p>
     </div>

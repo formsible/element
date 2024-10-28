@@ -51,8 +51,7 @@ const isRequired = computed(() =>
             :input-id="props.input.key"
             :class="props.theme.input"
             rows="4"
-            :placeholder="props.input?.placeholder || 'Enter your address'"
-            v-bind="{ ...$attrs, ...props.input.props }"
+            v-bind="props.input.props"
         />
         <!-- if error -->
         <small

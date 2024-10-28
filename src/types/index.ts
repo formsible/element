@@ -86,15 +86,43 @@ export interface Validation {
  */
 export interface InputProperties {
     key: string; // Unique key for the input
-    repeatable?: boolean; // Indicates if the input can be repeated
     component?: InputComponentType; // Type of input component
     label: string; // Display label for the input
     description?: string; // Optional description for the input
-    placeholder?: string; // Placeholder text for the input
-    scale?: number; // Optional scale value
-    choices?: InputChoice[]; // Optional choices for the input
     validations?: Validation[]; // Optional validations for the input
     props?: Record<string, any>; // Additional properties for the input
+}
+
+
+// ==============================
+// List Input Field
+// ==============================
+/**
+ * Input list, add remove sort items in list.
+ */
+export interface InputListProperties extends InputProperties {
+    items: string[]
+}
+
+
+// ==============================
+// Ratings input field
+// ==============================
+/**
+ * Rate stars component.
+ */
+export interface InputRatingProperties extends InputProperties {
+    stars: number
+}
+
+// ==============================
+// Choice Input Field
+// ==============================
+/**
+ * Input field with multiple choices.
+ */
+export interface InputChoiceProperties extends InputProperties {
+    choices: InputChoice[];
 }
 
 // ==============================

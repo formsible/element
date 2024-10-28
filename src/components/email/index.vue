@@ -44,8 +44,7 @@ const isRequired = computed(() =>
             :input-id="input.key"
             :class="theme.input"
             type="email"
-            :placeholder="input?.placeholder || 'Enter your email'"
-            v-bind="{ ...$attrs, ...input.props }"
+            v-bind="input.props"
         />
         <!-- if error -->
         <small v-if="error" :id="`${input.key}-help`" :class="theme.error">{{

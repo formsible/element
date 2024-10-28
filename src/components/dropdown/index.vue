@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, defineModel, defineProps } from 'vue'
-import type { InputProperties } from '~/types'
+import type { InputChoiceProperties } from '~/types'
 import Select from 'primevue/select'
 
 interface Props {
-    input: InputProperties
+    input: InputChoiceProperties
     error?: string
     readonly?: boolean
 }

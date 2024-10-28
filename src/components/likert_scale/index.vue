@@ -1,36 +1,23 @@
 <script setup lang="ts">
-import { defineModel, computed, defineProps, type PropType } from 'vue'
-import type { InputProperties } from '~/types'
+import { computed } from 'vue'
+import type { InputChoiceProperties } from '~/types'
 import RadioButton from 'primevue/radiobutton'
 
-const props = defineProps({
-    input: {
-        type: Object as PropType<InputProperties>,
-        required: true,
-    },
-    theme: {
-        type: Object,
-        default: () => ({
-            container: '',
-            label: 'w-full text-black dark:text-white', // Label colors for dark and light mode
-            input: 'flex items-center text-black dark:text-white', // Ensure RadioButton and label text colors adapt
-            description: 'text-sm text-slate-700 dark:text-slate-300', // Description text for both modes
-            error: 'text-red-600 dark:text-red-400', // Error colors for dark and light mode
-        }),
-    },
-    error: {
-        type: String,
-        default: '',
-    },
-})
+interface Props {
+    input: InputChoiceProperties
+    error?: string
+}
+const props = defineProps<Props>()
+
 const model = defineModel<string>({ default: '' })
+
 const isRequired = computed(() =>
     props.input.validations?.map((v) => v.rule).includes('required'),
 )
 </script>
 
 <template>
-    <div :class="theme.container">
+    <div>
         <p class="font-medium">
             {{ props.input.label }}
             <span v-if="isRequired" class="text-red-500">*</span>
@@ -48,8 +35,7 @@ const isRequired = computed(() =>
                     v-model="model"
                     :value="option.value"
                     :input-id="`${input.key}-${option.value}`"
-                    :class="theme.input"
-                    v-bind="{ ...$attrs, ...input.props }"
+                    v-bind="input.props"
                 />
                 <label
                     :for="`${input.key}-${option.value}`"
@@ -59,7 +45,7 @@ const isRequired = computed(() =>
                 </label>
             </div>
         </div>
-        <small v-if="error" :id="`${input.key}-help`" :class="theme.error">
+        <small v-if="error" :id="`${input.key}-help`" class="text-red-500">
             {{ error }}
         </small>
     </div>
