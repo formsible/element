@@ -24,7 +24,7 @@ export default [
         languageOptions: { parserOptions: { parser: tseslint.parser } },
     },
     {
-        files: ['**/*.{js,ts,vue}'],
+        files: ['**/*.{js,ts,vue,cjs}'],
         rules: {
             // Disable the rule that forbids require imports
             '@typescript-eslint/no-require-imports': 'off',

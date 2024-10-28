@@ -11,6 +11,7 @@ export default defineConfig({
   plugins: [
     vue(),
     Components({
+      dts: true,
       resolvers: [PrimeVueResolver()],
     }),
     Icons(),
@@ -25,6 +26,7 @@ export default defineConfig({
     }
   },
   build: {
+    copyPublicDir: false,
     lib: {
       entry: path.resolve(__dirname, 'src/index'),
       name: '@formsible/element',

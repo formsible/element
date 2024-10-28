@@ -70,3 +70,5 @@ export {
   HtmlBlockList,
   HtmlBlockMedia
 }
+
+export * from './types/index'
