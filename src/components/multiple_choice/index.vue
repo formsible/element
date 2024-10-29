@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { InputChoiceProperties } from '~/types'
+import { computed, ComputedRef } from 'vue'
+import type { InputChoice, InputChoiceProperties } from '~/types'
 import RadioButton from 'primevue/radiobutton'
+import { useFetch } from '@vueuse/core'
 
 interface Props {
     input: InputChoiceProperties
@@ -12,10 +13,22 @@ const isRequired = computed(() =>
     props.input.validations?.map((v) => v.rule).includes('required'),
 )
 const model = defineModel<string>({ default: '' })
+
+const computedChoices: ComputedRef<InputChoice[] | null> = computed(() => {
+    if (props.input.fetch) {
+        const {
+            // isFetching,
+            // error: fetchError,
+            data,
+        } = useFetch<InputChoice[]>(props.input.fetch.url)
+        return data.value
+    } else return props.input.choices
+})
 </script>
 
 <template>
     <div>
+        <pre>{{ computedChoices }}</pre>
         <label :for="input.key">
             {{ input.label }}
             <span v-if="isRequired" class="text-red-600 dark:text-red-400"
@@ -26,7 +39,7 @@ const model = defineModel<string>({ default: '' })
         <p>{{ input.description }}</p>
         <div>
             <div
-                v-for="option in input.choices"
+                v-for="option in computedChoices"
                 :key="option.value"
                 class="flex items-center"
             >

@@ -40,6 +40,7 @@
 
             <div class="w-1/2 overflow-auto p-4">
                 <h2 class="text-xl font-bold mb-4">Preview</h2>
+                <pre>{{ state }}</pre>
                 <Transition
                     mode="out-in"
                     enterActiveClass="transition duration-100 delay-100"

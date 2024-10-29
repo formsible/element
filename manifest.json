@@ -772,7 +772,6 @@
                                 "type": "video/mp4"
                             }
                         ],
-                        "controls": true,
                         "alt": "Your browser does not support the video tag."
                     }
                 }
