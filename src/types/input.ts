@@ -44,7 +44,6 @@ export type InputComponentType =
     | 'image_choice'
     | 'likert_scale'
     | 'long_text'
-    | 'matrix'
     | 'multiple_choice'
     | 'net_promoter_score'
     | 'number'
@@ -82,9 +81,6 @@ export interface InputProperties {
     description?: string; // Optional description for the input
     validations?: Validation[]; // Optional validations for the input
     props?: Record<string, any>; // Additional properties for the input
-    fetch?: {
-        url: string
-    }
 }
 
 

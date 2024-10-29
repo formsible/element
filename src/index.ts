@@ -1,4 +1,4 @@
-// Exporting all components
+// Components
 import Address from './components/address/index.vue'
 import AudioRecorder from './components/audio_recorder/index.vue'
 import ActionRedirect from './components/action_redirect/index.vue'
@@ -33,7 +33,6 @@ import Website from './components/website/index.vue'
 import HtmlBlockList from './components/html_block_list/index.vue'
 import HtmlBlockContent from './components/html_block_content/index.vue'
 import HtmlBlockMedia from './components/html_block_media/index.vue'
-
 export {
   ActionRedirect,
   Address,
@@ -71,5 +70,8 @@ export {
   HtmlBlockMedia
 }
 
-// Exporting all types
+// Utitlities
+export * from './utils/index'
+
+// Types
 export * from './types/index'
