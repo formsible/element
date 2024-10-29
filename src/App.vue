@@ -175,7 +175,7 @@ const selectComponent = (comp: ElementManifest) => {
 }
 
 onMounted(async () => {
-    const manifest = await import('../manifest.json')
+    const manifest = await import('./manifest.json')
     availableComponents.value = (
         manifest.components as unknown as ElementManifest[]
     ).filter((comp) => {

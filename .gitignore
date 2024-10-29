@@ -131,5 +131,3 @@ dist
 
 #vite config timestamp
 /vite.config.ts.timestamp-*.mjs
-
-/components.d.ts

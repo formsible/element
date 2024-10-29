@@ -8,13 +8,13 @@
  * Different types of input components.
  */
 export type DisplayComponentType =
-    | 'html'
-    | 'icon'
-    | 'video'
-    | 'slide'
-    | 'document'
+    | 'html_block_content'
+    | 'html_block_list'
+    | 'html_block_media'
+    | 'embed_slide'
+    | 'embed_document'
     | 'locale_selector'
-    | 'page_break';
+    | 'action_redirect'
 
 
 // ==============================
