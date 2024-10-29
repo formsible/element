@@ -6,9 +6,9 @@
       "component": "multiple_choice",
       "description": "Select one option.",
       "choices": [
-        { "label": "Option 1", "value": "1" },
-        { "label": "Option 2", "value": "2" },
-        { "label": "Option 3", "value": "3" }
+        { "label": "Hermansen A", "value": "1" },
+        { "label": "Phan Dinh B", "value": "2" },
+        { "label": "Nguyen Van C", "value": "3" }
       ]
     }
   ]
