@@ -18,7 +18,7 @@ export interface IFile {
 /**
  * Describes choices available for inputs, containing a label, value, and source.
  */
-interface InputChoice {
+export interface InputChoice {
     label: string; // Display label for the choice
     value: string; // Value associated with the choice
     src: string; // Source path or URL related to the choice
@@ -82,6 +82,9 @@ export interface InputProperties {
     description?: string; // Optional description for the input
     validations?: Validation[]; // Optional validations for the input
     props?: Record<string, any>; // Additional properties for the input
+    fetch?: {
+        url: string
+    }
 }
 
 

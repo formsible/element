@@ -24,12 +24,17 @@ defineProps<Props>()
         :height="display.type == 'video' ? display.height || 320 : undefined"
     >
         <source
-            v-for="source in display.sources"
+            v-for="source in display.sources || []"
             :key="source.src"
             :src="source.src"
             :media="source.media"
             :type="source.type"
         />
-        <p>{{ display.alt }}</p>
+        <source :src="display.src" />
+        <p>
+            {{
+                display.alt || `Your browser does not support ${display.type}.`
+            }}
+        </p>
     </component>
 </template>

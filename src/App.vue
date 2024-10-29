@@ -40,6 +40,7 @@
 
             <div class="w-1/2 overflow-auto p-4">
                 <h2 class="text-xl font-bold mb-4">Preview</h2>
+                <pre>{{ state }}</pre>
                 <Transition
                     mode="out-in"
                     enterActiveClass="transition duration-100 delay-100"
@@ -49,7 +50,7 @@
                 >
                     <component
                         v-if="currentComponentIndex > -1"
-                        :is="formComponents[currentComponentIndex].component"
+                        :is="formComponents[currentComponentIndex]?.component"
                         v-model="
                             state[formComponents[currentComponentIndex].name]
                         "
@@ -184,12 +185,12 @@ onMounted(async () => {
     formComponents.value = availableComponents.value
         .filter(
             (components) =>
-                !!components.init.properties.display.component ||
-                !!components.init.properties.input.component,
+                !!components.init.properties.display?.component ||
+                !!components.init.properties.input?.component,
         )
         .map((comp) => {
-            const displayComponent = comp.init?.properties.display.component
-            const inputComponent = comp.init?.properties.input.component
+            const displayComponent = comp.init?.properties.display?.component
+            const inputComponent = comp.init?.properties.input?.component
             const component = inputComponent || displayComponent
 
             return {
