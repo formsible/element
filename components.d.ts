@@ -11,7 +11,6 @@ declare module 'vue' {
     Address: typeof import('./src/components/address/index.vue')['default']
     Appointment: typeof import('./src/components/appointment/index.vue')['default']
     Audio_recorder: typeof import('./src/components/audio_recorder/index.vue')['default']
-    Button: typeof import('primevue/button')['default']
     Captcha: typeof import('./src/components/captcha/index.vue')['default']
     Checkboxes: typeof import('./src/components/checkboxes/index.vue')['default']
     Code_javascript: typeof import('./src/components/code_javascript/index.vue')['default']
@@ -31,7 +30,6 @@ declare module 'vue' {
     Html_block_list: typeof import('./src/components/html_block_list/index.vue')['default']
     Html_block_media: typeof import('./src/components/html_block_media/index.vue')['default']
     Image_choice: typeof import('./src/components/image_choice/index.vue')['default']
-    InputText: typeof import('primevue/inputtext')['default']
     Likert_scale: typeof import('./src/components/likert_scale/index.vue')['default']
     List: typeof import('./src/components/list/index.vue')['default']
     Locale_selector: typeof import('./src/components/locale_selector/index.vue')['default']
@@ -51,7 +49,6 @@ declare module 'vue' {
     Signature: typeof import('./src/components/signature/index.vue')['default']
     Slider: typeof import('./src/components/slider/index.vue')['default']
     Term_of_service: typeof import('./src/components/term_of_service/index.vue')['default']
-    Textarea: typeof import('primevue/textarea')['default']
     Time_picker: typeof import('./src/components/time_picker/index.vue')['default']
     Website: typeof import('./src/components/website/index.vue')['default']
   }

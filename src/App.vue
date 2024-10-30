@@ -40,7 +40,10 @@
 
             <div class="w-1/2 overflow-auto p-4">
                 <h2 class="text-xl font-bold mb-4">Preview</h2>
-                <pre>{{ state }}</pre>
+                <ActionRedirect
+                    :redirect="false"
+                    :display="{ url: 'https://example.com' }"
+                />
                 <Transition
                     mode="out-in"
                     enterActiveClass="transition duration-100 delay-100"
@@ -64,6 +67,7 @@
                             formComponents[currentComponentIndex].inputProps
                                 ?.error
                         "
+                        :redirect="false"
                     />
                 </Transition>
             </div>
@@ -125,6 +129,7 @@ import {
 } from 'vue'
 import AppBar from './AppBar.vue'
 import type { ElementManifest } from '~/types'
+import { ActionRedirect } from '.'
 const state = reactive<Record<string, unknown>>({})
 
 interface IComponent {

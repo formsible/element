@@ -38,6 +38,7 @@ export type InputComponentType =
     | 'captcha'
     | 'checkboxes'
     | 'date_picker'
+    | 'list'
     | 'dropdown'
     | 'email'
     | 'file_upload'
@@ -53,9 +54,13 @@ export type InputComponentType =
     | 'rating_scale'
     | 'short_text'
     | 'signature'
+    | 'data_table'
     | 'slider'
     | 'time_picker'
-    | 'website';
+    | 'website'
+    | 'audio_recorder'
+    | 'code_javascript'
+    | 'code_json'
 
 // ==============================
 // Validation
