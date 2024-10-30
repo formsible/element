@@ -1,30 +1,37 @@
 <script setup lang="ts">
-import { useTimeoutFn } from '@vueuse/core'
-import { onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import type { ActionRedirectProperties } from '~/types'
 
 // Props declaration
 interface Props {
     display: ActionRedirectProperties
+    redirect?: boolean
 }
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+    redirect: () => true,
+})
+
+const secondsRemaining = ref(props.display.countDown || 3)
 
 // Countdown complete event
-const onCountdownComplete = () => {
-    window.location.href = props.display.url
-}
+const onCountdownComplete = () => (window.location.href = props.display.url)
 
-// Timeout composable by vusue
-const { start } = useTimeoutFn(
-    onCountdownComplete,
-    props.display.countDown || 3000,
-)
+// Interval for timer
+setInterval(() => {
+    if (secondsRemaining.value > 0 && props.redirect === true)
+        secondsRemaining.value = secondsRemaining.value - 1
+}, 1000)
 
-// Hooks
-onMounted(start)
+// Watchers
+watch(secondsRemaining, (newValue) => {
+    if (newValue <= 0) onCountdownComplete()
+})
 </script>
 <template>
     <div class="text-center">
-        <p>You are being directed to {{ display.url }}.</p>
+        <p>
+            You will be redirected in {{ secondsRemaining }} seconds to
+            {{ display.url }}.
+        </p>
     </div>
 </template>
