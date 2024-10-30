@@ -54,7 +54,7 @@ export default defineConfig({
       plugins: [
         copy({
           targets: [
-            { src: 'manifest.json', dest: 'dist' }, // Adjust 'dist' to match your output directory
+            { src: 'src/manifest.json', dest: 'dist' }, // Adjust 'dist' to match your output directory
           ],
           hook: 'writeBundle', // Ensures it runs after the build is done
         })],
