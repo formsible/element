@@ -8,7 +8,7 @@ interface Props {
     redirect?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
-    redirect: () => true,
+    redirect: true,
 })
 
 const secondsRemaining = ref(props.display.countDown || 3)
