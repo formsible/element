@@ -817,8 +817,7 @@
                     "display": {
                         "label": "Action Redirect",
                         "component": "action_redirect",
-                        "src": "https://example.com",
-                        "content": "You are being redirected to {url} in {x} seconds"
+                        "url": "https://example.com"
                     }
                 }
             }

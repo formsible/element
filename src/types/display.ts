@@ -48,7 +48,8 @@ export interface EmbedProperties extends DisplayProperties {
  * Properties for redirect.
  */
 export interface ActionRedirectProperties extends DisplayProperties {
-    src: string; // Source URL of the embedded document
+    url: string; // Source URL of the embedded document
+    countDown?: number
 }
 
 // ==============================
