@@ -15,9 +15,6 @@
                         "component": "short_text",
                         "description": "Enter a short text response.",
                         "placeholder": "Type something here"
-                    },
-                    "fetch": {
-                        "url": "https://my-json-server.typicode.com/formsible/element/ShortText/1"
                     }
                 }
             }
@@ -116,10 +113,7 @@
                         "choices": [
                             { "label": "Option 1", "value": "option1" },
                             { "label": "Option 2", "value": "option2" }
-                        ],
-                        "fetch": {
-                            "url": "https://my-json-server.typicode.com/formsible/element/elements/4"
-                        }
+                        ]
                     }
                 }
             }
