@@ -10,7 +10,7 @@ defineProps<Props>()
 
 <template>
     <img
-        v-if="display.type == 'img'"
+        v-if="display.tag == 'img'"
         :src="display.src"
         :width="display.width"
         :height="display.height"
@@ -18,10 +18,10 @@ defineProps<Props>()
     />
     <component
         v-else
-        :is="display.type"
+        :is="display.tag"
         :controls="display.controls || true"
-        :width="display.type == 'video' ? display.height || 400 : undefined"
-        :height="display.type == 'video' ? display.height || 320 : undefined"
+        :width="display.tag == 'video' ? display.height || 400 : undefined"
+        :height="display.tag == 'video' ? display.height || 320 : undefined"
     >
         <source
             v-for="source in display.sources || []"
@@ -33,7 +33,7 @@ defineProps<Props>()
         <source :src="display.src" />
         <p>
             {{
-                display.alt || `Your browser does not support ${display.type}.`
+                display.alt || `Your browser does not support ${display.tag}.`
             }}
         </p>
     </component>

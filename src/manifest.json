@@ -563,7 +563,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "type": "h1",
+                        "tag": "h1",
                         "content": "Heading 1"
                     }
                 }
@@ -581,7 +581,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "type": "h2",
+                        "tag": "h2",
                         "content": "Heading 2"
                     }
                 }
@@ -599,7 +599,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "type": "h3",
+                        "tag": "h3",
                         "content": "Heading 3"
                     }
                 }
@@ -617,7 +617,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "type": "h4",
+                        "tag": "h4",
                         "content": "Heading 4"
                     }
                 }
@@ -635,7 +635,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "type": "p",
+                        "tag": "p",
                         "content": "This is a paragraph."
                     }
                 }
@@ -653,7 +653,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "type": "blockquote",
+                        "tag": "blockquote",
                         "content": "This is a blockquote."
                     }
                 }
@@ -671,7 +671,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "type": "code",
+                        "tag": "code",
                         "content": "This is a code snippet."
                     }
                 }
@@ -689,7 +689,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_content",
-                        "type": "pre",
+                        "tag": "pre",
                         "content": "This is preformatted text."
                     }
                 }
@@ -707,7 +707,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_list",
-                        "type": "unordered",
+                        "tag": "ul",
                         "items": ["First item", "Second item", "Third item"]
                     }
                 }
@@ -725,7 +725,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_list",
-                        "type": "ordered",
+                        "tag": "ol",
                         "items": ["First item", "Second item", "Third item"]
                     }
                 }
@@ -743,7 +743,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_media",
-                        "type": "img",
+                        "tag": "img",
                         "src": "https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                         "alt": "Nice picture"
                     }
@@ -762,7 +762,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_media",
-                        "type": "video",
+                        "tag": "video",
                         "sources": [
                             {
                                 "src": "https://www.w3schools.com/html/mov_bbb.mp4",
@@ -786,7 +786,7 @@
                 "properties": {
                     "display": {
                         "component": "html_block_media",
-                        "type": "audio",
+                        "tag": "audio",
                         "sources": [
                             {
                                 "src": "https://www.w3schools.com/html/horse.ogg",

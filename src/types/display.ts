@@ -58,13 +58,13 @@ export interface ActionRedirectProperties extends DisplayProperties {
 /**
  * Different types of HTML block content.
  */
-type HTMLBlockContentType = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'blockquote' | 'pre' | 'code';
+type HTMLBlockContentTag = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'blockquote' | 'pre' | 'code';
 
 /**
  * Properties for HTML content blocks.
  */
 export interface HtmlBlockContentProperties extends DisplayProperties {
-    type: HTMLBlockContentType; // Type of HTML block
+    tag: HTMLBlockContentTag; // Type of HTML block
     content: string; // Content of the HTML block
 }
 
@@ -74,13 +74,13 @@ export interface HtmlBlockContentProperties extends DisplayProperties {
 /**
  * Different types of HTML lists.
  */
-type HTMLBlockListType = 'ordered' | 'unordered';
+type HTMLBlockListTag = 'ol' | 'ul';
 
 /**
  * Properties for HTML list blocks.
  */
 export interface HTMLBlockListProperties extends DisplayProperties {
-    type: HTMLBlockListType; // Type of HTML list
+    tag: HTMLBlockListTag; // Type of HTML list
     items: string[]; // Array of items in the list
 }
 
@@ -90,7 +90,7 @@ export interface HTMLBlockListProperties extends DisplayProperties {
 /**
  * Different types of HTML media.
  */
-type HTMLBlockMediaType = 'video' | 'audio' | 'img';
+type HTMLBlockMediaTag = 'video' | 'audio' | 'img';
 
 /**
  * Attributes for media sources.
@@ -105,7 +105,7 @@ interface HTMLSourceAttributes {
  * Properties for HTML media blocks.
  */
 export interface HTMLBlockMediaProperties {
-    type: HTMLBlockMediaType; // Type of media block
+    tag: HTMLBlockMediaTag; // Type of media block
     sources?: HTMLSourceAttributes[]; // Optional sources for the media
     src?: string; // Optional source URL for the media
     alt: string; // Alternative text for the media
