@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, type PropType } from 'vue'
+import { defineProps, defineEmits, type PropType, ref, watch } from 'vue'
 import fileSrc from '~/assets/images/file.png'
 import videoSrc from '~/assets/images/video.png'
 import { IFile } from '~/types'
 
-defineProps({
+const { file } = defineProps({
     file: {
         type: Object as PropType<IFile>,
         required: true,
@@ -18,6 +18,23 @@ const formatFileSize = (bytes: number) => {
     if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB'
     return (bytes / (1024 * 1024)).toFixed(1) + ' MB'
 }
+
+const imageUrl = ref(file.url)
+
+const refreshImage = () => {
+    if (file.url) {
+        imageUrl.value = `${file.url}?t=${Date.now()}`
+    }
+}
+
+watch(
+    () => file.status,
+    (newStatus) => {
+        if (newStatus === 'uploaded') {
+            refreshImage()
+        }
+    },
+)
 </script>
 
 <template>
@@ -25,18 +42,17 @@ const formatFileSize = (bytes: number) => {
         <div class="flex-none w-12 h-12">
             <img
                 v-if="file.file.type?.startsWith('image/') && file.url"
-                :src="file.url"
+                :src="imageUrl"
                 alt="File preview"
                 class="h-full rounded-md w-full object-cover overflow-hidden border"
             />
             <img
-                v-else-if="
-                    file.file.type?.startsWith('video/') ||
-                    (file.file.type?.startsWith('application') && file.url)
-                "
+                v-else-if="file.file.type?.startsWith('video/') && file.url"
                 :src="videoSrc"
+                alt="Video preview"
+                class="h-full rounded-md w-full object-cover overflow-hidden border"
             />
-            <img v-else :src="fileSrc" />
+            <img v-else :src="fileSrc" alt="File icon" />
         </div>
         <div class="grow">
             <span
@@ -47,18 +63,16 @@ const formatFileSize = (bytes: number) => {
             <div class="text-sm text-gray-500 flex gap-2 items-center">
                 <span>{{ file.file.type }}</span>
                 <div class="h-1 w-1 rounded-full bg-gray-300"></div>
-
                 <div>
                     <span class="mr-2">{{
                         formatFileSize(file.file.size)
                     }}</span>
-
                     <i
-                        v-if="file.status == 'uploaded'"
+                        v-if="file.status === 'uploaded'"
                         class="pi pi-check text-green-500"
                     ></i>
                     <i
-                        v-else-if="file.status == 'error'"
+                        v-else-if="file.status === 'error'"
                         class="pi pi-exclamation-triangle text-red-500"
                     ></i>
                     <i
@@ -72,6 +86,10 @@ const formatFileSize = (bytes: number) => {
                 </div>
             </div>
         </div>
-        <button class="pi pi-times-circle" @click="$emit('remove')" />
+        <button
+            class="pi pi-times-circle"
+            @click="$emit('remove')"
+            aria-label="Remove file"
+        ></button>
     </div>
 </template>
