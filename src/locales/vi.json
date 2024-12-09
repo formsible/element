@@ -3,5 +3,9 @@
     "Choose file or drop files here": "Chọn hoặc kéo thả file vào đây.",
     "upload": "Tải lên",
     "allowed_file_formats": "Định dạng cho phép: Hình ảnh (jpg, png, gif), Video (mp4, webm, ogg).",
-    "limit_max_files": "Giới hạn: Tối đa {maxFiles} file, mỗi file không quá 25MB."
+    "limit_max_files": "Giới hạn: Tối đa {maxFiles} file, mỗi file không quá 50MB.",
+    "press_to_record": "Nhấn để ghi âm",
+    "recording_time": "Thời gian ghi âm",
+    "btn:play": "Phát",
+    "btn:pause": "Dừng"
 }

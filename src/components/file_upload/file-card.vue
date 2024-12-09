@@ -69,7 +69,6 @@ const formatFileSize = (bytes: number) => {
                         v-else-if="file.status === 'queued'"
                         class="pi pi-hourglass text-yellow-600 dark:text-yellow-400"
                     ></i>
-                    <iconify-icon-icon icon="mdi:account"></iconify-icon-icon>
                 </div>
             </div>
         </div>

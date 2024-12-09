@@ -16,19 +16,19 @@ const isRequired = computed(() =>
 
 <template>
     <div>
-        <label :for="input.key">
+        <label :for="input.key" class="font-semibold">
             {{ input.label }}
             <span v-if="isRequired" class="text-red-600 dark:text-red-400"
                 >*</span
             >
             <!-- Adjusted for dark mode -->
         </label>
-        <p>{{ input.description }}</p>
+        <p class="text-gray-600 text-sm">{{ input.description }}</p>
         <div>
             <div
                 v-for="option in input.choices"
                 :key="option.value"
-                class="flex items-center"
+                class="flex items-center gap-1 mt-2"
             >
                 <Checkbox
                     :id="option.value"

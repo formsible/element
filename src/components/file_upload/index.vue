@@ -39,7 +39,7 @@ const maxFiles = computed(() => {
 })
 
 // Handle file selection
-const maxFileSize = 25 * 1024 * 1024 // 25MB
+const maxFileSize = 50 * 1024 * 1024 // 50MB
 
 const onFileSelected = (event: any) => {
     const selectedFiles: IFile[] =
