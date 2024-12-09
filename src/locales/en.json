@@ -1,0 +1,7 @@
+{
+    "welcome": "Welcome to Your Vue.js App",
+    "Choose file or drop files here": "Choose or drop files here.",
+    "upload": "Upload",
+    "allowed_file_formats": "Allowed formats: Images (jpg, png, gif), Videos (mp4, webm, ogg).",
+    "limit_max_files": "Limit: Maximum {maxFiles} files, each not exceeding 25MB."
+}

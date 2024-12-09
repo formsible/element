@@ -1,7 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import './primevue/tailwind.css';
 @import 'tailwindcss/utilities';
+@import '../primevue/tailwind.css';
 
 @layer base {
     /* Custom styles for typography */

@@ -4,7 +4,7 @@
     >
         <AppBar v-model:theme="theme" class="flex-none" />
         <div class="flex gap-4 mx-auto overflow-hidden flex-auto">
-            <div class="w-1/4 overflow-auto p-4">
+            <div class="w-1/4 overflow-auto p-4 hidden sm:block">
                 <h2 class="text-xl font-bold mb-4">Components</h2>
 
                 <template v-for="group in componentGroups" :key="group.label">
@@ -38,7 +38,7 @@
                 </template>
             </div>
 
-            <div class="w-1/2 overflow-auto p-4">
+            <div class="sm:w-1/2 w-[calc(100%-16px)] overflow-auto p-4">
                 <h2 class="text-xl font-bold mb-4">Preview</h2>
                 <ActionRedirect
                     :redirect="false"
@@ -72,7 +72,7 @@
                 </Transition>
             </div>
 
-            <div class="w-1/4 overflow-auto p-4">
+            <div class="w-1/4 overflow-auto p-4 hidden sm:block">
                 <h2 class="text-xl font-bold mb-4">Options</h2>
                 <div v-if="selectedComponent">
                     <label for="label">Label</label>
@@ -113,6 +113,9 @@
                 </div>
             </div>
         </div>
+        <Notivue v-slot="item">
+            <Notification :item="item" :theme="pastelTheme" />
+        </Notivue>
     </div>
 </template>
 
@@ -128,6 +131,7 @@ import {
     watch,
 } from 'vue'
 import AppBar from './AppBar.vue'
+import { Notivue, Notification, pastelTheme } from 'notivue'
 import type { ElementManifest } from '~/types'
 import { ActionRedirect } from '.'
 const state = reactive<Record<string, unknown>>({})
