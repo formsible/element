@@ -18,17 +18,18 @@ const isRequired = computed(() =>
 
 <template>
     <div>
-        <label :for="input.key">
+        <label :for="input.key" class="font-semibold">
             {{ props.input.label }}
             <span v-if="isRequired" class="text-red-500">*</span>
         </label>
-        <p class="mb-2 text-sm">{{ props.input.description }}</p>
+        <p class="mb-2 text-gray-600 text-sm">{{ props.input.description }}</p>
 
         <InputText
             :id="input.key"
             v-model="model"
             :input-id="input.key"
             v-bind="input.props"
+            class="w-full max-w-xl"
         />
         <p v-if="error" class="text-red-500">
             {{ error }}

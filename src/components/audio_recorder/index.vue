@@ -10,6 +10,7 @@ import {
 } from 'vue'
 import WaveSurfer from 'wavesurfer.js'
 import Button from 'primevue/button'
+import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
 import type { IFile, InputProperties, Validation } from '~/types'
 
@@ -39,6 +40,7 @@ const props = defineProps({
     },
 })
 
+const { t } = useI18n()
 const message = ref<string>(props.error)
 
 const files = defineModel<IFile[]>('files', { default: [] })
@@ -206,13 +208,13 @@ onBeforeUnmount(() => {
 
 <template>
     <div :class="theme.container">
-        <label :class="theme.label" :for="input.key">
+        <label :class="theme.label" :for="input.key" class="font-semibold">
             {{ input.label }}
             <span v-if="isRequired" class="text-red-600 dark:text-red-400"
                 >*</span
             >
         </label>
-        <p :class="theme.description">{{ input.description }}</p>
+        <p class="text-gray-600 text-sm mb-3">{{ input.description }}</p>
 
         <div class="p-6 my-4 mb-10 bg-white dark:bg-zinc-800 rounded-lg border">
             <div class="w-full max-w-40 mx-auto grid place-items-center">
@@ -221,38 +223,44 @@ onBeforeUnmount(() => {
                         'p-4 rounded-full w-20 h-20 flex items-center justify-center',
                         isRecording
                             ? 'bg-red-500 animate-pulse'
-                            : 'bg-surface-200',
+                            : 'bg-primary shadow-[0_4px_15px_rgba(16,185,129,0.2)]',
                         isPlaying ? 'cursor-not-allowed opacity-50' : '',
                     ]"
                 >
-                    <Button
+                    <button
                         :disabled="isPlaying || !isAllowedToRecord || readonly"
                         @click="
                             isRecording ? stopRecording() : startRecording()
                         "
                     >
-                        <i
+                        <iconify-icon
+                            v-if="!isPlaying && !isRecording"
+                            icon="ant-design:audio-filled"
+                            class="text-white text-3xl"
+                        ></iconify-icon>
+
+                        <iconify-icon
+                            v-if="isRecording"
+                            icon="mynaui:pause-solid"
                             :class="[
-                                'pi pi-microphone text-3xl dark:text-zinc-800',
-                                isRecording
-                                    ? 'pi pi-pause !text-2xl text-white'
-                                    : '',
+                                'text-white text-3xl',
                                 isPlaying
                                     ? 'cursor-not-allowed opacity-50'
                                     : '',
                             ]"
-                        ></i>
-                    </Button>
+                        ></iconify-icon>
+                    </button>
                 </div>
                 <div
                     :class="[
-                        'mt-3 text-sm font-semibold',
+                        'mt-3 text-sm font-medium text-slate-600',
                         isPlaying ? 'cursor-not-allowed opacity-30' : '',
                     ]"
                 >
-                    <span v-if="!isRecording">Press to record</span>
+                    <span v-if="!isRecording">{{ t('press_to_record') }}</span>
                     <span v-else>
-                        Recording time: {{ formatTime(recordingTime) }}
+                        {{ t('recording_time') }}:
+                        {{ formatTime(recordingTime) }}
                     </span>
                 </div>
             </div>
@@ -274,8 +282,8 @@ onBeforeUnmount(() => {
                     :disabled="isRecording"
                     @click="playAudio"
                 >
-                    <span v-if="!isPlaying">Play</span>
-                    <span v-else>Pause</span>
+                    <span v-if="!isPlaying">{{ t('btn:play') }}</span>
+                    <span v-else>{{ t('btn:pause') }}</span>
                 </Button>
             </div>
             <small
