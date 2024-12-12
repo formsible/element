@@ -257,9 +257,9 @@ onBeforeUnmount(() => {
                         isPlaying ? 'cursor-not-allowed opacity-30' : '',
                     ]"
                 >
-                    <span v-if="!isRecording">{{ t('press_to_record') }}</span>
+                    <span v-if="!isRecording">{{ t('press-to-record') }}</span>
                     <span v-else>
-                        {{ t('recording_time') }}:
+                        {{ t('recording-time') }}:
                         {{ formatTime(recordingTime) }}
                     </span>
                 </div>

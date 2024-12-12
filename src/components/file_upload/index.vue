@@ -151,10 +151,10 @@ const handleDragOver = (event: DragEvent) => {
             </template>
             <template #empty>
                 <p class="text-sm text-gray-500">
-                    {{ t('allowed_file_formats') }}
+                    {{ t('allowed-file-formats') }}
                 </p>
                 <p class="mt-1 text-sm text-gray-500">
-                    {{ t('limit_max_files', { maxFiles: maxFiles }) }}
+                    {{ t('limit-max-files', { maxFiles: maxFiles }) }}
                 </p>
             </template>
         </FileUpload>

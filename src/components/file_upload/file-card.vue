@@ -28,12 +28,13 @@ const refreshImage = () => {
 }
 
 watch(
-    () => file.status,
-    (newStatus) => {
-        if (newStatus === 'uploaded') {
+    () => [file.url, file.status],
+    ([newUrl, newStatus]) => {
+        if (newUrl && newStatus === 'uploaded') {
             refreshImage()
         }
     },
+    { immediate: true },
 )
 </script>
 
