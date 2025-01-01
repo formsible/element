@@ -35,7 +35,7 @@ const isRequired = computed(() =>
             fluid
         />
         <!-- If error -->
-        <small v-if="error" :id="`${input.key}-help`">
+        <small v-if="error" :id="`${input.key}-help`" class="text-sm mt-0.5">
             {{ error }}
         </small>
     </div>

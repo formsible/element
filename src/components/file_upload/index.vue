@@ -39,7 +39,7 @@ const maxFiles = computed(() => {
 })
 
 // Handle file selection
-const maxFileSize = 50 * 1024 * 1024 // 50MB
+const maxFileSize = 30 * 1024 * 1024 // 50MB
 
 const onFileSelected = (event: any) => {
     const selectedFiles: IFile[] =
@@ -48,7 +48,7 @@ const onFileSelected = (event: any) => {
                 if (file.size > maxFileSize) {
                     push.warning({
                         // message: t('notification.file_too_large'),
-                        message: `File ${file.name} vượt quá giới hạn 25MB`,
+                        message: `File ${file.name} vượt quá giới hạn 30MB`,
                     })
                     return false
                 }

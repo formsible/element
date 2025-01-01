@@ -30,6 +30,6 @@ const isRequired = computed(() =>
             v-bind="input.props"
         />
         <!-- if error -->
-        <small v-if="error">{{ error }}</small>
+        <small v-if="error" class="text-sm mt-0.5">{{ error }}</small>
     </div>
 </template>
