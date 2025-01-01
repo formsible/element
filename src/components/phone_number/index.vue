@@ -110,7 +110,7 @@ const isRequired = computed(() =>
                 :use-grouping="false"
             />
         </div>
-        <small v-if="error" :id="`${input.key}-help`" :class="theme.error">
+        <small v-if="error" :id="`${input.key}-help`" :class="theme.error" class="text-sm mt-0.5">
             {{ error }}
         </small>
     </div>

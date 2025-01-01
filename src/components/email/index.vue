@@ -47,7 +47,7 @@ const isRequired = computed(() =>
             v-bind="input.props"
         />
         <!-- if error -->
-        <small v-if="error" :id="`${input.key}-help`" :class="theme.error">{{
+        <small v-if="error" :id="`${input.key}-help`" :class="theme.error" class="text-sm mt-0.5">{{
             error
         }}</small>
     </div>

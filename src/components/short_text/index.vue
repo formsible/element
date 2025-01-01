@@ -31,7 +31,7 @@ const isRequired = computed(() =>
             v-bind="input.props"
             class="w-full max-w-xl"
         />
-        <p v-if="error" class="text-red-500">
+        <p v-if="error" class="text-red-500 text-sm mt-0.5">
             {{ error }}
         </p>
     </div>
