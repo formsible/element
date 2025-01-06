@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import FileUpload from 'primevue/fileupload'
+// import Button from 'primevue/button'
 import FileCard from './file-card.vue'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { push } from 'notivue'
 import type { IFile, InputProperties, Validation } from '~/types'
 
 // Define props
@@ -9,16 +12,16 @@ interface Props {
     input: InputProperties
     readonly?: boolean
     error?: string
-    maxFileSize?: number // maxFileSize passed from parent
 }
 const props = withDefaults(defineProps<Props>(), {
     readonly: false,
-    maxFileSize: 30 * 1024 * 1024, // Default value if parent does not provide one
 })
+
+const { t } = useI18n()
 
 const files = defineModel<IFile[]>('files', { default: [] })
 // Define emits
-const emit = defineEmits(['remove', 'file-too-large', 'files-updated'])
+const emit = defineEmits(['remove'])
 
 // Define computed properties
 const isRequired = computed(() =>
@@ -36,16 +39,19 @@ const maxFiles = computed(() => {
 })
 
 // Handle file selection
+const maxFileSize = 30 * 1024 * 1024 // 50MB
+
 const onFileSelected = (event: any) => {
     const selectedFiles: IFile[] =
         (Array.isArray(event.files) ? event.files : [event.files])
             .filter((file: any) => {
-                if (file.size > props.maxFileSize) {
-                    // Handle warning via parent-provided method or other means
-                    console.warn(
-                        `File ${file.name} exceeds size limit of ${props.maxFileSize / (1024 * 1024)}MB`,
-                    )
-                    emit('file-too-large', file)
+                console.log('🚀 ~ .filter ~ file:', file)
+                if (file.size > maxFileSize) {
+                    console.log(`File ${file.name} vượt quá giới hạn 30MB`)
+                    push.warning({
+                        // message: t('notification.file_too_large'),
+                        message: `File ${file.name} vượt quá giới hạn 30MB`,
+                    })
                     return false
                 }
                 return true
@@ -58,7 +64,7 @@ const onFileSelected = (event: any) => {
                     url: file.type.startsWith('image/') ? fileURL : '',
                 }
             }) || []
-    emit('files-updated', selectedFiles)
+
     files.value = files.value?.concat(selectedFiles).slice(0, maxFiles.value)
 }
 
@@ -121,15 +127,18 @@ const handleDragOver = (event: DragEvent) => {
                             xmlns="http://www.w3.org/2000/svg"
                             width="3em"
                             height="3em"
-                            viewBox="0 0 24 24"
+                            viewBox="0 0 512 512"
                         >
                             <path
                                 fill="currentColor"
-                                d="M10 16h4c.55 0 1-.45 1-1v-5h1.59c.89 0 1.34-1.08.71-1.71L12.71 3.7a.996.996 0 0 0-1.41 0L6.71 8.29c-.63.63-.19 1.71.7 1.71H9v5c0 .55.45 1 1 1m-4 2h12c.55 0 1 .45 1 1s-.45 1-1 1H6c-.55 0-1-.45-1-1s.45-1 1-1"
+                                d="M473.66 210c-14-10.38-31.2-18-49.36-22.11a16.11 16.11 0 0 1-12.19-12.22c-7.8-34.75-24.59-64.55-49.27-87.13C334.15 62.25 296.21 47.79 256 47.79c-35.35 0-68 11.08-94.37 32.05a150.1 150.1 0 0 0-42.06 53a16 16 0 0 1-11.31 8.87c-26.75 5.4-50.9 16.87-69.34 33.12C13.46 197.33 0 227.24 0 261.39c0 34.52 14.49 66 40.79 88.76c25.12 21.69 58.94 33.64 95.21 33.64h104V230.42l-36.69 36.69a16 16 0 0 1-23.16-.56c-5.8-6.37-5.24-16.3.85-22.39l63.69-63.68a16 16 0 0 1 22.62 0L331 244.14c6.28 6.29 6.64 16.6.39 22.91a16 16 0 0 1-22.68.06L272 230.42v153.37h124c31.34 0 59.91-8.8 80.45-24.77c23.26-18.1 35.55-44 35.55-74.83c0-29.94-13.26-55.61-38.34-74.19M240 448.21a16 16 0 1 0 32 0v-64.42h-32Z"
                             />
                         </svg>
                     </div>
-                    <div class="font-medium">Nhấn để chọn file</div>
+                    <div class="font-medium">Kéo thả file vào đây</div>
+                    <div class="text-sm text-gray-500 mt-2">
+                        hoặc nhấn để chọn file
+                    </div>
                 </div>
             </template>
 
@@ -143,7 +152,12 @@ const handleDragOver = (event: DragEvent) => {
                 />
             </template>
             <template #empty>
-                <!-- Optional empty state content -->
+                <p class="text-sm text-gray-500">
+                    {{ t('allowed-file-formats') }}
+                </p>
+                <p class="mt-1 text-sm text-gray-500">
+                    {{ t('limit-max-files', { maxFiles: maxFiles }) }}
+                </p>
             </template>
         </FileUpload>
 
