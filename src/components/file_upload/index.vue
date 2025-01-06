@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import FileUpload from 'primevue/fileupload'
-// import Button from 'primevue/button'
 import FileCard from './file-card.vue'
 import { computed } from 'vue'
-import { push } from 'notivue'
 import type { IFile, InputProperties, Validation } from '~/types'
 
 // Define props
@@ -11,14 +9,16 @@ interface Props {
     input: InputProperties
     readonly?: boolean
     error?: string
+    maxFileSize?: number // maxFileSize passed from parent
 }
 const props = withDefaults(defineProps<Props>(), {
     readonly: false,
+    maxFileSize: 30 * 1024 * 1024, // Default value if parent does not provide one
 })
 
 const files = defineModel<IFile[]>('files', { default: [] })
 // Define emits
-const emit = defineEmits(['remove'])
+const emit = defineEmits(['remove', 'file-too-large', 'files-updated'])
 
 // Define computed properties
 const isRequired = computed(() =>
@@ -36,17 +36,16 @@ const maxFiles = computed(() => {
 })
 
 // Handle file selection
-const maxFileSize = 30 * 1024 * 1024 // 50MB
-
 const onFileSelected = (event: any) => {
     const selectedFiles: IFile[] =
         (Array.isArray(event.files) ? event.files : [event.files])
             .filter((file: any) => {
-                if (file.size > maxFileSize) {
-                    push.warning({
-                        // message: t('notification.file_too_large'),
-                        message: `File ${file.name} vượt quá giới hạn 30MB`,
-                    })
+                if (file.size > props.maxFileSize) {
+                    // Handle warning via parent-provided method or other means
+                    console.warn(
+                        `File ${file.name} exceeds size limit of ${props.maxFileSize / (1024 * 1024)}MB`,
+                    )
+                    emit('file-too-large', file)
                     return false
                 }
                 return true
@@ -59,7 +58,7 @@ const onFileSelected = (event: any) => {
                     url: file.type.startsWith('image/') ? fileURL : '',
                 }
             }) || []
-
+    emit('files-updated', selectedFiles)
     files.value = files.value?.concat(selectedFiles).slice(0, maxFiles.value)
 }
 
@@ -144,12 +143,7 @@ const handleDragOver = (event: DragEvent) => {
                 />
             </template>
             <template #empty>
-                <!-- <p class="text-sm text-gray-500">
-                    {{ t('allowed-file-formats') }}
-                </p>
-                <p v-if="maxFiles" class="mt-1 text-sm text-gray-500">
-                    {{ t('limit-max-files', { maxFiles: maxFiles }) }}
-                </p> -->
+                <!-- Optional empty state content -->
             </template>
         </FileUpload>
 
