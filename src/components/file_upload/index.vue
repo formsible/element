@@ -3,7 +3,6 @@ import FileUpload from 'primevue/fileupload'
 // import Button from 'primevue/button'
 import FileCard from './file-card.vue'
 import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { push } from 'notivue'
 import type { IFile, InputProperties, Validation } from '~/types'
 
@@ -16,8 +15,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     readonly: false,
 })
-
-const { t } = useI18n()
 
 const files = defineModel<IFile[]>('files', { default: [] })
 // Define emits
