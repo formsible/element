@@ -233,13 +233,23 @@ onBeforeUnmount(() => {
                             isRecording ? stopRecording() : startRecording()
                         "
                     >
-                        <iconify-icon
+                        <span
                             v-if="!isPlaying && !isRecording"
-                            icon="ant-design:audio-filled"
                             class="text-white text-3xl"
-                        ></iconify-icon>
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1.2em"
+                                height="1.2em"
+                                viewBox="0 0 1024 1024"
+                            >
+                                <path
+                                    fill="currentColor"
+                                    d="M512 624c93.9 0 170-75.2 170-168V232c0-92.8-76.1-168-170-168s-170 75.2-170 168v224c0 92.8 76.1 168 170 168m330-170c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8c0 140.3-113.7 254-254 254S258 594.3 258 454c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8c0 168.7 126.6 307.9 290 327.6V884H326.7c-13.7 0-24.7 14.3-24.7 32v36c0 4.4 2.8 8 6.2 8h407.6c3.4 0 6.2-3.6 6.2-8v-36c0-17.7-11-32-24.7-32H548V782.1c165.3-18 294-158 294-328.1"
+                                />
+                            </svg>
+                        </span>
 
-                        <iconify-icon
+                        <span
                             v-if="isRecording"
                             icon="mynaui:pause-solid"
                             :class="[
@@ -248,7 +258,19 @@ onBeforeUnmount(() => {
                                     ? 'cursor-not-allowed opacity-50'
                                     : '',
                             ]"
-                        ></iconify-icon>
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1.2em"
+                                height="1.2em"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    fill="currentColor"
+                                    d="M16 19q-.825 0-1.412-.587T14 17V7q0-.825.588-1.412T16 5t1.413.588T18 7v10q0 .825-.587 1.413T16 19m-8 0q-.825 0-1.412-.587T6 17V7q0-.825.588-1.412T8 5t1.413.588T10 7v10q0 .825-.587 1.413T8 19"
+                                />
+                            </svg>
+                        </span>
                     </button>
                 </div>
                 <div
