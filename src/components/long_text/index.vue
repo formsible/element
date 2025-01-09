@@ -26,14 +26,17 @@ const isRequired = computed(() =>
         </label>
         <p class="text-gray-600 text-sm mb-3">{{ input.description }}</p>
         <!-- TextArea section -->
-        <TextArea
-            :id="input.key"
-            v-model="model"
-            :input-id="input.key"
-            v-bind="{ ...$attrs, ...input.props }"
-            rows="5"
-            fluid
-        />
+        <div class="mt-2">
+            <TextArea
+                :id="input.key"
+                v-model="model"
+                :input-id="input.key"
+                v-bind="{ ...$attrs, ...input.props }"
+                rows="5"
+                :placeholder="input.placeholder"
+                fluid
+            />
+        </div>
         <!-- If error -->
         <small v-if="error" :id="`${input.key}-help`" class="text-sm mt-0.5">
             {{ error }}

@@ -33,6 +33,7 @@ const isRequired = computed(() =>
             option-label="label"
             option-value="value"
             :input-id="input.key"
+            :placeholder="input.placeholder"
             v-bind="input.props"
         />
         <small v-if="error" :id="`${input.key}-help`">

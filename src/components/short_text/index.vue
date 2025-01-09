@@ -29,6 +29,7 @@ const isRequired = computed(() =>
             v-model="model"
             :input-id="input.key"
             v-bind="input.props"
+            :placeholder="input.placeholder"
             class="w-full max-w-xl"
         />
         <p v-if="error" class="text-red-500 text-sm mt-0.5">
