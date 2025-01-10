@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { InputProperties } from '~/types'
+import type { InputProperties, Validation } from '~/types'
 import InputText from 'primevue/inputtext'
 
 interface Props {
@@ -14,6 +14,12 @@ const model = defineModel<string>({ default: '' })
 const isRequired = computed(() =>
     props.input.validations?.map((v) => v.rule).includes('required'),
 )
+const maxLength = computed(() => {
+    const v = props.input?.validations?.find(
+        (v: Validation) => v.rule == 'maxLength',
+    )
+    return v?.params ? parseInt(v.params[0]) : 1
+})
 </script>
 
 <template>
@@ -31,6 +37,7 @@ const isRequired = computed(() =>
             v-bind="input.props"
             :placeholder="input.placeholder"
             class="w-full max-w-xl"
+            :maxlength="maxLength"
         />
         <p v-if="error" class="text-red-500 text-sm mt-0.5">
             {{ error }}

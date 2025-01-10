@@ -64,7 +64,7 @@ watch(
             <div class="text-sm text-gray-500 flex gap-2 items-center">
                 <span>{{ file.file.type }}</span>
                 <div class="h-1 w-1 rounded-full bg-gray-300"></div>
-                <div>
+                <div class="flex items-center">
                     <span class="mr-2">{{
                         formatFileSize(file.file.size)
                     }}</span>
@@ -80,11 +80,29 @@ watch(
                         v-else-if="file.status === 'pending'"
                         class="pi pi-spinner text-blue-600 dark:text-blue-400 pi-spin"
                     ></i>
-                    <i
+                    <!-- Thay thế icon đồng hồ cát bằng dots loader -->
+                    <div
                         v-else-if="file.status === 'queued'"
-                        class="pi pi-hourglass text-yellow-600 dark:text-yellow-400"
-                    ></i>
+                        class="dots-loader"
+                    >
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
+            </div>
+            <!-- Progress bar with gradient -->
+            <div
+                v-if="file.status === 'pending' || file.status === 'queued'"
+                class="w-full h-1.5 bg-gray-100 rounded-full mt-2 overflow-hidden"
+            >
+                <div
+                    class="h-full rounded-full transition-all duration-300 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500 background-animate"
+                    :class="{
+                        'animate-progress': file.status === 'pending',
+                        'w-0': file.status === 'queued',
+                    }"
+                ></div>
             </div>
         </div>
         <button
@@ -94,3 +112,71 @@ watch(
         ></button>
     </div>
 </template>
+
+<style scoped>
+@keyframes progress {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.animate-progress {
+    animation: progress 2s ease-in-out infinite;
+}
+
+/* Dots loader animation */
+.dots-loader {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 16px;
+}
+
+.dots-loader div {
+    width: 4px;
+    height: 4px;
+    background-color: #4b5563;
+    border-radius: 50%;
+    animation: dots 1.4s infinite ease-in-out;
+}
+
+.dots-loader div:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.dots-loader div:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes dots {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Gradient animation for progress bar */
+.background-animate {
+    background-size: 200%;
+    animation: gradient 2s linear infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+</style>

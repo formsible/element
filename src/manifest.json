@@ -14,7 +14,13 @@
                         "label": "Short Text",
                         "component": "short_text",
                         "description": "Enter a short text response.",
-                        "placeholder": "Type something here"
+                        "placeholder": "Type something here",
+                        "validations": [
+                            {
+                                "rule": "maxLength",
+                                "params": [20]
+                            }
+                        ]
                     }
                 }
             }
@@ -90,7 +96,13 @@
                         "label": "Long Text",
                         "component": "long_text",
                         "description": "Enter a longer text response. Multi-line input is allowed.",
-                        "placeholder": "Type your text here"
+                        "placeholder": "Type your text here",
+                        "validations": [
+                            {
+                                "rule": "maxLength",
+                                "params": [20]
+                            }
+                        ]
                     }
                 }
             }
