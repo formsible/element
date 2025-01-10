@@ -18,7 +18,9 @@ const model = defineModel<string>({ default: '' })
     <div>
         <label :for="input.key" class="font-semibold">
             {{ input.label }}
-            <span v-if="isRequired" class="text-red-600 dark:text-red-400"
+            <span
+                v-if="isRequired"
+                class="text-red-600 dark:text-red-400 -ml-0.5"
                 >*</span
             >
             <!-- Adjusted for dark mode -->

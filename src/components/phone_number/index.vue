@@ -84,7 +84,9 @@ const isRequired = computed(() =>
     <div :class="props.theme.container">
         <label :class="props.theme.label" :for="props.input.key">
             {{ props.input.label }}
-            <span v-if="isRequired" class="text-red-600 dark:text-red-400"
+            <span
+                v-if="isRequired"
+                class="text-red-600 dark:text-red-400 -ml-0.5"
                 >*</span
             >
         </label>
@@ -110,7 +112,12 @@ const isRequired = computed(() =>
                 :use-grouping="false"
             />
         </div>
-        <small v-if="error" :id="`${input.key}-help`" :class="theme.error" class="text-sm mt-0.5">
+        <small
+            v-if="error"
+            :id="`${input.key}-help`"
+            :class="theme.error"
+            class="text-sm mt-0.5"
+        >
             {{ error }}
         </small>
     </div>
