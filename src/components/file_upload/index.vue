@@ -105,7 +105,11 @@ const handleDragOver = (event: DragEvent) => {
     <div>
         <p class="font-medium">
             {{ props.input.label }}
-            <span v-if="isRequired" class="text-red-500">*</span>
+            <span
+                v-if="isRequired"
+                class="text-red-600 dark:text-red-400 -ml-0.5"
+                >*</span
+            >
         </p>
 
         <FileUpload

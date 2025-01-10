@@ -42,7 +42,9 @@ const model = defineModel<string>({
     <div :class="theme.container">
         <label :class="theme.label" :for="input.key">
             {{ input.label }}
-            <span v-if="isRequired" class="text-red-600 dark:text-red-400"
+            <span
+                v-if="isRequired"
+                class="text-red-600 dark:text-red-400 -ml-0.5"
                 >*</span
             >
         </label>

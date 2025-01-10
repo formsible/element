@@ -39,7 +39,9 @@ const isRequired = computed(() =>
     <div :class="props.theme.container">
         <label :class="props.theme.label" :for="props.input.key">
             {{ props.input.label }}
-            <span v-if="isRequired" class="text-red-600 dark:text-red-400"
+            <span
+                v-if="isRequired"
+                class="text-red-600 dark:text-red-400 -ml-0.5"
                 >*</span
             >
         </label>

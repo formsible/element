@@ -20,7 +20,7 @@ const isRequired = computed(() =>
     <div>
         <label :for="input.key" class="font-semibold">
             {{ props.input.label }}
-            <span v-if="isRequired" class="text-red-500">*</span>
+            <span v-if="isRequired" class="text-red-500 -ml-0.5">*</span>
         </label>
         <p class="mb-2 text-gray-600 text-sm">{{ props.input.description }}</p>
 

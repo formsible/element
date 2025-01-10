@@ -41,7 +41,11 @@ const isRequired = computed(() =>
                 v-bind="{ ...$attrs, ...props.input.props }"
             />
             <span>{{ input.label }}</span>
-            <span v-if="isRequired" class="text-red-600">*</span>
+            <span
+                v-if="isRequired"
+                class="text-red-600 dark:text-red-400 -ml-0.5"
+                >*</span
+            >
         </label>
         <p :class="theme.description">{{ input.description }}</p>
         <!-- if error -->

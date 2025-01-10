@@ -38,7 +38,11 @@ const isRequired = computed(() =>
     <div :class="theme.container">
         <label :class="theme.label" :for="input.key">
             {{ input.label }}
-            <span v-if="isRequired" class="text-red-600">*</span>
+            <span
+                v-if="isRequired"
+                class="text-red-600 dark:text-red-400 -ml-0.5"
+                >*</span
+            >
         </label>
         <p :class="theme.description">{{ input.description }}</p>
         <!-- Color Picker -->
