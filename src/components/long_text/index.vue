@@ -19,7 +19,7 @@ const maxLength = computed(() => {
     const v = props.input?.validations?.find(
         (v: Validation) => v.rule == 'maxLength',
     )
-    return v?.params ? parseInt(v.params[0]) : 1
+    return v?.params ? parseInt(v.params[0]) : 255
 })
 </script>
 
