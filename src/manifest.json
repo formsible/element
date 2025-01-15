@@ -146,9 +146,16 @@
                         "description": "Select one or more options.",
                         "placeholder": "Choose options",
                         "choices": [
-                            { "label": "Option 1", "value": "option1" },
+                            {
+                                "label": "Option 1",
+                                "value": "option1",
+                                "disabled": true
+                            },
                             { "label": "Option 2", "value": "option2" }
-                        ]
+                        ],
+                        "props": {
+                            "modelValue": ["option1"]
+                        }
                     }
                 }
             }
