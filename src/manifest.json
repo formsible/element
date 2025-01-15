@@ -153,8 +153,9 @@
                             },
                             { "label": "Option 2", "value": "option2" }
                         ],
+                        "defaultValue": "option1",
                         "props": {
-                            "modelValue": ["option1"]
+                            "defaultValue": ["option1"]
                         }
                     }
                 }
