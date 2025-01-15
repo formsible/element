@@ -35,6 +35,7 @@ const isRequired = computed(() =>
                     v-model="model"
                     :value="option.value"
                     :input-id="option.value"
+                    :disabled="option.disabled"
                     v-bind="{ ...$attrs, ...props.input.props }"
                 />
                 <label :for="option.value">{{ option.label }}</label>

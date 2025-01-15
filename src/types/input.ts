@@ -21,6 +21,7 @@ export interface IFile {
 export interface InputChoice {
     label: string // Display label for the choice
     value: string // Value associated with the choice
+    disabled: boolean
     src: string // Source path or URL related to the choice
 }
 
